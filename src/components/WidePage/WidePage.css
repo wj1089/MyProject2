@@ -1,0 +1,173 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+.WP_main_fullscreen{
+    width: 200vh;
+    height: 100vh;
+
+}
+
+.WP_main_contant{
+    position: absolute;
+    background-color: blanchedalmond;
+    width: 200vh;
+    height: 100%;
+    top: 6%;
+    left: 0;
+    -webkit-transition: transform 0.56s ease-out;
+	-o-transition: transform 0.56s ease-out;
+	transition: transform 0.56s ease-out; 
+}
+
+.WP_topScreen{
+    background-color: cadetblue;
+    width: 200vh;
+    height: 40%;
+    margin: 0 0 2.8vh;
+    padding: 0 0 44vh;
+    /* background-color: #eeeeee; */
+}
+
+
+
+.WP_section_fullarea{
+    margin-left: 5%;
+    height: 50%;
+    width: 158vh;
+}
+.WP_section1{
+    margin-top: 0;
+    height: 95%;
+    width: 100%;
+    background-color: cyan;
+    right: 50%;
+}
+
+.WP_section2{
+    margin-top: 0;
+    height: 95%;
+    width: 100%;
+    background-color: darkkhaki;
+    right: 50%;
+}
+
+.WP_section3{
+    margin-top: 0;
+    height: 95%;
+    width: 100%;
+    background-color: violet;
+    right: 50%;
+}
+
+.WP_section4{
+    margin-top: 0;
+    /* margin-left: 3%; */
+    height: 95%;
+    width: 100%;
+    background-color: yellow;
+    right: 50%;
+}
+
+.WP_sectionarea{
+    padding: 1vh 1vh;
+	background-color: chocolate;
+	justify-content: space-between;
+    width: 70%;
+    height: 40%;
+    position: absolute;
+    margin-top: 3%;
+    left: 12%;
+}
+
+
+.WP_sec_btn{
+    
+    width: 8vh;
+    border: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+	text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+	padding: 10px 20px;
+	font-size: 2vh;
+	font-weight: 300;
+	letter-spacing: 1px;
+	line-height: 1;
+	border: 5px solid rgba(17, 16, 16, 0.56);
+	background-color: rgba(0, 0, 0, 0.07);
+	border-radius: 35px;
+	display: inline-block;
+	-webkit-transition: border 0.1s ease-in-out;
+	-o-transition: border 0.1s ease-in-out;
+    transition: border 0.1s ease-in-out;
+}
+
+.underline{
+    position: absolute;
+    text-decoration: underline;
+    font-size: xx-large;
+    width: 24vh;
+    height: 30%;
+    margin-top: 5%;
+}
+
+
+.WP_sidenav{
+    float: left;
+    height: 100%;
+    width: 20%;
+    background-color: azure;
+}
+.WP_option{
+    font-size: large;
+}
+.WP_category{
+    text-decoration: underline;
+    font-size: xx-large;
+}
+
+.WP_footerArea{
+    font-size: xx-large;
+    width: 180vh;
+    height: 70vh;
+    background-color: white;
+    margin: 0;
+    left: 0;
+    padding: 5px 0 15px 15px;
+
+}
+
+
+.footer_Thumnail{
+    font-size:5vh;
+    width: 30vh;
+}
+.WP_footerContent{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    
+    width: 80%;
+    height: 80%;
+}
+.footer_down{
+    width: 3vh;
+    margin-top: 15%;
+}
+.footer_down .underword{
+    width: 120vh;
+    font-size: 2vh;
+	font-weight: bold;
+	font-stretch: normal;
+    font-style: normal; 
+    padding-top: 3vh;
+}

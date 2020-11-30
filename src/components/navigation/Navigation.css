@@ -1,0 +1,87 @@
+
+/* 상단메뉴바 */
+.nav_menubar{
+	height: 10vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    list-style: none; 
+	padding-left: 0;
+	background-color: #ffffff;
+	background-color:  rgba( 255, 255, 255, 0);
+
+}
+
+.nav_menubar li :hover{
+	background-color: #c9c4c0;
+	border-radius: 10px;
+	transition: ease-out 0.3s;
+
+}
+.nav_menu{
+	position: relative;
+	width: 20vw;
+	display: flex;
+	list-style: none;
+	padding-right: 5%;
+	padding: 8px 15px;
+
+}
+
+.nav_menu li{
+	width: 7vw;
+	height: 45px;
+	margin:4px 14px 5px 5%;
+	font-family: NotoSansKR;
+	font-size: 25px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.45;
+	letter-spacing: normal;
+	text-align: center;
+
+  
+}
+
+
+.one{
+	width: 10vh;
+	font-size: 1vw;
+	font-weight: 900;
+	color: black;
+	
+}
+.two{
+	width: 10vh;
+	font-size: 1vw;
+	font-weight: bolder;
+	color: black;
+
+}
+
+
+a{
+	text-decoration: none;
+	color: black
+	
+}
+
+.logoArea{
+    width: 15vw;
+}
+
+
+
+.logo{
+    position: relative;
+    width: 3vw;
+    height: 5.5vh;
+    left: 5vw;
+}
+
+
+.logo .img{
+	width: 50%;
+	height: 50%;
+}
