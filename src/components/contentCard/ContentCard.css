@@ -1,3 +1,22 @@
+
+
+
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 360
+   1920-1024   - desktop (default grid)
+   1024-768    - tablet
+   360-less    - phone landscape & smaller
+--------------------------------------------*/
+
+
+
+
+/* For desktop: */
+/* @media only screen and (min-width: 1024px){
+    .clearBoth{
+        clear : both;
+    } */
+
 /* WidePage */
 .WP_imgSize{
     width: 100%;
@@ -23,27 +42,27 @@
 
 /* HotTrack ------------------------*/
 .HT_imgSize{
-    width: 10vw;
-    height: 20vh;
+    width: 252px;
+    height: 252px;
     border-radius: 15px;
 }
 
 .HT_sectionimgs{
     display: inline-block;
     padding: 0;
-    margin-left: 0.8vw;
-    height: 38vh;
-    width: 10vw;
-
+    width: 252px;
+    margin: 0 20px 12px 0;
 } 
 .HT_contentText{
-    width: 10vw;
+    width: 252px;
     height: 22vh;
-    padding: 1vh;
+    padding: 1vh 0 0 0;
 
 }
 .HT_contentName{
-    font-weight: 900;
+    width: 252px;
+    font-size: 1vw;
+    font-weight: bolder;
     text-align: center;
     text-overflow:ellipsis;
     white-space:nowrap;
@@ -51,23 +70,26 @@
 }
 .HT_contentDes{
     margin : 0 4px 0 4px;
-    font-size: 0.7vw;
+    font-size: 0.8vw;
     font-style: normal;
     font-weight: normal;
     font-family: NotoSansKR;
     letter-spacing: normal;
     text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 /* 좌측 버튼 */
 .HTclickBtn_L{
     position: absolute;
     z-index: 1;
-    width: 5.3vw;
+    width: 5vw;
     height: 43vh;
     border: none;
     top: 25vh;
-    left: 1.5vw;
     margin-right: auto;
     margin-left: auto;
     background-color: rgba(150, 150, 150, 0);
@@ -85,10 +107,10 @@
 .HTclickBtn_R{
     position: absolute;
     z-index: 1;
-    width: 5.3vw;
+    width: 5vw;
     top: 25vh;
     height: 43vh; 
-    left: 61vw;
+    right: 0;
     bottom: 9vh;
     border: 0;
     background-color: rgba(150, 150, 150, 0);
@@ -126,10 +148,10 @@
 /* Review image --------------------------*/
 .inSide_slide{
 	position: relative;
-	width: 16vw;
-	height: 40vh;
+	width: 360px;
+	height: 505px;
 	border-radius: 16px;
-    margin: 0 0.71vw 0 0;
+    margin: 0 16px 0 0;
     margin-top: 6vh;
     background-color: white;
     box-shadow: 0 3px 6px 0
@@ -148,9 +170,11 @@
     border: none;
 }
 
-.imgSize{
-	width: 10vw;
-    height: 16vh;
+.RV_imgSize{
+	/* width: 184px;
+    height: 184px; */
+    width: 14vw;
+    height: 20vh;
     margin-left :auto;
     margin-right :auto;
     text-align:center;
@@ -193,9 +217,11 @@
 
 /* 전체 슬라이더 영역 */
 .SliderContainer {
-    width: 51vw;
+    position: relative;
+    width: 70vw;
+    left: 0;
     display: flex; 
-
+    bottom: 5vh;
   }
 
   /* 버튼클릭  css */
@@ -223,13 +249,12 @@
   
 /* 좌측 버튼 */
 .clickBtn_L{
-    position: absolute;
+    position: relative;
     z-index: 1;
     width: 5.3vw;
-    top: 9vh;
-    height: 40vh; 
-    left: 18vw;
-    bottom: 9vh;
+    height: 52vh; 
+    left: 17.5vw;
+    bottom: 83vh;
     border: 0;
     background-color: rgba(150, 150, 150, 0);
 
@@ -244,13 +269,12 @@
 
 /* 우측버튼 */
 .clickBtn_R{
-    position: absolute;
+    position: relative;
     z-index: 1;
     width: 5.3vw;
-    top: 9vh;
-    height: 40vh; 
-    left: 80vw;
-    bottom: 9vh;
+    height: 52vh; 
+    left: 81.5vw;
+    bottom: 83vh;
     border: 0;
     background-color: rgba(150, 150, 150, 0);
 
@@ -259,7 +283,7 @@
 .clickBtn_R:hover{
     transition:  0.3s ease-in-out;
     background-color:#ffffff;
-    opacity: 0.5;
+    opacity: 0.6;
     background-size: 5vh;
 }
 
@@ -272,6 +296,6 @@
 }
   
  
-
+/* } */
 
 

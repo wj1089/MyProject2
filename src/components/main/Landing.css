@@ -1,8 +1,20 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 360
+   1920-1024   - desktop (default grid)
+   1024-768    - tablet
+   360-less    - phone landscape & smaller
+--------------------------------------------*/
+
+/* For desktop: */
 body {
-	font-family: NotoSansKR;
-	margin: 0;
+	max-width : 1920px;
+	margin: auto !important;
+    float : none !important;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "NotoSansKR"
+    sans-serif;
 }
 * {
 	-webkit-box-sizing: border-box;
@@ -13,6 +25,10 @@ body {
 	
 }
 
+/* @media only screen and (min-width: 1024px){
+.clearBoth{
+	clear : both;
+} */
 
 header {
 	position: fixed;
@@ -158,12 +174,11 @@ h1 {
 	font-size: 2.7vw;
 	font-weight: 900;
 	color: #000000;
-	font-family: NotoSansKR;
+	font-family: "NotoSansKR";
 	font-stretch: normal;
 	font-style: normal;
 	line-height: 1.16;
 	letter-spacing: normal;
-	margin: none;
 	margin-bottom: 1vh;
 }
 
@@ -199,14 +214,12 @@ h1 {
 }
 
 .section_container {
-	bottom: 23vh;
-	left: 17vh;
+	bottom: 38vh;
 	position: absolute;
-	width: 62vh;
-	margin: 0vh auto;
+	width: 40vh;
 	padding: 6vh 0vh;
 	color: #fff;
-	
+	margin: 0px 0 0px 8vw;
 }
 .right .section_container {
 	text-align: right;
@@ -224,18 +237,18 @@ h1 {
 }
 
 .ayi_img{
-	background-size: 80vw;
-	width: 12vw;
+	height: 46px;
+	width: auto;
 	
 }
 .ayi_img2{
-	background-size: 80vw;
-	width: 12vw;
+	height: 46px;
+	width: auto;
 }
 
 .firstPage_thumnail{
-	width: 55vw;
-	height: 16vh;
+	width: 267px;
+	height: 115px;
 	text-align: left;
 	font-family: NotoSansKR;
 	font-stretch: normal;
@@ -243,7 +256,8 @@ h1 {
 	font-weight: 800;
 }
 .firstPage_thumnail .font2{
-	font-size: 1.7vw;
+	margin-left: 0.5vw;
+	font-size: 30px;
 	margin-top: 1.5vh;
 	color: black;
 	font-family: NotoSansKR;
@@ -252,36 +266,38 @@ h1 {
 	font-weight: bolder;
 	line-height: 1.4;
 }
-.main_phnGui{
+.main_phnGif{
 	position: relative;
-	width: 23vw;
-	height: 57vh;
+	width: 27vw;
+	height: 63.7vh;
+	/* width: auto;
+	height: 617px; */
 	left: 5vw;
-	bottom: 2.5vh;
+	bottom: 9.2vh;
 	padding: 0vh 0vw 0vh 0vw;
 	margin: 1vh 1vh 1vh 1vh;
 }
 
 .section_link_1 {
+	position: relative;
+	top: 48vh;
 	width: 11.5vw 11vh;
-	font-size: 0.9vw;
-	font-family: NotoSansKR;
+	font-size: 21px;
+	font-family: "NotoSansKR";
 	font-stretch: normal;
 	font-style: normal;
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
 	display: inline-block;
-	margin-top: 7vh;
 	padding: 1.2vh 3vw;
-	/* letter-spacing: 0.1vw; */
 	line-height: 1;
-	border: solid 3px #34613f;
 	color: #ffffff;
-	background-color: #4a7755;
-	box-shadow: 0 3px 6px 0
-		rgba(0,0,0,0.16);
+	border: solid 3px #34613f;
+	background-color: #34613f;
+	box-shadow: 0 3px 6px 0	rgba(0,0,0,0.16);
 	border-radius: 0.5vw;
+	margin: 0px 0 0px 8.5vw;
 	transition: ease-out 0.3s;
 	
 }
@@ -330,13 +346,12 @@ h1 {
 }
 
 .section_container_2 {
-	width: 60vw;
-	height: 68vh;
-	margin: auto;
-	padding: 15vh 0;
-	overflow: hidden;
-	margin-top: 15vh;
-	color: #fff;
+	position: relative;
+	width: 20vw;
+	height: 30vh;
+	top: 25vh;
+	margin: 0;
+	padding: 0 35px 0 8vw;
 }
 .right .section_container {
 	text-align: right;
@@ -350,7 +365,7 @@ h1 {
 }
 
 .secondPage_thumnail{
-	width: 55vw;
+	width: 25vw;
 	height: 18vh;
 	text-align: left;
 	
@@ -358,7 +373,7 @@ h1 {
 
 .secondPage_thumnail .font2{
 	font-size: 0.8vw;
-	font-family: NotoSansKR;
+	font-family: "NotoSansKR";
 	font-stretch: normal;
 	font-style: normal;
 	font-weight: bold;
@@ -382,10 +397,11 @@ h1 {
 .section_link_2 {
 	position: absolute;
 	top: 70vh;
-	left: 35.5vw;
-	width: 10.5vw;
-	height: 15vh;
-	border-radius: 8px 8px 8px 8px;
+	left: 31vw;
+	width: 14vw;
+	height: 17vh;
+	border-radius: 20px;
+	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	background-size: 11vw;
 	border: none;
 }
@@ -405,12 +421,10 @@ h1 {
 
 .section_container_3 {
 	position: relative;
-	width: 130vh;
-	left: 10vw;
-	height: 75vh;
-	margin: 10vh auto;
-	padding: 21vh 0;
-	margin-top: 15vh;
+	width: 38vh;
+	left: 8vw;
+	top: 30vh;
+	height: 35vh;
 	color: rgb(0, 0, 0);
 }
 .right .section_container {
@@ -430,11 +444,12 @@ h1 {
 
 .section_link_3 {
 	position: absolute;
-	top: 65vh;
+	top: 48vh;
 	left: 34.5vw;
-	width: 10.5vw;
-	height: 15vh;
-	border-radius: 8px 8px 8px 8px;
+	width: 14vw;
+	height: 17vh;
+	border-radius: 20px;
+	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	background-size: 11vw;
 	border: none;
 }
@@ -451,11 +466,11 @@ h1 {
 
 /* 내부 후기카드 */
 .revSlide{
-	position: absolute;
-	width: 52vw;
-	height: 48vh;
+	position: relative;
+	width: 69vw;
+	height: 54vh;
 	left: 23vw;
-	bottom: 24vh;
+	bottom: 30vh;
 	display: flex;
 	overflow: hidden;
 	
@@ -483,7 +498,8 @@ h1 {
 
 
 .thirdPage_thumnail{
-	width: 45vh;
+	/* top: 15vh; */
+	width: 40vh;
 	height: 18vh;
 	text-align: left;
 }
@@ -513,18 +529,18 @@ h1 {
 /* 4페이지 ----------------------------------------------------*/
 .HT_sectionarea{
 	position: relative;
-	top: 30vh;
+	top: 25vh;
 	z-index: 1;
-	width: 54vw;
+	width: 67vw;
 	height: 42vh;
-	left: 7vw;
+	left: 5vw;
 	overflow: hidden;
 }
 .HTSliderContainer{
 	position: relative;
 	display: flex;
-	/* left: 1vw; */
-	width: 54vw;
+	/* left: vw; */
+	width: 55vw;
 	height: 50vh;
 	z-index: 1;
 }
@@ -547,12 +563,9 @@ h1 {
 }
 .section_container_4 {
 	position: relative;
-	width: 40vw;
-	/* z-index: 1; */
-	width: 60vw;
+	width: 30vw;
 	height: 30vh;
-	margin: 10vh 4vw;
-	margin-top: 15vh;
+	margin: 0 0 0 4vw;
 	color: rgb(0, 0, 0);
 
 }
@@ -568,11 +581,12 @@ h1 {
 
 .section_link_4 {
 	position: absolute;
-	top: 80vh;
-	left: 12vw;
-	width: 10.5vw;
-	height: 15vh;
-	border-radius: 8px 8px 8px 8px;
+	left: 15vw;
+	top: 78vh;
+	width: 14vw;
+	height: 17vh;
+	border-radius: 20px;
+	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	background-size: 11vw;
 	border: none;
 }
@@ -580,6 +594,8 @@ h1 {
 .section_link_4:hover {
 	transition: ease-out 0.3s;
 	border: #ffffff;
+	border-radius: 20px;
+
 }
 
 
@@ -612,71 +628,81 @@ h1 {
 	margin-bottom: 1vh;
 
 }
-
-.moreBtn{
+.moreArea{
 	position: relative;
-	background-color: #ffffff;
-	/* border: 2px solid #000000; */
+	width: 4.3vw;
+	height: 3.4vh;
+	top: 8vh;
+	left: 8vw;
+	background-color: yellow;
 	border-radius: 15px;
+
+}
+.moreBtn{
+	border-radius: 15px;
+	border: 1px solid #34613f;
 	width: 4.3vw;
 	height: 3.4vh;
 	text-align: center;
 	left: 3vw;
 	top: 1vh;
-  	font-family: NotoSansKR;
-	font-size: 0.8vw;
+  	font-family: "NotoSansKR";
+	font-size: 0.7vw;
 	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
 	line-height: 1.75;
 	letter-spacing: normal;
-	color: #000000;			
 	transition: ease-out 0.3s;	
 	opacity: 0.9;	
 	
 }
-
 .moreBtn :hover{
 	border-radius: 15px;
 	background-color: #34613f;
 	color: white;
 
+
 }
 
-.modal-wrapper{
+.modal-dialog .modal-content{
 	position: relative;
-	width: 30vw;
-	height: 5vh;
+	top: 30vh;
+	width: 25vw;
+	height: 30vh;
 	display: flex;
 	flex-direction: column;
 	pointer-events: auto;
 	background-clip: padding-box;
-	border: 1px solid
-	rgba(0, 0, 0, 2);
-	border-radius: 45px;
-	outline: 0;
+	border: 4px solid #34613f;
+	border-radius: 15px;
+	background-color: #ffffff;
+	text-align: center;
+	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
+
 .modal_Img{
 	width: 30vw;
 	height: 20vh;
 }
-.modal-header{
+
+.modal-header.header{
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	padding: 1rem 1rem;
 	border-top-left-radius: calc(.3rem - 1px);
 	border-top-right-radius: calc(.3rem - 1px);
-	
+	border: none;
 }
-.modal-body{
-	width: 30vw;
-	height: 10vh;
+
+.modal-body.body{
+	bottom: 2vh;
 	text-align: center;
-	background-color: white;
 	border-bottom-left-radius: calc(.3rem - 1px);
 	border-bottom-right-radius: calc(.3rem - 1px);
 }
+
 .modal-text{
 	font-family: NotoSansKR;
 	font-size: 1vw;
@@ -685,33 +711,34 @@ h1 {
 	font-stretch: normal;
 	letter-spacing: normal;
 	color: #000000;
-	line-height: 1.7;
+	line-height: 2.5;
+	
 }
 
 .modal-btn{
-	width: 11vw;
-	height: 4vh;
+	width: 7vw;
+	height: 3.5vh;
 	background-color: #4a7755;
 	border-radius: 40px;
 	padding: 1px 1px 1px 1px;
+	line-height: 1.5;
 }
 .modal-btn .btnWord{
 	color: white;
-	width: 9vw;
-	height: 4vh;
-	font-size: 1vw;
-	font-weight: bold;
+	width: 4vw;
+	height: 2.5vh;
+	font-weight: bolder;
 	font-style: normal;
 	font-stretch: normal;
-	line-height: 2;
+	line-height: 1.5;
 	letter-spacing: normal;
 	text-align: center;
-	margin: 0.4vh 0 0 1vw;
+	margin: 0 0 0 0.7vw;
 }
 .material-icons{
 	color: white;
-	font-size: 1.2vw;
-	
+	font-size: 0.8vw;
+	margin: 0;
 }
 
 
@@ -731,30 +758,17 @@ h1 {
 	margin-left: auto;
 	margin-right: auto;
 	background-color : #ffc4b5 ;
-	border-radius: 7vh;
+	border-radius: 5vh;
 
 }
 
-.inSide_Img_5{
-	width: 28vw;
-	height: 45vh;
-	top: 5vh;
-	right: 6vw;
-	position: absolute;
-	/* background-color: rgb(242, 252, 111); */
-	/* border:1px solid black */
-
-}
 
 
 .section_container_5 {
-	width: 65vw;
-	height: 40vh;
-	max-width: 100%;
-	margin: 4vh auto;
-	padding: 3vh 5vw;
+	position: relative;
+	width: 70vw;
+	height: 50vh;
 	overflow: hidden;
-	margin-top: 6vh;
 	color: rgb(0, 0, 0);
 }
 .right .section_container {
@@ -802,16 +816,22 @@ h1 {
 }
 
 .fifthPage_thumnail{
-	width: 35vw;
-	height: 15vh;
+	position: absolute;
+	top: 15vh;
+	/* left: 1vw; */
+	margin-left: 8vw;
+	width: 18vw;
+	height: 18vh;
 	text-align: left;
 }
 .fifthPage_thumnail .font2{
 	font-size: 1vw;	
+	width: 18vw;
+	height: 9vh;
 	margin-top: 2.5vh;
 	margin: 2vh 7vw 2vh 0vw;
 	font-family: NotoSansKR;
-	font-weight: normal;
+	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
 	line-height: 1.56;
@@ -820,8 +840,29 @@ h1 {
 	color: #000000;
 }
 
+.inSide_Img_5{
+	position: absolute;
+	width: 27.5vw;
+	height: 43.5vh;
+	/* left: 1vw; */
+	top: 29.5vh;
+	margin: 0 3vh 0 10vh;
+}
+
+.inSide_Img5_area{
+	position: relative;
+	width: 27.5vw;
+	height: 43.5vh;
+	/* right: 1vh; */
+	left: 33.5vw;
+	bottom: 23vh;
+	margin: 0 10vh 0 0;
+}
 
 .section_link_5 {
+	position: relative;
+	bottom: 22vh;
+	left : 8vw;
 	width: 11.5vw 11vh;
 	font-size: 0.9vw;
 	font-family: NotoSansKR;
@@ -860,23 +901,19 @@ h1 {
 	left: 40vw;
 	height: 43vh;
 	top: 52vh;
-	/* margin-top: 13vh; */
 }
-.full_footer .footer_down{
-	margin: 0;
-	width: 0;
-}
-.full_footer .footer_down .underword{
+
+.full_footer .underword{
+	width: 1vw;
+	height: 2.5vh;
     width: 30vw;
-	font-size: 1rem;
+	font-size: 0.9vw;
 	font-family: NotoSansKR;
-	line-height: 1.25;
+	line-height: 1.62;
 	letter-spacing: normal;
 	font-weight: normal;
 	font-stretch: normal;
     font-style: normal; 
-	padding-top: 1vh;
+	padding-top: 0.5vh;
 	color: #757575;
 }
-
-

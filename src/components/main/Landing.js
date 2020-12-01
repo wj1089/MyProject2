@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import MenuBar from '../navigation/MenuBar';
 import Footer from '../footer/Footer';
 import axios from 'axios';
-import {Modal,Button} from 'react-bootstrap'
+import {Modal} from 'react-bootstrap'
 import HoverImage from "react-hover-image"
 import './Landing.css'
 import '../contentCard/ContentCard.css';
@@ -31,15 +31,12 @@ const Landing = () => {
     const history = useHistory();
 
 
-
-
 //Route to Google PlayStore
     function handleClick(e) {
         e.preventDefault();
         console.log('Link to Google PlayStore!!')
         window.open("https://play.google.com/store/apps/details?id=com.moriahtown.ismail")
     }
-
 
 
 //main 스크롤
@@ -206,14 +203,14 @@ const Landing = () => {
                                             정기배송 서비스
                                 </p>
                                 </div>
+                        </div>
                                 <button className="section_link_1" onClick={handleClick}>
                                     <>앱 다운로드</>
                                 </button>
-                        </div>
 
                         {/* InSide Image */}
                         <div className="inSide_Img">
-                            <img className="main_phnGui" src={phoneImg}/>
+                            <img className="main_phnGif" src={phoneImg}/>
                         </div>
                     </div>
 
@@ -236,6 +233,7 @@ const Landing = () => {
                                             만나보실 수 있습니다.
                                 </p>
                             </div>
+                            </div>
                             {/* className="size2"  */}
                             <HoverImage 
                                 className="section_link_2" 
@@ -244,7 +242,6 @@ const Landing = () => {
                                 hoverSrc={whiteDown}
                                 />
                             
-                        </div>
 
                         <div className="inSide_Img2">
                             <img className="deliImgSize" src={deliveryImg}></img>
@@ -281,30 +278,30 @@ const Landing = () => {
 
                             {/* 상품리뷰 슬라이드 */}
                             
-                        <div className="revSlide">
-                            <div className="SliderContainer" ref={slideRef}>
-                            {
-                                item.map( item => (
-                                    <div className="inSide_slide">
-                                        <div className="slide_img" key={item.id}>
-                                            <img className="imgSize" src={item.product.thumnail}/>
-                                            <div className="RV_iconArea">
-                                                <span className="material-icons">
-                                                            favorite
-                                                </span>
+                            <div className="revSlide">
+                                <div className="SliderContainer" ref={slideRef}>
+                                {
+                                    item.map( item => (
+                                        <div className="inSide_slide">
+                                            <div className="slide_img" key={item.id}>
+                                                <img className="RV_imgSize" src={item.product.thumnail}/>
+                                                <div className="RV_iconArea">
+                                                    <span className="material-icons">
+                                                                favorite
+                                                    </span>
+                                                </div>
+                                                <p className="slide_text">
+                                                    <p className="RV_contentName">{item.point}</p>
+                                                    <p className="RV_contentDes">{item.description}</p> 
+                                                </p>
                                             </div>
-                                            <p className="slide_text">
-                                                <p className="RV_contentName">{item.point}</p>
-                                                <p className="RV_contentDes">{item.description}</p> 
-                                            </p>
                                         </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
+                                    ))
+                                }
+                                </div>
+                            </div>
 
-                <div>
+                    <div>
                         <button className="clickBtn_L" onClick={slideBtn_L}>
                             <img className="btnSize" src={BtnLeft}/>
                         </button>
@@ -343,9 +340,9 @@ const Landing = () => {
                                 아이그레가 자신있게<br/>
                                 추천드리는 상품입니다.
                                 </p>
-                            {/* onClick={handleClick} */}
-                            <div className="moreBtn">
-                                <button className="moreBtn">더보기</button>
+                            
+                            <div className="moreBtn" onClick={handleClick}>
+                                <button className="moreBtn" >더보기</button>
                             </div>
                         </div>
                     </div>
@@ -361,11 +358,11 @@ const Landing = () => {
                                                 
                                                 <img 
                                                 src={msg.thumnail} 
-                                                className="imgSize" 
+                                                className="HT_imgSize" 
                                                 
                                                 />
                                                 <p className="HT_contentText"  onClick={handleShow}>
-                                                    <p className="HT_contentName">{msg.name}</p><br/>
+                                                    <p className="HT_contentName">{msg.name}</p>
                                                     <p className="HT_contentDes">{msg.description}</p> 
                                                 </p>
                                                 {/* <Button variant="primary" >
@@ -380,6 +377,44 @@ const Landing = () => {
                         </div>
                         {/* </div> */}
                 
+                        {/* 모달버튼 */}
+                        <Modal
+                                show={show}
+                                onHide={handleClose}
+                                
+                                backdrop="static"
+                                keyboard={false}
+                                // dialogClassName="modal-90w"
+                                role="dialog"
+                                aria-modal="true"
+                                trbindex="-1"
+                                className="efef"
+                            >
+                            
+                            <Modal.Header 
+                                className="header"
+                                closeButton>
+                            </Modal.Header>
+
+                            <Modal.Body
+                            className="body"
+                            >
+                                <br/>
+                                <p className="modal-text">더 많은 정보가 궁금하시다면
+                                <br/>
+                                <img className="modal_logo" src={AyiImage}/>
+                                , 더 간편하게 앱으로 만나보세요!</p>
+                                <br/>
+
+                            <button className="modal-btn" onClick={handleClick}>
+                                <p className="btnWord">
+                                <p className="material-icons" >
+                                save_alt
+                                앱 다운로드</p></p>
+                            </button>
+                            </Modal.Body>
+                           
+                        </Modal>
 
             
                         {/* 슬라이드 버튼 */}
@@ -419,21 +454,19 @@ const Landing = () => {
                                                 이용해보세요 <br/>
                                     </p>
                             </div>
-                            
+                            <div className="inSide_Img5_area">
+                                <img className="inSide_Img_5" src={footerImg}/>
+                            </div>
+                        </div>
                             <button className="section_link_5" 
                             data-toggle="modal"
                             onClick={handleClick} 
                             > 
                                 앱 다운로드
                             </button>
-                            <div>
-                                <img className="inSide_Img_5" src={footerImg}/>
-                            </div>
-
+                            
             {/* 풋터*/}
                         <Footer/>
-                        
-                        </div>
                         </div>
 
                         {/* FontAwesome Instagram  */}

@@ -1,4 +1,19 @@
 
+
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 360
+   1920-1024   - desktop (default grid)
+   1024-768    - tablet
+   360-less    - phone landscape & smaller
+--------------------------------------------*/
+
+/* For desktop: */
+/* @media only screen and (min-width: 1024px){
+    .clearBoth{
+        clear : both;
+	} */
+	
+	
 /* 상단메뉴바 */
 .nav_menubar{
 	height: 10vh;
@@ -85,3 +100,4 @@ a{
 	width: 50%;
 	height: 50%;
 }
+/* } */
