@@ -13,10 +13,8 @@ import AyiImage from '../../resource/logo_wm.png'
 import BtnRight from "../../resource/arrow_forward_ios.svg";
 import BtnLeft from "../../resource/arrow_back_ios.svg";
 import phoneImg from "../../resource/phone_section1.gif"
-import deliveryImg from "../../resource/phone_section2_pc.png"
-// import appDownBtn from "../../resource/appdownload_pc.png"
+import deliveryImg from "../../resource/phone_section2_pc.gif"
 import footerImg from "../../resource/footer_pc.png"
-import modalDown from "../../resource/logo_wm.png"
 import greenDown from "../../resource/appdownload_pc.png"
 import whiteDown from "../../resource/appdownload_pc-hover.png"
 
@@ -185,43 +183,47 @@ const Landing = () => {
 
             {/* 상단메뉴바 */}
             <MenuBar/>
-          
             <div className="main_content" onWheel = {wheel} ref={mainContent}>
-            
 
     {/* 첫번째 페이지 */}
                 <section className="fbp main" data-title="Main">
-
                     {/* OutSide Image */}
                     <div className="outSide_Image">      
-
                         <div className="section_container">
                             <div className="firstPage_thumnail">
-                                <p className="font1"><img className="ayi_img" src={AyiImage}/></p>
-                                <p className="font2">
-                                            어린이 식품 <br/>
-                                            정기배송 서비스
-                                </p>
-                                </div>
+                            <img 
+                                className="ayi_img" 
+                                src={AyiImage} 
+                                alt="아이그레mainLogo"/>
+                            <p className="font2">
+                                        어린이 식품 <br/>
+                                        정기배송 서비스
+                            </p>
+                            </div>
+                            <button 
+                            className="section_link_1" 
+                            onClick={handleClick}
+                            >
+                                <>앱 다운로드</>
+                            </button>
                         </div>
-                                <button className="section_link_1" onClick={handleClick}>
-                                    <>앱 다운로드</>
-                                </button>
-
                         {/* InSide Image */}
                         <div className="inSide_Img">
-                            <img className="main_phnGif" src={phoneImg}/>
+                            <img 
+                                className="main_phnGif" 
+                                src={phoneImg} 
+                                alt="아이그레infoSlide"/>
                         </div>
                     </div>
-
                 </section>
 
     {/* 두번째 페이지 */}
-
                 <section className="fbp delivery" data-title="Delivery">
-                    
                     {/* OutSide Image */}
-                    <div className="outSide_Image">    
+
+                    <div className="outSide_Image2">
+                       
+
 
                         <div className="section_container_2">
                             <div className="secondPage_thumnail">
@@ -240,13 +242,16 @@ const Landing = () => {
                                 onClick={handleClick}
                                 src={greenDown}
                                 hoverSrc={whiteDown}
+                                alt="아이그레다운이미지"
                                 />
-                            
-
                         <div className="inSide_Img2">
-                            <img className="deliImgSize" src={deliveryImg}></img>
+                            <img 
+                            className="deliImgSize" 
+                            src={deliveryImg}
+                            alt="아이그레gifImage-1"
+                            >
+                            </img>
                         </div>
-
                     </div>
                 </section>
 
@@ -262,18 +267,36 @@ const Landing = () => {
 
                         <div className="section_container_3">
                             <div className="thirdPage_thumnail">
+                                {window.innerWidth > 768 &&  (
+                                      <div>
+                                      <div className="font1">
+                                          <span className="fas fa-hashtag">
+                                              <img 
+                                                  className="ayi_img2" 
+                                                  src={AyiImage}
+                                                  alt="아이그레mainLogo-2"
+                                              />
+                                          </span>
+                                      </div>
+                                      
+                                      <p className="font1-2">고객후기</p>
+                                      <p className="font2">
+                                          정기배송을 경험한 <br/>
+                                          고객님들의 후기를 <br/>
+                                          확인해보세요. 
+                                      </p>
+                                      </div>
+                                )}    
+                                {window.innerWidth < 768 &&(
+                                    <div>
                                         <div className="font1">
-                                            <span className="fas fa-hashtag">
-                                                <img className="ayi_img" src={AyiImage}/>
-                                            </span>
+                                          <span className="fas fa-hashtag">
+                                            <p className="font1-2">고객후기</p>
+                                          </span>
                                         </div>
-                                        
-                                        <p className="font1-2">고객후기</p>
-                                        <p className="font2">
-                                            정기배송을 경험한 <br/>
-                                            고객님들의 후기를 <br/>
-                                            확인해보세요. 
-                                        </p>
+                                    </div>
+                                )}
+                                   
                             </div>
 
                             {/* 상품리뷰 슬라이드 */}
@@ -284,16 +307,22 @@ const Landing = () => {
                                     item.map( item => (
                                         <div className="inSide_slide">
                                             <div className="slide_img" key={item.id}>
-                                                <img className="RV_imgSize" src={item.product.thumnail}/>
-                                                <div className="RV_iconArea">
-                                                    <span className="material-icons">
-                                                                favorite
-                                                    </span>
-                                                </div>
-                                                <p className="slide_text">
-                                                    <p className="RV_contentName">{item.point}</p>
-                                                    <p className="RV_contentDes">{item.description}</p> 
-                                                </p>
+                                                <img 
+                                                className="RV_imgSize" 
+                                                src={item.product.thumnail}
+                                                alt="아이그레ReviewImage"
+                                                />
+                                                {/* <div className="RV_downArea"> */}
+                                                    <div className="RV_iconArea">
+                                                        <span className="material-icons">
+                                                            favorite
+                                                        </span>
+                                                    </div>
+                                                    <div className="slide_text">
+                                                        <p className="RV_contentName">{item.point}</p>
+                                                        <p className="RV_contentDes">{item.description}</p> 
+                                                    </div>
+                                                {/* </div> */}
                                             </div>
                                         </div>
                                     ))
@@ -312,12 +341,12 @@ const Landing = () => {
                 </div>
                             
                             {/* 다운버튼 */}
-                                    {/* 2번섹션기능 중복사용 */}
                             <HoverImage 
                             className="section_link_3" 
                             onClick={handleClick}
                             src={greenDown}
                             hoverSrc={whiteDown}
+                            alt="아이그레다운로고"
                             />
 
                         </div>
@@ -332,7 +361,11 @@ const Landing = () => {
                         <div className="fourthPage_thumnail">
                             <div className="font1">
                                 <span className="fas fa-hashtag">
-                                    <img className="ayi_img2" src={AyiImage}/>
+                                    <img 
+                                        className="ayi_img2" 
+                                        src={AyiImage}
+                                        alt="아이그레mainLogo-2"
+                                    />
                                 </span>
                             </div>
                                 <p className="font3">인기상품<br/></p>
@@ -341,9 +374,9 @@ const Landing = () => {
                                 추천드리는 상품입니다.
                                 </p>
                             
-                            <div className="moreBtn" onClick={handleClick}>
-                                <button className="moreBtn" >더보기</button>
-                            </div>
+                                <button className="moreBtn"  onClick={handleClick}>
+                                    더보기
+                                </button>
                         </div>
                     </div>
 
@@ -359,16 +392,13 @@ const Landing = () => {
                                                 <img 
                                                 src={msg.thumnail} 
                                                 className="HT_imgSize" 
-                                                
+                                                alt="아이그레HotTrack_Image"
                                                 />
-                                                <p className="HT_contentText"  onClick={handleShow}>
+                                                <p className="HT_contentText"  onClick={handleShow} >
                                                     <p className="HT_contentName">{msg.name}</p>
                                                     <p className="HT_contentDes">{msg.description}</p> 
                                                 </p>
-                                                {/* <Button variant="primary" >
-                                                    Click
-                                                </Button> */}
-                                                
+                                               
                                             </div>
                                         </div>
                                     ))
@@ -402,7 +432,11 @@ const Landing = () => {
                                 <br/>
                                 <p className="modal-text">더 많은 정보가 궁금하시다면
                                 <br/>
-                                <img className="modal_logo" src={AyiImage}/>
+                                <img 
+                                    className="modal_logo" 
+                                    src={AyiImage}
+                                    alt="아이그레Modal_LogoImg"
+                                />
                                 , 더 간편하게 앱으로 만나보세요!</p>
                                 <br/>
 
@@ -433,6 +467,7 @@ const Landing = () => {
                                 onClick={handleClick}
                                 src={greenDown}
                                 hoverSrc={whiteDown}
+                                alt="아이그레 다운링크 로고"
                                 />
                     </div>
             </section>
@@ -445,7 +480,11 @@ const Landing = () => {
                         <div className="section_container_5">
                             <div className="fifthPage_thumnail">
                                     <p className="font1">
-                                    <img className="ayi_img2" src={AyiImage}/>
+                                    <img 
+                                    className="ayi_img3" 
+                                    src={AyiImage}
+                                    alt="아이그레mainLogo3"
+                                    />
                                     
                                     </p>
                                     <p className="font2">
@@ -455,12 +494,17 @@ const Landing = () => {
                                     </p>
                             </div>
                             <div className="inSide_Img5_area">
-                                <img className="inSide_Img_5" src={footerImg}/>
+                                <img 
+                                className="inSide_Img_5" 
+                                src={footerImg}
+                                alt="아이그레logo2"
+                                />
                             </div>
                         </div>
                             <button className="section_link_5" 
                             data-toggle="modal"
                             onClick={handleClick} 
+                            
                             > 
                                 앱 다운로드
                             </button>

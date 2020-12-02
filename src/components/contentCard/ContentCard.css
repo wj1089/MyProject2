@@ -12,10 +12,10 @@
 
 
 /* For desktop: */
-/* @media only screen and (min-width: 1024px){
+@media only screen and (min-width: 1024px){
     .clearBoth{
         clear : both;
-    } */
+    }
 
 /* WidePage */
 .WP_imgSize{
@@ -61,7 +61,7 @@
 }
 .HT_contentName{
     width: 252px;
-    font-size: 1vw;
+    /* font-size: 6px; */
     font-weight: bolder;
     text-align: center;
     text-overflow:ellipsis;
@@ -70,6 +70,7 @@
 }
 .HT_contentDes{
     margin : 0 4px 0 4px;
+    height: 10vh;
     font-size: 0.8vw;
     font-style: normal;
     font-weight: normal;
@@ -153,6 +154,7 @@
 	border-radius: 16px;
     margin: 0 16px 0 0;
     margin-top: 6vh;
+    padding: 44px 37px 51px;
     background-color: white;
     box-shadow: 0 3px 6px 0
     rgba(0, 0, 0, 0.16);
@@ -171,10 +173,10 @@
 }
 
 .RV_imgSize{
-	/* width: 184px;
-    height: 184px; */
-    width: 14vw;
-    height: 20vh;
+	width: 184px;
+    height: 184px;
+    /* width: 14vw;
+    height: 20vh; */
     margin-left :auto;
     margin-right :auto;
     text-align:center;
@@ -186,16 +188,29 @@
     width: 100%;
     height: 70vh;
 }
+.RV_downArea{
+    width:10vw;
+    height: 5vh;
+    overflow: hidden;
+}
 .RV_iconArea{
-    margin-top:1vh;
-	width: 8vw;
+    margin-top: 2vh;
+	width: 286px;
 	height: 2vh;
-	margin-left: auto;
-	margin-right: auto;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
 	text-align: center;
 	background-size: 2vw;
+}
+
+.RV_iconArea .material-icons{
+	color: red;
+    font-size: 1.3vw;
+    width: auto;
 
 }
+
+
 .RV_contentName{
     left: 0;
     right: 0;
@@ -206,13 +221,14 @@
 }
 .RV_contentDes{
     height: 11vh;
+    /* width: 286px; */
     left: 0;
     right: 0;
     bottom: 2vh;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 300;
     margin-top: 0.5vh;
-    /* background-color: red; */
+    text-align: center;
 }
 
 /* 전체 슬라이더 영역 */
@@ -296,6 +312,603 @@
 }
   
  
-/* } */
+}			/* --------  Desktop Finish  ---------- */
 
 
+/* For tablet: */
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .clearBoth{
+        clear : both;
+    }
+    
+/* WidePage */
+.WP_imgSize{
+    width: 100%;
+    height: 25vh;
+    background-color: darkgrey;
+}
+
+
+.WP_sectionimgs{
+    display: inline-block;
+    padding: 0;
+    background-color: cornsilk;
+    margin-left: 1vh;
+    height: 35vh;
+    width: 22vh;
+
+}
+.WP_contentText{
+    width: 25vh;
+    padding: 1vh;
+}
+
+
+/* HotTrack ------------------------*/
+.HT_imgSize{
+    width: 252px;
+    height: 252px;
+    border-radius: 15px;
+}
+
+.HT_sectionimgs{
+    display: inline-block;
+    padding: 0;
+    width: 252px;
+    margin: 0 20px 12px 0;
+} 
+.HT_contentText{
+    width: 252px;
+    height: 22vh;
+    padding: 1vh 0 0 0;
+
+}
+.HT_contentName{
+    width: 252px;
+    /* font-size: 6px; */
+    font-weight: bolder;
+    text-align: center;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
+}
+.HT_contentDes{
+    margin : 0 4px 0 4px;
+    height: 10vh;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: normal;
+    font-family: NotoSansKR;
+    letter-spacing: normal;
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* 좌측 버튼 */
+.HTclickBtn_L{
+    position: absolute;
+    z-index: 1;
+    width: 5vw;
+    height: 43vh;
+    border: none;
+    top: 25vh;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.HTclickBtn_L:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.5;
+    background-size: 5vh;
+}
+
+/* 우측버튼 */
+.HTclickBtn_R{
+    position: absolute;
+    z-index: 1;
+    width: 5vw;
+    top: 25vh;
+    height: 43vh; 
+    right: 0;
+    bottom: 9vh;
+    border: 0;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.HTclickBtn_R:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.5;
+    background-size: 5vh;
+}
+.Modal.Header{
+    width: 15vw;
+}
+
+.modal-content{
+    width: 25vw;
+    height: 40vh;
+    border-radius: 30px;
+}
+.modal_logo{
+    width: 7vw;
+    height: 3vh;
+    margin-bottom: 1vh;
+}
+.modal_down{
+    width: 8vw;
+    height: 5vh;
+    margin-left: 13vw;
+}
+
+
+
+/* Review image --------------------------*/
+.inSide_slide{
+	position: relative;
+	width: 360px;
+	height: 505px;
+	border-radius: 16px;
+    margin: 0 16px 0 0;
+    margin-top: 6vh;
+    padding: 44px 37px 51px;
+    background-color: white;
+    box-shadow: 0 3px 6px 0
+    rgba(0, 0, 0, 0.16);
+}
+.slide_img{
+	background-color:  rgba( 255, 255, 255, 0);
+	width: 15vw;
+	height: 15vh;
+	margin-top:1vh;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+    text-align: center;
+    border: none;
+}
+
+.RV_imgSize{
+	width: 184px;
+    height: 184px;
+    /* width: 14vw;
+    height: 20vh; */
+    margin-left :auto;
+    margin-right :auto;
+    text-align:center;
+    border-radius: 20px;
+    border: none;
+}
+
+.IMG {
+    width: 100%;
+    height: 70vh;
+}
+.RV_downArea{
+    width:10vw;
+    height: 5vh;
+    overflow: hidden;
+}
+.RV_iconArea{
+    margin-top: 2vh;
+	width: 286px;
+	height: 2vh;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+	text-align: center;
+	background-size: 2vw;
+}
+
+.RV_iconArea .material-icons{
+	color: red;
+    font-size: 1.3vw;
+    width: auto;
+
+}
+
+
+.RV_contentName{
+    left: 0;
+    right: 0;
+    font-weight: 900;
+    padding: 0.2vw;
+    /* background-color: gray; */
+
+}
+.RV_contentDes{
+    height: 11vh;
+    /* width: 286px; */
+    left: 0;
+    right: 0;
+    bottom: 2vh;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 0.5vh;
+    text-align: center;
+}
+
+/* 전체 슬라이더 영역 */
+.SliderContainer {
+    position: relative;
+    width: 70vw;
+    left: 0;
+    display: flex; 
+    bottom: 5vh;
+  }
+
+  /* 버튼클릭  css */
+  .btnArea{
+    position: relative;
+    width: 65vw;
+    bottom: 50vh;
+    bottom: 23vh;
+
+  }
+
+  .clickButton{
+      /* all: unset; */
+    border: 1px solid coral;
+    padding: 0.5em 2em;
+    color: coral;
+    border-radius: 10px;
+
+  }
+  .clickButton :hover{
+        transition: all 0.3s ease-in-out;
+        background-color: coral;
+        color: #fff;
+    }
+  
+/* 좌측 버튼 */
+.clickBtn_L{
+    position: relative;
+    z-index: 1;
+    width: 5.3vw;
+    height: 52vh; 
+    left: 17.5vw;
+    bottom: 83vh;
+    border: 0;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.clickBtn_L:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.5;
+    background-size: 5vh;
+}
+
+/* 우측버튼 */
+.clickBtn_R{
+    position: relative;
+    z-index: 1;
+    width: 5.3vw;
+    height: 52vh; 
+    left: 81.5vw;
+    bottom: 83vh;
+    border: 0;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.clickBtn_R:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.6;
+    background-size: 5vh;
+}
+
+
+.btnSize{
+    width: 2vw;
+    height: 7vh;
+    border-radius: 40px;
+    background-color:fixed;
+}
+}			/* --------  Tablet Finish  ---------- */
+
+/* For App: */
+@media only screen and  (min-width: 320px) and (max-width: 767px){
+    .clearBoth{
+        clear : both;
+    }
+    
+/* WidePage */
+.WP_imgSize{
+    width: 100%;
+    height: 25vh;
+    background-color: darkgrey;
+}
+
+
+.WP_sectionimgs{
+    display: inline-block;
+    padding: 0;
+    background-color: cornsilk;
+    margin-left: 1vh;
+    height: 35vh;
+    width: 22vh;
+
+}
+.WP_contentText{
+    width: 25vh;
+    padding: 1vh;
+}
+
+
+/* HotTrack ------------------------*/
+.HT_imgSize{
+    width: 252px;
+    height: 252px;
+    border-radius: 15px;
+}
+
+.HT_sectionimgs{
+    display: inline-block;
+    padding: 0;
+    width: 252px;
+    margin: 0 20px 12px 0;
+} 
+.HT_contentText{
+    width: 252px;
+    height: 22vh;
+    padding: 1vh 0 0 0;
+
+}
+.HT_contentName{
+    width: 252px;
+    /* font-size: 6px; */
+    font-weight: bolder;
+    text-align: center;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
+}
+.HT_contentDes{
+    margin : 0 4px 0 4px;
+    height: 10vh;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: normal;
+    font-family: NotoSansKR;
+    letter-spacing: normal;
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* 좌측 버튼 */
+.HTclickBtn_L{
+    position: absolute;
+    z-index: 1;
+    width: 5vw;
+    height: 43vh;
+    border: none;
+    top: 25vh;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.HTclickBtn_L:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.5;
+    background-size: 5vh;
+}
+
+/* 우측버튼 */
+.HTclickBtn_R{
+    position: absolute;
+    z-index: 1;
+    width: 5vw;
+    top: 25vh;
+    height: 43vh; 
+    right: 0;
+    bottom: 9vh;
+    border: 0;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.HTclickBtn_R:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.5;
+    background-size: 5vh;
+}
+.Modal.Header{
+    width: 15vw;
+}
+
+.modal-content{
+    width: 25vw;
+    height: 40vh;
+    border-radius: 30px;
+}
+.modal_logo{
+    width: 7vw;
+    height: 3vh;
+    margin-bottom: 1vh;
+}
+.modal_down{
+    width: 8vw;
+    height: 5vh;
+    margin-left: 13vw;
+}
+
+
+
+/* Review image --------------------------*/
+.inSide_slide{
+	position: relative;
+	width: 289px;
+	height: 328px;
+	border-radius: 16px;
+    margin: 0 12px 0 0;
+    margin-top: 6vh;
+    padding: 20px 18px 27px 19px;
+    background-color: white;
+    box-shadow: 0 3px 6px 0
+    rgba(0, 0, 0, 0.16);
+}
+.slide_img{
+	background-color:  rgba( 255, 255, 255, 0);
+	width: 15vw;
+	height: 15vh;
+	margin-top:1vh;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+    text-align: center;
+    border: none;
+}
+/* 123 */
+.RV_imgSize{
+	width: 119px;
+    height: 119px;
+    text-align:center;
+    border-radius: 20px;
+    border: none;
+}
+
+.IMG {
+    width: 100%;
+    height: 70vh;
+}
+.RV_downArea{
+    width:10vw;
+    height: 5vh;
+    overflow: hidden;
+}
+.RV_iconArea{
+    margin-top: 2vh;
+	width: 286px;
+	height: 2vh;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+	text-align: center;
+	background-size: 2vw;
+}
+
+.RV_iconArea .material-icons{
+	color: red;
+    font-size: 1.3vw;
+    width: auto;
+
+}
+
+
+.RV_contentName{
+    left: 0;
+    right: 0;
+    font-weight: 900;
+    padding: 0.2vw;
+    /* background-color: gray; */
+
+}
+.RV_contentDes{
+    height: 11vh;
+    /* width: 286px; */
+    left: 0;
+    right: 0;
+    bottom: 2vh;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 0.5vh;
+    text-align: center;
+}
+
+/* 전체 슬라이더 영역 */
+.SliderContainer {
+    position: relative;
+    width: 70vw;
+    left: 0;
+    display: flex; 
+    /* bottom: 5vh; */
+  }
+
+  /* 버튼클릭  css */
+  .btnArea{
+    position: relative;
+    width: 65vw;
+    bottom: 50vh;
+    bottom: 23vh;
+
+  }
+
+  .clickButton{
+      /* all: unset; */
+    border: 1px solid coral;
+    padding: 0.5em 2em;
+    color: coral;
+    border-radius: 10px;
+
+  }
+  .clickButton :hover{
+        transition: all 0.3s ease-in-out;
+        background-color: coral;
+        color: #fff;
+    }
+  
+/* 좌측 버튼 */
+.clickBtn_L{
+    position: relative;
+    z-index: 1;
+    width: 5.3vw;
+    height: 52vh; 
+    left: 17.5vw;
+    bottom: 83vh;
+    border: 0;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.clickBtn_L:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.5;
+    background-size: 5vh;
+}
+
+/* 우측버튼 */
+.clickBtn_R{
+    position: relative;
+    z-index: 1;
+    width: 5.3vw;
+    height: 52vh; 
+    left: 81.5vw;
+    bottom: 83vh;
+    border: 0;
+    background-color: rgba(150, 150, 150, 0);
+
+}
+
+.clickBtn_R:hover{
+    transition:  0.3s ease-in-out;
+    background-color:#ffffff;
+    opacity: 0.6;
+    background-size: 5vh;
+}
+
+
+.btnSize{
+    width: 2vw;
+    height: 7vh;
+    border-radius: 40px;
+    background-color:fixed;
+}
+}			/* --------  App Finish  ---------- */

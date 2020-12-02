@@ -13,19 +13,16 @@ const history =useHistory();
                     <div className="logoArea"  onClick={()=>{history.push('/Landing')}}>
                         <img src={logo} className="logo"/>
                     </div>
-
-                    <ul className="nav_menu">
-                        <li><a className="one">브랜드소개</a></li>
-                       
-                        <li><a className="two" onClick={()=>{history.push('/WidePage')}}>상품보기</a></li>
-                        
-                        {/* <li><a>Delivery</a></li>
-                        <li><a>Comment</a></li>
-                        <li><a>News</a></li> */}
-                        {/* className="introMunu"
-                        className="productMunu" */}
-                    </ul>
-            </header>
+                        <ul className="nav_menu"> 
+                                <li className="one">브랜드소개</li>
+                                <li className="two" onClick={()=>{history.push('/WidePage')}}>상품보기</li>
+                                {/* <li><a>Delivery</a></li>
+                                <li><a>Comment</a></li>
+                                <li><a>News</a></li> */}
+                                {/* className="introMunu"
+                                className="productMunu" */}
+                        </ul>
+                </header>
         </>
     );
 };

@@ -8,16 +8,18 @@
 --------------------------------------------*/
 
 /* For desktop: */
-/* @media only screen and (min-width: 1024px){
+@media only screen and (min-width: 1024px){
     .clearBoth{
         clear : both;
-	} */
+	}
 	
 	
 /* 상단메뉴바 */
 .nav_menubar{
+	position: fixed;
+	float: right;
 	height: 10vh;
-	display: flex;
+	display: inline-flex;
 	justify-content: space-between;
 	align-items: center;
     list-style: none; 
@@ -27,26 +29,15 @@
 
 }
 
-.nav_menubar li :hover{
-	background-color: #c9c4c0;
-	border-radius: 10px;
-	transition: ease-out 0.3s;
 
-}
-.nav_menu{
-	position: relative;
-	width: 20vw;
+
+.nav_menubar .nav_menu {
 	display: flex;
+	margin: auto;
+	width: 100%;
+	height: 8vh;
 	list-style: none;
-	padding-right: 5%;
 	padding: 8px 15px;
-
-}
-
-.nav_menu li{
-	width: 7vw;
-	height: 45px;
-	margin:4px 14px 5px 5%;
 	font-family: NotoSansKR;
 	font-size: 25px;
 	font-weight: bold;
@@ -54,25 +45,52 @@
 	font-style: normal;
 	line-height: 1.45;
 	letter-spacing: normal;
-	text-align: center;
+	text-align: left;
 
-  
 }
 
 
-.one{
-	width: 10vh;
-	font-size: 1vw;
-	font-weight: 900;
-	color: black;
+.nav_menu .one{
+	display: inline-flex;
+	width: 8vw;
+	height: 5vh;
+	margin: 1vh 0 0 71vw;
+	font-size: 19px;
+
+	line-height: 1.16;
+	font-weight: normal;
+	font-stretch: normal;
+	font-family: NotoSansKR;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #222222;
 	
 }
-.two{
-	width: 10vh;
-	font-size: 1vw;
-	font-weight: bolder;
-	color: black;
 
+/* .nav_menubar .one:hover{
+	background-color: #c9c4c0;
+	border-radius: 10px;
+	transition: ease-out 0.3s;
+
+} */
+.nav_menu .two{
+	display: inline-flex;
+	left: 37vw;
+	width: 7vw;
+	height: 5vh;
+
+	margin: 1vh 0 0 2px;
+	font-size: 19px;
+
+	line-height: 1.16;
+	font-weight: normal;
+	font-stretch: normal;
+	font-family: NotoSansKR;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #222222;
 }
 
 
@@ -83,15 +101,16 @@ a{
 }
 
 .logoArea{
-    width: 15vw;
+	width: 15vw;
+	display: inline-block;
 }
 
 
 
 .logo{
     position: relative;
-    width: 3vw;
-    height: 5.5vh;
+    width: 52px;
+    height: 52px;
     left: 5vw;
 }
 
@@ -100,4 +119,230 @@ a{
 	width: 50%;
 	height: 50%;
 }
-/* } */
+}			/* --------  Desktop Finish  ---------- */
+
+
+/* For tablet: */
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .clearBoth{
+        clear : both;
+	}
+		
+/* 상단메뉴바 */
+.nav_menubar{
+	position: fixed;
+	float: right;
+	height: 10vh;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+    list-style: none; 
+	padding-left: 0;
+	background-color: #ffffff;
+	background-color:  rgba( 255, 255, 255, 0);
+
+}
+
+
+
+.nav_menubar .nav_menu {
+	display: flex;
+	margin: auto;
+	width: 100%;
+	height: 8vh;
+	list-style: none;
+	padding: 8px 15px;
+	font-family: NotoSansKR;
+	font-size: 25px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.45;
+	letter-spacing: normal;
+	text-align: left;
+
+}
+
+
+.nav_menu .one{
+	display: inline-flex;
+	width: 8vw;
+	height: 5vh;
+	margin: 1vh 0 0 71vw;
+	font-size: 19px;
+
+	line-height: 1.16;
+	font-weight: normal;
+	font-stretch: normal;
+	font-family: NotoSansKR;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #222222;
+	
+}
+
+/* .nav_menubar .one:hover{
+	background-color: #c9c4c0;
+	border-radius: 10px;
+	transition: ease-out 0.3s;
+
+} */
+.nav_menu .two{
+	display: inline-flex;
+	left: 37vw;
+	width: 7vw;
+	height: 5vh;
+
+	margin: 1vh 0 0 2px;
+	font-size: 19px;
+
+	line-height: 1.16;
+	font-weight: normal;
+	font-stretch: normal;
+	font-family: NotoSansKR;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #222222;
+}
+
+
+a{
+	text-decoration: none;
+	color: black
+	
+}
+
+.logoArea{
+	width: 15vw;
+	display: inline-block;
+}
+
+
+
+.logo{
+    position: relative;
+    width: 52px;
+    height: 52px;
+    left: 5vw;
+}
+
+
+.logo .img{
+	width: 50%;
+	height: 50%;
+}
+}			/* --------  Tablet Finish  ---------- */
+
+
+/* For App: -----------------------------------------*/
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    .clearBoth{
+        clear : both;
+	}
+					
+/* 상단메뉴바 */
+.nav_menubar{
+	position: fixed;
+	float: right;
+	height: 10vh;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+    list-style: none; 
+	padding-left: 0;
+	background-color: #ffffff;
+	background-color:  rgba( 255, 255, 255, 0);
+
+}
+
+
+
+.nav_menubar .nav_menu {
+	display: flex;
+	margin: auto;
+	width: 100%;
+	height: 8vh;
+	list-style: none;
+	padding: 8px 15px;
+	font-family: NotoSansKR;
+	font-size: 25px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.45;
+	letter-spacing: normal;
+	text-align: left;
+
+}
+
+
+.nav_menu .one{
+	display: inline-flex;
+	width: 80px;
+	height: 5vh;
+	margin: 1vh 0 0 26vw;
+	font-size: 16px;
+	line-height: 1.38;
+	font-weight: bold;
+	font-stretch: normal;
+	font-family: NotoSansKR;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #222222;
+	
+}
+
+/* .nav_menubar .one:hover{
+	background-color: #c9c4c0;
+	border-radius: 10px;
+	transition: ease-out 0.3s;
+
+} */
+.nav_menu .two{
+	display: inline-flex;
+	left: 37vw;
+	width: 80px;
+	height: 5vh;
+	font-size: 16px;
+	margin: 1vh 0 0 25px;
+	line-height: 1.38;
+	font-weight: bold;
+	font-stretch: normal;
+	font-family: NotoSansKR;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #222222;
+}
+
+
+a{
+	text-decoration: none;
+	color: black
+	
+}
+
+.logoArea{
+	width: 15vw;
+	display: inline-block;
+}
+
+
+
+.logo{
+    position: relative;
+    width: 35px;
+	height: 35px;
+	margin: 0 139px 0 0;
+    left: 5vw;
+}
+
+
+.logo .img{
+	width: 50%;
+	height: 50%;
+}
+}/* --------  App Finish  ---------- */
