@@ -10,17 +10,18 @@ const history =useHistory();
     return (
         <>
                 <header className="nav_menubar">
-                    <div className="logoArea"  onClick={()=>{history.push('/Landing')}}>
-                        <img src={logo} className="logo"/>
-                    </div>
+                    
                         <ul className="nav_menu"> 
-                                <li className="one">브랜드소개</li>
-                                <li className="two" onClick={()=>{history.push('/WidePage')}}>상품보기</li>
-                                {/* <li><a>Delivery</a></li>
-                                <li><a>Comment</a></li>
-                                <li><a>News</a></li> */}
-                                {/* className="introMunu"
-                                className="productMunu" */}
+                            <div className="logoArea"  onClick={()=>{history.push('/Landing')}}>
+                                <img src={logo} className="logo"/>
+                            </div>
+                            <li className="one">브랜드소개</li>
+                            <li className="two" onClick={()=>{history.push('/WidePage')}}>상품소개</li>
+                            {/* <li><a>Delivery</a></li>
+                            <li><a>Comment</a></li>
+                            <li><a>News</a></li> */}
+                            {/* className="introMunu"
+                            className="productMunu" */}
                         </ul>
                 </header>
         </>

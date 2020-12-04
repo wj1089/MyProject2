@@ -1,5 +1,5 @@
 import React, {useState,useEffect,useRef} from 'react';
-import {useHistory} from 'react-router-dom'
+// import {useHistory} from 'react-router-dom'
 import MenuBar from '../navigation/MenuBar';
 import Footer from '../footer/Footer';
 import axios from 'axios';
@@ -20,61 +20,78 @@ import whiteDown from "../../resource/appdownload_pc-hover.png"
 
 const TOTAL_SLIDES = 2;
 const Landing = () => {
-
+    
+    // const history = useHistory();
     const [spinIndex, setSpinIndex] = useState(0);
     const [canScroll, setCanScroll] = useState(true);
     const sectionTitle = [ 'Main', 'Delivery', 'Review','Hotmenu','Downintro' ];
     const mainContent = useRef();
-    
-    const history = useHistory();
+
+    //Route to Google PlayStore
+        function handleClick(e) {
+            e.preventDefault();
+            console.log('Link to Google PlayStore!!')
+            window.open("https://play.google.com/store/apps/details?id=com.moriahtown.ismail")
+        }
 
 
-//Route to Google PlayStore
-    function handleClick(e) {
-        e.preventDefault();
-        console.log('Link to Google PlayStore!!')
-        window.open("https://play.google.com/store/apps/details?id=com.moriahtown.ismail")
-    }
+    //main 스크롤
+        useEffect(() => {        
+            scrollContent(spinIndex);
+            console.log(spinIndex)
+
+        }, [spinIndex]);
+
+        useEffect(() => {
+            setTimeout(function() {
+                setCanScroll(true);
+            }, 100);  
+        }, [canScroll]);
+
+        const buttonClick = e =>{
+            setSpinIndex(sectionTitle.indexOf(e.target.textContent.trim()))
+        }
+
+        const wheel = e => {
+            if ( canScroll ) {
+                setCanScroll(false);
+                if ( e.deltaY > 0 ) {
+                    // scroll down
+                    if ( spinIndex < sectionTitle.length-1 ) setSpinIndex(spinIndex + 1);
+                } else {
+                    // scroll up
+                    if ( spinIndex > 0 )  setSpinIndex(spinIndex - 1);
+                }
+            }   
+        };  
+
+        function scrollContent(count) {
+            mainContent.current.setAttribute('style', '\
+            -webkit-transform: translateY(-'+ count*100 +'vh);\
+            -ms-transform: translateY(-'+ count*100 +'vh);\
+            -o-transform: translateY(-'+ count*100 +'vh);\
+            transform: translateY(-'+ count*100 +'vh);\
+            ');
+        };
 
 
-//main 스크롤
-    useEffect(() => {        
-        scrollContent(spinIndex);
-        console.log(spinIndex)
+        let start = 0;
+        const touchStart = e =>{
+            start = e.touches[0]
+        }
 
-    }, [spinIndex]);
-
-    useEffect(() => {
-        setTimeout(function() {
-            setCanScroll(true);
-        }, 100);  
-    }, [canScroll]);
-
-    const buttonClick = e =>{
-        setSpinIndex(sectionTitle.indexOf(e.target.textContent.trim()))
-    }
-
-    const wheel = e => {
-        if ( canScroll ) {
-            setCanScroll(false);
-            if ( e.deltaY > 0 ) {
-                // scroll down
-                if ( spinIndex < sectionTitle.length-1 ) setSpinIndex(spinIndex + 1);
-            } else {
-                // scroll up
-                if ( spinIndex > 0 )  setSpinIndex(spinIndex - 1);
-            }
-        }   
-      };  
-
-    function scrollContent(count) {
-        mainContent.current.setAttribute('style', '\
-        -webkit-transform: translateY(-'+ count*100 +'vh);\
-        -ms-transform: translateY(-'+ count*100 +'vh);\
-        -o-transform: translateY(-'+ count*100 +'vh);\
-        transform: translateY(-'+ count*100 +'vh);\
-        ');
-    };
+        const touchFinish = e =>{
+            if ( canScroll ) {
+                setCanScroll(false);
+                if ( start.clientY > e.changedTouches[0].clientY ) {
+                    // scroll down
+                    if ( spinIndex < sectionTitle.length-1 ) setSpinIndex(spinIndex + 1);
+                } else {
+                    // scroll up
+                    if ( spinIndex > 0 )  setSpinIndex(spinIndex - 1); 
+                }
+            }   
+        }
 
 
 
@@ -131,8 +148,8 @@ const Landing = () => {
 
 
 //HotTrack axios, API연결
-        const [msg, setMsg] = useState([]);
-
+        const [productItem, setProductItem] = useState([]);
+            // console.log(productItem[0])
             useEffect(()=>{
                 axios
                 .get(`https://igre-prod.appspot.com/_ah/api/category/v1/getList?id=6476096291733504`)
@@ -140,7 +157,7 @@ const Landing = () => {
                     if(response && response.data.code === "1"){
                         const parseJson = JSON.parse(response.data.msg);
                         // console.log(parseJson)
-                        setMsg(parseJson[0].products)
+                        setProductItem(parseJson[0].products)
                         console.log(parseJson)
                     }
                 })
@@ -159,7 +176,7 @@ const Landing = () => {
 
 //Review axios, API 연결
         // const [msga, setMsga] = useState([]);
-        const [item, setItem] = useState([]);
+        const [reviewItem, setReviewItem] = useState([]);
         useEffect(()=>{
             axios
             .get(`https://childsnack-test.appspot.com/_ah/api/review/v1/getReviewList?count=20&startCursor=0`)
@@ -167,7 +184,7 @@ const Landing = () => {
                 if(res && res.data.code === "1"){
                     const parseJson = JSON.parse(res.data.msg)
                     const aaaa = parseJson.item
-                    setItem(aaaa);
+                    setReviewItem(aaaa);
                 }
             })
             .catch(err=>{
@@ -176,45 +193,56 @@ const Landing = () => {
         },[]);
 
 
-
-
     return (
         <main className="full_screen">
 
             {/* 상단메뉴바 */}
             <MenuBar/>
-            <div className="main_content" onWheel = {wheel} ref={mainContent}>
-
+            <div 
+            className="main_content" 
+            onTouchStart={touchStart} 
+            onTouchEnd={touchFinish}
+            onWheel = {wheel} 
+            ref={mainContent}>
+            
+            
     {/* 첫번째 페이지 */}
                 <section className="fbp main" data-title="Main">
-                    {/* OutSide Image */}
-                    <div className="outSide_Image">      
-                        <div className="section_container">
-                            <div className="firstPage_thumnail">
-                            <img 
-                                className="ayi_img" 
-                                src={AyiImage} 
-                                alt="아이그레mainLogo"/>
-                            <p className="font2">
-                                        어린이 식품 <br/>
-                                        정기배송 서비스
-                            </p>
+                        <div className="outSide_Image">   
+
+                                
+
+                            <div className="section_container_1">
+                                <div className="firstPage_thumnail">
+                                    <img 
+                                        className="ayi_img" 
+                                        src={AyiImage} 
+                                        alt="아이그레mainLogo"/>
+                                    <p className="font2">
+                                                어린이 식품 <br/>
+                                                정기배송 서비스
+                                    </p>
+                                    <button 
+                                        className="section_link_1" 
+                                        onClick={handleClick}
+                                        >
+                                    <p className="link1_text">앱 다운로드</p>
+                                </button>
+                                </div>
+                                {/* InSide Image */}
+                                <div className="inSide_Img">
+                                    <img 
+                                        src={phoneImg} 
+                                        alt="아이그레infoSlide"
+                                        className="main_phnGif"/>
+                                </div>
+                                
+
+                                
+                                
                             </div>
-                            <button 
-                            className="section_link_1" 
-                            onClick={handleClick}
-                            >
-                                <>앱 다운로드</>
-                            </button>
+                            
                         </div>
-                        {/* InSide Image */}
-                        <div className="inSide_Img">
-                            <img 
-                                className="main_phnGif" 
-                                src={phoneImg} 
-                                alt="아이그레infoSlide"/>
-                        </div>
-                    </div>
                 </section>
 
     {/* 두번째 페이지 */}
@@ -222,11 +250,8 @@ const Landing = () => {
                     {/* OutSide Image */}
 
                     <div className="outSide_Image2">
-                       
-
-
                         <div className="section_container_2">
-                            <div className="secondPage_thumnail">
+                            <span className="secondPage_thumnail">
                                 <p className="font1"> 다양한 상품을</p>
                                 <p className="font1-2">편리한 정기배송으로</p>
                                 <p className="font2">
@@ -234,9 +259,16 @@ const Landing = () => {
                                             기존 대비 합리적인 비용으로 <br/>
                                             만나보실 수 있습니다.
                                 </p>
-                            </div>
-                            </div>
-                            {/* className="size2"  */}
+                            </span>
+
+                            <span className="inSide_Img2">
+                                <img 
+                                className="delivery_phnGif" 
+                                src={deliveryImg}
+                                alt="아이그레gifImage-1"
+                                >
+                                </img>
+                            </span>
                             <HoverImage 
                                 className="section_link_2" 
                                 onClick={handleClick}
@@ -244,13 +276,6 @@ const Landing = () => {
                                 hoverSrc={whiteDown}
                                 alt="아이그레다운이미지"
                                 />
-                        <div className="inSide_Img2">
-                            <img 
-                            className="deliImgSize" 
-                            src={deliveryImg}
-                            alt="아이그레gifImage-1"
-                            >
-                            </img>
                         </div>
                     </div>
                 </section>
@@ -261,85 +286,63 @@ const Landing = () => {
 
     {/* 세번째 페이지 */}
                 <section className="fbp review" data-title="Review">
-
-                    {/* outSide_Image_5 */}
                     <div className="outSide_Image_3">      
-
                         <div className="section_container_3">
+                            
                             <div className="thirdPage_thumnail">
-                                {window.innerWidth > 768 &&  (
-                                      <div>
-                                      <div className="font1">
-                                          <span className="fas fa-hashtag">
-                                              <img 
-                                                  className="ayi_img2" 
-                                                  src={AyiImage}
-                                                  alt="아이그레mainLogo-2"
-                                              />
-                                          </span>
-                                      </div>
-                                      
-                                      <p className="font1-2">고객후기</p>
-                                      <p className="font2">
-                                          정기배송을 경험한 <br/>
-                                          고객님들의 후기를 <br/>
-                                          확인해보세요. 
-                                      </p>
-                                      </div>
-                                )}    
-                                {window.innerWidth < 768 &&(
-                                    <div>
-                                        <div className="font1">
-                                          <span className="fas fa-hashtag">
-                                            <p className="font1-2">고객후기</p>
-                                          </span>
-                                        </div>
+                                <div className="font1">
+                                    <div className="fas fa-hashtag">
+                                        <img 
+                                            className="ayi_img2" 
+                                            src={AyiImage}
+                                            alt="아이그레mainLogo-2"
+                                        />
+                                        <p className="font1-2">고객후기</p>
+                                        <p className="font2">
+                                            정기배송을 경험한 <br/>
+                                            고객님들의 후기를 <br/>
+                                            확인해보세요. 
+                                        </p>
                                     </div>
-                                )}
-                                   
+                                </div>
                             </div>
 
                             {/* 상품리뷰 슬라이드 */}
                             
                             <div className="revSlide">
+                                    <button className="clickBtn_L" onClick={slideBtn_L}>
+                                        <img className="btnSize" src={BtnLeft}/>
+                                    </button>
                                 <div className="SliderContainer" ref={slideRef}>
-                                {
-                                    item.map( item => (
-                                        <div className="inSide_slide">
-                                            <div className="slide_img" key={item.id}>
-                                                <img 
-                                                className="RV_imgSize" 
-                                                src={item.product.thumnail}
-                                                alt="아이그레ReviewImage"
-                                                />
-                                                {/* <div className="RV_downArea"> */}
-                                                    <div className="RV_iconArea">
-                                                        <span className="material-icons">
-                                                            favorite
-                                                        </span>
+                                    {
+                                        reviewItem.map( reviewItem => (
+                                            <div className="inSide_slide">
+                                                <div className="slide_img" key={reviewItem.id}>
+                                                    <img 
+                                                    className="RV_imgSize" 
+                                                    src={reviewItem.product.thumnail}
+                                                    alt="아이그레ReviewImage"
+                                                    />
+                                                </div>
+                                                    <div className="RV_downArea">
+                                                        <div className="RV_iconArea">
+                                                            <span className="material-icons">
+                                                                favorite
+                                                            </span>
+                                                        </div>
+                                                        <div className="slide_text">
+                                                            <p className="RV_contentName">{reviewItem.point}</p>
+                                                            <p className="RV_contentDes">{reviewItem.description}</p> 
+                                                        </div>
                                                     </div>
-                                                    <div className="slide_text">
-                                                        <p className="RV_contentName">{item.point}</p>
-                                                        <p className="RV_contentDes">{item.description}</p> 
-                                                    </div>
-                                                {/* </div> */}
                                             </div>
-                                        </div>
-                                    ))
-                                }
+                                        ))
+                                    }
                                 </div>
+                                    <button className="clickBtn_R" onClick={slideBtn_R}>
+                                        <img className="btnSize"  src={BtnRight}/>
+                                    </button>
                             </div>
-
-                    <div>
-                        <button className="clickBtn_L" onClick={slideBtn_L}>
-                            <img className="btnSize" src={BtnLeft}/>
-                        </button>
-
-                        <button className="clickBtn_R" onClick={slideBtn_R}>
-                            <img className="btnSize"  src={BtnRight}/>
-                        </button>
-                </div>
-                            
                             {/* 다운버튼 */}
                             <HoverImage 
                             className="section_link_3" 
@@ -357,54 +360,66 @@ const Landing = () => {
     {/*  네번째 페이지 */}
                 <section className="fbp hotmenu" data-title="Hotmenu">
 
-                    <div className="section_container_4">
-                        <div className="fourthPage_thumnail">
-                            <div className="font1">
-                                <span className="fas fa-hashtag">
+                <div className="outSide_Image_4">    
+                    <div className="section_container_4" ref={slideRef2}>
+
+                            <div className="fourthPage_thumnail">
+                                <div className="fourth_font1">
+                                    <div className="fas fa-hashtag"/>
                                     <img 
-                                        className="ayi_img2" 
-                                        src={AyiImage}
-                                        alt="아이그레mainLogo-2"
-                                    />
-                                </span>
+                                            className="ayi_img2" 
+                                            src={AyiImage}
+                                            alt="아이그레mainLogo-2"
+                                        />
+                                </div>
+                                    <p className="font3">인기상품<br/></p>
+                                    <p className="font2">
+                                    아이그레가 자신있게<br/>
+                                    추천드리는 상품입니다.
+                                    </p>
+                                
+                                    <button className="moreBtn"  onClick={handleClick}>
+                                        더보기
+                                    </button>
                             </div>
-                                <p className="font3">인기상품<br/></p>
-                                <p className="font2">
-                                아이그레가 자신있게<br/>
-                                추천드리는 상품입니다.
-                                </p>
-                            
-                                <button className="moreBtn"  onClick={handleClick}>
-                                    더보기
-                                </button>
-                        </div>
-                    </div>
 
                         {/* 인기상품 슬라이드 */}
-                    <div className="outSide_Image_4">    
-                        <div className="HT_sectionarea">
-                            <div className="HTSliderContainer" ref={slideRef2}>
+                            
+
+                            <div className="HT_sectionarea">
+
+                                {/* 슬라이드 버튼 */}
+                                <button className="HTclickBtn_L" onClick={HTslideBtn_L}>
+                                    <img className="btnSize" src={BtnLeft}/>
+                                </button>
+                                <button className="HTclickBtn_R" onClick={HTslideBtn_R}>
+                                    <img className="btnSize"  src={BtnRight}/>
+                                </button>
+
+                                <div className="HTSliderList" key={productItem.categoryId}>
                                 {
-                                    msg.map(msg=>(
+                                    productItem.map(productItem=>(
                                         <div className="HT_sectionimgs">
-                                            <div className="HT_imgSize" key={msg.categoryId} >
-                                                
+                                            <div className="HT_cardArea"  >
                                                 <img 
-                                                src={msg.thumnail} 
+                                                src={productItem.thumnail} 
                                                 className="HT_imgSize" 
                                                 alt="아이그레HotTrack_Image"
                                                 />
                                                 <p className="HT_contentText"  onClick={handleShow} >
-                                                    <p className="HT_contentName">{msg.name}</p>
-                                                    <p className="HT_contentDes">{msg.description}</p> 
+                                                    <p className="HT_contentName">{productItem.name}</p>
+                                                    <p className="HT_contentDes">{productItem.description}</p> 
                                                 </p>
                                                
                                             </div>
                                         </div>
                                     ))
                                 }
+                                
                             </div>
+                            
                         </div>
+                    </div>
                         {/* </div> */}
                 
                         {/* 모달버튼 */}
@@ -451,15 +466,7 @@ const Landing = () => {
                         </Modal>
 
             
-                        {/* 슬라이드 버튼 */}
-
-                            <button className="HTclickBtn_L" onClick={HTslideBtn_L}>
-                                <img className="btnSize" src={BtnLeft}/>
-                            </button>
-
-                            <button className="HTclickBtn_R" onClick={HTslideBtn_R}>
-                                <img className="btnSize"  src={BtnRight}/>
-                            </button>
+                        
 
                         {/* 2번섹션기능 중복사용 */}
                             <HoverImage 
@@ -469,7 +476,7 @@ const Landing = () => {
                                 hoverSrc={whiteDown}
                                 alt="아이그레 다운링크 로고"
                                 />
-                    </div>
+                        </div>
             </section>
 
     {/* 다섯번째 페이지 */}
