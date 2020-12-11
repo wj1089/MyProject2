@@ -1,21 +1,21 @@
 import React, {useState,useEffect,useRef} from 'react';
 import "../main/Landing.css"
 import "./ContentCard.css"
+
 import BtnRight from "../../resource/arrow_forward_ios.svg";
 import BtnLeft from "../../resource/arrow_back_ios.svg";
 import PropTypes from 'prop-types';
-import HoverImage from 'react-hover-image/build';
 
 import {Modal} from 'react-bootstrap'
 import AyiImage from '../../resource/logo_wm.png'
 
-const TOTAL_SLIDES = 2;
 
+
+const TOTAL_SLIDES = 2;
 const desktop = window.innerWidth >  768 ? "desktop": "";
 const phone   = window.innerWidth <= 768 ? "phone" : "";
-
-
 const Slider = ({data, containerCss, itemCss, contentCss, imgCss}) => {
+
     const [spinIndex, setSpinIndex] = useState(0);
     const [canScroll, setCanScroll] = useState(true);
     const [currentSlide,setCurrentSlide] = useState(0);
@@ -48,9 +48,6 @@ const Slider = ({data, containerCss, itemCss, contentCss, imgCss}) => {
 
     // Review 왼쪽 슬라이드
     const slideBtn_L = () => {
-        // console.log("currentSlide_L")
-        // console.log(currentSlide)
-
         if (currentSlide === 0) {
         setCurrentSlide(TOTAL_SLIDES);
         } else {
@@ -60,9 +57,7 @@ const Slider = ({data, containerCss, itemCss, contentCss, imgCss}) => {
 
     // Review 오른쪽 슬라이드
         const slideBtn_R = () => {
-            // console.log("currentSlide_R")
-            // console.log(currentSlide)
-            if (currentSlide >= TOTAL_SLIDES) { // 더 이상 넘어갈 슬라이드가 없으면 슬라이드를 초기화합니다.
+            if (currentSlide >= TOTAL_SLIDES) {
             setCurrentSlide(0);
             } else {
             setCurrentSlide(currentSlide + 1);
@@ -79,27 +74,18 @@ const Slider = ({data, containerCss, itemCss, contentCss, imgCss}) => {
             slideRef.current.style.transform = `translateX(-${currentSlide}00%)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
         }, [currentSlide]);
 
+
+        
         //슬라이드 이동(상하)
         let start = 0;
         const touchStart = e =>{
-            // start = e.touches[0]
-            // console.log("touchStart")
-            // console.log(start.clientY)
-            
             e.stopPropagation();
-
-            // start = e.touches[0]
         }
 
         const touchFinish = e =>{
             setCanScroll(false);
 
             e.stopPropagation();
-            // console.log("touchFinish")
-            // console.log(e.changedTouches[0].clientY)
-            // console.log(e)
-            // console.log(e.changedTouches[0].pageY)
-
 
             // if ( canScroll ) {
             //     if ( start.clientY > e.changedTouches[0].clientY ) {
@@ -111,51 +97,50 @@ const Slider = ({data, containerCss, itemCss, contentCss, imgCss}) => {
             //         if ( spinIndex > 0 )  setSpinIndex(spinIndex - 1); 
             //     }
             // }   
+
         }
 
     return (
         <>
-                            {/* 모달버튼 */}
-                                <Modal
-                                    show={show}
-                                    onHide={handleClose}
-                                    
-                                    backdrop="static"
-                                    keyboard={false}
-                                    // dialogClassName="modal-90w"
-                                    role="dialog"
-                                    aria-modal="true"
-                                    trbindex="-1"
-                                    className="efef"
-                                >
-                                <Modal.Header 
-                                    className="header"
-                                    closeButton>
-                                </Modal.Header>
+            {/* 모달버튼 */}
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    
+                    backdrop="static"
+                    keyboard={false}
+                    // dialogClassName="modal-90w"
+                    role="dialog"
+                    aria-modal="true"
+                    trbindex="-1"
+                    className="efef"
+                >
+                <Modal.Header 
+                    className="header"
+                    closeButton>
+                </Modal.Header>
 
-                                <Modal.Body
-                                className="body"
-                                >
-                                    <p className="modal-text">더 많은 정보가 궁금하시다면
-                                    <br/>
-                                    <img 
-                                        className="modal_logo" 
-                                        src={AyiImage}
-                                        alt="아이그레Modal_LogoImg"
-                                    /><br/>
-                                    더 간편하게 앱으로 만나보세요!</p>
-                                    <br/>
+                <Modal.Body
+                className="body"
+                >
+                    <p className="modal-text">더 많은 정보가 궁금하시다면
+                    <br/>
+                    <img 
+                        className="modal_logo" 
+                        src={AyiImage}
+                        alt="아이그레Modal_LogoImg"
+                    /><br/>
+                    더 간편하게 앱으로 만나보세요!</p>
+                    <br/>
 
-                                <button className="modal_btn" onClick={handleClick}>
-                                    <p className="material-icons" >
-                                        save_alt</p>
-                                    <p className="btnWord">
-                                        앱 다운로드</p>
-                                </button>
-                                </Modal.Body>
-                            </Modal>
-
-
+                <button className="modal_btn" onClick={handleClick}>
+                    <p className="material-icons" >
+                        save_alt</p>
+                    <p className="btnWord">
+                        앱 다운로드</p>
+                </button>
+                </Modal.Body>
+            </Modal>
 
             {desktop &&(
             <div 

@@ -30,8 +30,6 @@ body {
    360-650~767 - phone landscape & smaller
 --------------------------------------------*/
 
-
-
 header {
 	position: fixed;
 	width: 100%;
@@ -39,10 +37,7 @@ header {
 	padding: 0 15px;
 	text-align: center;
 	color: #030303;
-	/* background-color: rgba( 255, 255, 255, 0.5 ); */
 	display: inline-block;
-	/* opacity: 0.1; */
-
 }
 
 section {
@@ -78,7 +73,6 @@ h1 {
 }
 .full_screen .main_content {
 	position: relative;
-	/* width: 100%; */
 	height: 100vh;
 	-webkit-transition: transform 0.56s ease-out;
 	-o-transition: transform 0.56s ease-out;
@@ -192,23 +186,24 @@ h1 {
 	align-items: center;
 	width: 213px;
 	left: 45vw;
-	-webkit-transform: translateY(-100%);
-	-ms-transform: translateY(-100%);
-	-o-transform: translateY(-100%);
-	transform: translateY(-100%); 
+	bottom: 0;
+	-webkit-transform: translateY(-10%);
+	-ms-transform: translateY(-10%);
+	-o-transform: translateY(-10%);
+	transform: translateY(-10%); 
 }
 
 
 .section_link {
 	width: 212px;
 	height: auto;
-	margin: 18px 2px 3.5vh 0;
-	border-radius: 20px;
+	margin: 18px 2px 2.5vh 0;
+	border-radius: 13px;
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
 .section_link :hover{
 	transition: ease-out 0.3s;
-	border-radius: 20px;
+	border-radius: 13px;
 
 	border: #ffffff;
 
@@ -222,9 +217,7 @@ h1 {
 	justify-content: center;
 	background-size: cover;
 	background-image: url("../../resource/pcbg_pattern.png");
-	/* padding: 157px 50px 0 0px; */
 }
-
 
 .section_container_1 {
 	position: relative;
@@ -321,9 +314,6 @@ h1 {
 	align-items: center;
 }
 .section_link_1 .link1_text{
-	/* position: absolute;
-	width: 108px;
-	height: 31px; */
 	font-size: 2.04vh;
 	margin: 0;
 	font-family: Noto Sans KR;	
@@ -336,7 +326,6 @@ h1 {
 .section_link_1:hover {
 	color: #34613f;
 	border-color: #34613f;
-	background-color: #ffffff;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	border: solid 3px #34613f;
 	background-color: #ffffff;
@@ -347,7 +336,7 @@ h1 {
 	position: absolute;
 	margin-bottom: 5vh;
 	bottom: 0;
-	width: 10vw;
+	width: 3vw;
 	height: 10vh;
 	display: flex;
 	align-items: center;
@@ -433,7 +422,6 @@ h1 {
 	width: auto;
 	height: 450px;
 	padding: 23.98vh 0 0 68px;
-	/* margin: 300px 0 0 0; */
 	font-family: Noto Sans KR;	
 	font-stretch: normal;
 	font-style: normal;
@@ -479,20 +467,25 @@ h1 {
 }
 .mouseDown2{
 	position: relative;
-	bottom: 0;
-	height: 10vh;
+	height: 2vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	vertical-align: bottom;
 }
-.mouseDown2 .fas fa-angle-double-down{
+.mouseDown2 .fas.fa-angle-double-down{
 	position: absolute;
-	display: inline-block;
-	margin-top: 100px;
-	background-color: #ffffff;
+	display: flex;
+	bottom: 0;
+	background-color: rgba(150, 150, 150, 0);
 	color: #d9ccc9;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
+
+
 
 /* 3페이지 ----------------------------------------------------*/
 .review {
@@ -597,22 +590,7 @@ h1 {
 	color: #fff;
 
 }
-.mouseDown3{
-	position: relative;
-	bottom: 0;
-	height: 10vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-}
-.mouseDown3 .fas fa-angle-double-down{
-	position: absolute;
-	display: inline-block;
-	margin-top: 100px;
-	background-color: #ffffff;
-	color: #d9ccc9;
-}
+
 .outSide{
 	position: absolute;
 	width: 74.5%;
@@ -642,14 +620,6 @@ h1 {
 
 
 
-
-
-
-
-
-
-
-
 /* 4페이지 ----------------------------------------------------*/
 .hotmenu	{
 	background-color:  #ffffff;
@@ -670,7 +640,6 @@ h1 {
 	width: 1920px;
 	height: 500px;
 	margin: 0 0 0 90px; 
-	overflow: hidden;
 }
 
 
@@ -680,7 +649,7 @@ h1 {
 	height: 84%;
 	background-color :#ffc4b5 ;
 	border-radius:  0 0 0 7vh;
-	margin: 0 0 16% 32%;
+	margin: 0 0 7% 32%;
 
 
 }
@@ -693,16 +662,6 @@ h1 {
 	float: left;
 
 }
-
-/* .right .section_container {
-	text-align: right;
-} */
-/* 
-.section_container_4 .hotmenu {
-	padding-top: 250px;
-	text-align: center;
-} */
-
 
 .section_link_4 {
 	position: relative;
@@ -723,11 +682,6 @@ h1 {
 
 
 .fourthPage_thumnail{
-	/* position: absolute;
-	width: 35vh;
-	height: 18vh;
-	margin: 50px 10px 0 5px;
-	text-align: left; */
 	position: absolute;
 	margin: 70px 0 0 55px;
 	width: 290px;
@@ -745,12 +699,7 @@ h1 {
 	font-style: normal;
 	letter-spacing: normal;
 	line-height: 1;
-	
-	/* width: 40.1px;
-	height: 40.1px;
-	margin: 50px 10px 0 5px;
-	text-align: left; */
-	
+
 }
 .fourthPage_thumnail .font2{
 	width: 175px;
@@ -763,7 +712,7 @@ h1 {
 	letter-spacing: normal;
 	color: #222222;
 }
-.font3{
+.fourthPage_thumnail .font3{
 	width: 151px;
 	height: 61px;
 	margin: 15px 119px 14px 35px;
@@ -802,8 +751,6 @@ h1 {
 	border-radius: 44px;
 	color: #ffffff;
 	background-color: #34613f;
-	/* background-color: #ffffff; */
-
 
 }
 
@@ -1003,26 +950,25 @@ h1 {
 	margin: 0;
 	width: 100px;
 	height: 27px;
-	font-family: NotoSansKR;
+	font-family: Noto Sans KR;
 	font-size: 18px;
 	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
 	letter-spacing: normal;
 	text-align: center;
-	color: #ffffff;
 }
 
 
 .section_link_5:hover {
 	color: #34613f;
 	border-color: #34613f;
-	background-color: #ffffff;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	border: solid 3px #34613f;
 	background-color: #ffffff;
-
 }
+
+
 .fab {
 	position: absolute;
 	font-weight:400;
@@ -1194,7 +1140,7 @@ h1 {
 		width: 150px;
 		height: 57px;
 		margin: 8px 123px 20px 4px;
-		font-family: NotoSansKR;
+		font-family: Noto Sans KR;
 		font-size: 20px;
 		font-weight: bold;
 		font-stretch: normal;
@@ -1227,8 +1173,6 @@ h1 {
 		position: relative;
 		width: 143px;
 		height: 44px;
-		/* margin: 0 10px 10px 5px; */
-		/* padding: 10px 10px 10px 10px; */
 		border-radius: 8px;
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 		background-color: #34613f;
@@ -1240,7 +1184,7 @@ h1 {
 		width: 100px;
 		height: 25px;
 		margin: 0 0 0 20px; 
-		font-family: NotoSansKR;
+		font-family: Noto Sans KR;
 		font-size: 17px;
 		font-weight: bold;
 		font-stretch: normal;
@@ -1297,6 +1241,9 @@ h1 {
 		width: 270px;
 		height: 500px;
 		color: #ffffff;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
 	}
 	
 	.section_container_2 .delivery {
@@ -1316,11 +1263,11 @@ h1 {
 		z-index: 2;
 		float: left;
 	}
-	.secondPage_thumnail .font1-2{
+	.section_container_2 .font1-2{
 		width: 220px;
 		height: 31px;
 		margin: 0 27px 6px 0;
-		font-family: NotoSansKR;
+		font-family: Noto Sans KR;
 		font-size: 21px;
 		font-weight: bold;
 		font-stretch: normal;
@@ -1331,11 +1278,11 @@ h1 {
 		color: #000000;
 	}
 	
-	.secondPage_thumnail .font2{
+	.section_container_2 .font2{
 		width: 240px;
 		height: 62px;
 		margin: 6px 0 0;
-		font-family: NotoSansKR;
+		font-family: Noto Sans KR;	
 		font-size: 14px;
 		font-weight: normal;
 		font-stretch: normal;
@@ -1383,6 +1330,7 @@ h1 {
 	.outSide_Image_3{
 		position: relative;
 		width: 272px;
+		left: 0;
 		height: 563px;
 		margin : 0 88px 77px 0;
 		background-color : #ffc4b5;
@@ -1504,38 +1452,20 @@ h1 {
 	
 	
 	.outSide_Image_4{
-		position: relative;
+		position: absolute;
 		width: 272px;
 		height: 563px;
 		background-color :#ffc4b5 ;
-		z-index: 2;
 		border-radius: 0 0 0 25px;
 		margin: 0 0 87px 89px;
 	}
 	.section_container_4 {
-		/* position: relative;
-		z-index: 1;
-		width: 270px;
-		height: 87vh;
-		color: rgb(0, 0, 0);
-		float: left; */
-
 		position: relative;
 		width: 360px;
 		height: 563px;
 		color: rgb(0, 0, 0);
 		padding: 90px 20px 10px 20px;
-		right: 90px;
 	}
-	/* .right .section_container {
-		text-align: right;
-	} */
-	/* 
-	.section_container_4 .hotmenu {
-		padding-top: 250px;
-		text-align: center;
-	} */
-	
 	
 	.section_link_4 {
 		position: relative;
@@ -1563,6 +1493,8 @@ h1 {
 		text-align: left; */
 		position: absolute;
 		margin: 15px 10px 0 10px;
+		font-family: Noto Sans KR;	
+
 		width: 320px;
 		height: 150px;
 		z-index: 2;
@@ -1596,13 +1528,15 @@ h1 {
 		letter-spacing: normal;
 		color: #222222;
 	}
-	.font3{
+
+	.fourthPage_thumnail .font3{
 		position: absolute;
 		width: 100px;
 		height: 40px;
 		margin: 0 119px 0 40px;
 		font-size: 27px;
 		font-weight: 900;
+		font-family: Noto Sans KR;	
 		font-stretch: normal;
 		font-style: normal;
 		letter-spacing: normal;
