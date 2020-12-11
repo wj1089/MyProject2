@@ -1,109 +1,233 @@
-import React, { useState, useEffect, useRef } from "react";
-import ReviewCard from './ReviewCard.js';
-// import BtnRight from "../../resource/right.png";
-// import BtnLeft from "../../resource/left.png";
-import './ContentCard.css'
-import '../main/Landing.css'
+import React, {useState,useEffect,useRef} from 'react';
+import "../main/Landing.css"
+import "./ContentCard.css"
+import BtnRight from "../../resource/arrow_forward_ios.svg";
+import BtnLeft from "../../resource/arrow_back_ios.svg";
+import PropTypes from 'prop-types';
+import HoverImage from 'react-hover-image/build';
 
+import {Modal} from 'react-bootstrap'
+import AyiImage from '../../resource/logo_wm.png'
 
 const TOTAL_SLIDES = 2;
 
-export default function Slider() {
+const desktop = window.innerWidth >  768 ? "desktop": "";
+const phone   = window.innerWidth <= 768 ? "phone" : "";
 
 
-// section3 슬라이더
+const Slider = ({data, containerCss, itemCss, contentCss, imgCss}) => {
+    const [spinIndex, setSpinIndex] = useState(0);
+    const [canScroll, setCanScroll] = useState(true);
+    const [currentSlide,setCurrentSlide] = useState(0);
+    const slideRef = useRef(null);
+    const mainContent = useRef();
 
+    const sectionTitle = [ 'Main', 'Delivery', 'Review','Hotmenu','Downintro' ];
 
-            const [currentSlide, setCurrentSlide] = useState(0);
-            const slideRef = useRef(null);
+    const [show, setShow] = useState(false);
 
-            // 다음슬라이드
-                const slideBtn_R = () => {
-                    if (currentSlide >= TOTAL_SLIDES) { // 더 이상 넘어갈 슬라이드가 없으면 슬라이드를 초기화합니다.
-                    setCurrentSlide(0);
-                    } else {
-                    setCurrentSlide(currentSlide + 1);
-                    }
-                };
-
-            // 전슬라이드
-                const slideBtn_L = () => {
-                    if (currentSlide === 0) {
-                    setCurrentSlide(TOTAL_SLIDES);
-                    } else {
-                    setCurrentSlide(currentSlide - 1);
-                    }
-                };
-
-            useEffect(() => {
-                slideRef.current.style.transition = "all 1.5s ease-in-out";
-                slideRef.current.style.transform = `translateX(-${currentSlide}00%)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
-            }, [currentSlide]);
-
-
-                    return (
-                        <>
-                        <div className="SliderContainer" ref={slideRef}>
-                            {currentSlide}
-
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://lh3.googleusercontent.com/proxy/owdwckDRadaf9RTTvxSzhoPLC2xy61B_Iw3X1o13ezxJIeEI27-ZYio0dIMkMcz9nTXDHqInHzhThm1jnxGlePTa5Kr57ZhqSkyV-3LA8Ks1C5MJg8UfwpyzLzmfzu_6hZ0LArI8NQdA4gyUWZuuzKt4BpBBoKad0EV0Eeyiox6oCSoPE88zY7mV6XeDYTiloPAKYs7hrLjp4fCUPOPSavLBZYooGOj_hytHC3yI0iJ6779pP0XPoJI4zgWq4VFFVohEApZVT7BZh2BjBPe0UDHfJjoVyfJ9A5jGMw89VA",
-                                    review:"슬라이드 설명란"}}
-                            />
-                            
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk947s--HqgeZk3Mtm4DSzvl5qGISexz0wKQ&usqp=CAU",
-                                    review:"슬라이드 설명란"}}
-                                />
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUwIfVA1gedjl4srs_cRj60gbybmruU3QiZw&usqp=CAU",
-                                    review:"슬라이드 설명란"}}
-                                />
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://lh3.googleusercontent.com/proxy/owdwckDRadaf9RTTvxSzhoPLC2xy61B_Iw3X1o13ezxJIeEI27-ZYio0dIMkMcz9nTXDHqInHzhThm1jnxGlePTa5Kr57ZhqSkyV-3LA8Ks1C5MJg8UfwpyzLzmfzu_6hZ0LArI8NQdA4gyUWZuuzKt4BpBBoKad0EV0Eeyiox6oCSoPE88zY7mV6XeDYTiloPAKYs7hrLjp4fCUPOPSavLBZYooGOj_hytHC3yI0iJ6779pP0XPoJI4zgWq4VFFVohEApZVT7BZh2BjBPe0UDHfJjoVyfJ9A5jGMw89VA",
-                                    review:"슬라이드 설명란"}}
-                            />
-                            
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk947s--HqgeZk3Mtm4DSzvl5qGISexz0wKQ&usqp=CAU",
-                                    review:"슬라이드 설명란"}}
-                                />
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUwIfVA1gedjl4srs_cRj60gbybmruU3QiZw&usqp=CAU",
-                                    review:"슬라이드 설명란"}}
-                                />
-                            
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://lh3.googleusercontent.com/proxy/owdwckDRadaf9RTTvxSzhoPLC2xy61B_Iw3X1o13ezxJIeEI27-ZYio0dIMkMcz9nTXDHqInHzhThm1jnxGlePTa5Kr57ZhqSkyV-3LA8Ks1C5MJg8UfwpyzLzmfzu_6hZ0LArI8NQdA4gyUWZuuzKt4BpBBoKad0EV0Eeyiox6oCSoPE88zY7mV6XeDYTiloPAKYs7hrLjp4fCUPOPSavLBZYooGOj_hytHC3yI0iJ6779pP0XPoJI4zgWq4VFFVohEApZVT7BZh2BjBPe0UDHfJjoVyfJ9A5jGMw89VA",
-                                    review:"슬라이드 설명란"}}
-                            />
-                            
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk947s--HqgeZk3Mtm4DSzvl5qGISexz0wKQ&usqp=CAU",
-                                    review:"슬라이드 설명란"}}
-                                />
-                            <ReviewCard
-                                reviewInfor={{
-                                    imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUwIfVA1gedjl4srs_cRj60gbybmruU3QiZw&usqp=CAU",
-                                    review:"슬라이드 설명란"}}
-                                />
-                        </div>
-
-                        <button className="clickBtn_L" onClick={slideBtn_L}>
-                            <img className="btnSize" src={BtnLeft}/>
-                        </button>
-
-                        <button className="clickBtn_R" onClick={slideBtn_R}>
-                            <img className="btnSize"  src={BtnRight}/>
-                        </button>
-                        </>
-        );
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    //Route to Google PlayStore
+    function handleClick(e) {
+        e.preventDefault();
+        console.log('Link to Google PlayStore!!')
+        window.open("https://play.google.com/store/apps/details?id=com.moriahtown.ismail")
     }
+
+
+    
+    function scrollContent(count) {
+        mainContent.current.setAttribute('style', '\
+        -webkit-transform: translateY(-'+ count*100 +'vh);\
+        -ms-transform: translateY(-'+ count*100 +'vh);\
+        -o-transform: translateY(-'+ count*100 +'vh);\
+        transform: translateY(-'+ count*100 +'vh);\
+        ');
+    };
+
+    // Review 왼쪽 슬라이드
+    const slideBtn_L = () => {
+        // console.log("currentSlide_L")
+        // console.log(currentSlide)
+
+        if (currentSlide === 0) {
+        setCurrentSlide(TOTAL_SLIDES);
+        } else {
+        setCurrentSlide(currentSlide - 1);
+        }
+    };
+
+    // Review 오른쪽 슬라이드
+        const slideBtn_R = () => {
+            // console.log("currentSlide_R")
+            // console.log(currentSlide)
+            if (currentSlide >= TOTAL_SLIDES) { // 더 이상 넘어갈 슬라이드가 없으면 슬라이드를 초기화합니다.
+            setCurrentSlide(0);
+            } else {
+            setCurrentSlide(currentSlide + 1);
+            }
+        };
+
+
+        useEffect(()=>{
+            // console.log(data)
+        },[data])
+
+        useEffect(() => {
+            slideRef.current.style.transition = "all 2s ease-in-out";
+            slideRef.current.style.transform = `translateX(-${currentSlide}00%)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
+        }, [currentSlide]);
+
+        //슬라이드 이동(상하)
+        let start = 0;
+        const touchStart = e =>{
+            // start = e.touches[0]
+            // console.log("touchStart")
+            // console.log(start.clientY)
+            
+            e.stopPropagation();
+
+            // start = e.touches[0]
+        }
+
+        const touchFinish = e =>{
+            setCanScroll(false);
+
+            e.stopPropagation();
+            // console.log("touchFinish")
+            // console.log(e.changedTouches[0].clientY)
+            // console.log(e)
+            // console.log(e.changedTouches[0].pageY)
+
+
+            // if ( canScroll ) {
+            //     if ( start.clientY > e.changedTouches[0].clientY ) {
+            //         // scroll down
+            //         if ( spinIndex < sectionTitle.length-1 ) setSpinIndex(spinIndex + 1);
+                    
+            //     } else {
+            //         // scroll up
+            //         if ( spinIndex > 0 )  setSpinIndex(spinIndex - 1); 
+            //     }
+            // }   
+        }
+
+    return (
+        <>
+                            {/* 모달버튼 */}
+                                <Modal
+                                    show={show}
+                                    onHide={handleClose}
+                                    
+                                    backdrop="static"
+                                    keyboard={false}
+                                    // dialogClassName="modal-90w"
+                                    role="dialog"
+                                    aria-modal="true"
+                                    trbindex="-1"
+                                    className="efef"
+                                >
+                                <Modal.Header 
+                                    className="header"
+                                    closeButton>
+                                </Modal.Header>
+
+                                <Modal.Body
+                                className="body"
+                                >
+                                    <p className="modal-text">더 많은 정보가 궁금하시다면
+                                    <br/>
+                                    <img 
+                                        className="modal_logo" 
+                                        src={AyiImage}
+                                        alt="아이그레Modal_LogoImg"
+                                    /><br/>
+                                    더 간편하게 앱으로 만나보세요!</p>
+                                    <br/>
+
+                                <button className="modal_btn" onClick={handleClick}>
+                                    <p className="material-icons" >
+                                        save_alt</p>
+                                    <p className="btnWord">
+                                        앱 다운로드</p>
+                                </button>
+                                </Modal.Body>
+                            </Modal>
+
+
+
+            {desktop &&(
+            <div 
+                onTouchStart={touchStart} 
+                onTouchEnd={touchFinish}>
+
+                <button className="clickBtn_L" onClick={slideBtn_L}>
+                    <img className="btnSize" src={BtnLeft}/>
+                </button>
+                <button className="clickBtn_R" onClick={slideBtn_R}>
+                    <img className="btnSize"  src={BtnRight}/>
+                </button>
+
+                    <div className={containerCss} ref={slideRef} >
+                        {
+                        data.map( item => (
+                            <div className={itemCss}>
+                                <div className={contentCss} key={item.id} onClick={handleShow}>
+                                    <img 
+                                    className={imgCss}
+                                    src={item.img}
+                                    alt={item.id}
+                                    />
+                                   {item.content}
+                                </div>
+                            </div>
+                            ))
+                        }
+                    </div>
+            </div>
+            )}
+
+            {phone &&(
+            <div 
+                onTouchStart={touchStart} 
+                onTouchEnd={touchFinish}>
+
+                    <div className={containerCss} ref={slideRef} >
+                        {
+                        data.map( item => (
+                            <div className={itemCss}>
+                                <div className={contentCss} key={item.id}>
+                                    <img 
+                                    className={imgCss}
+                                    src={item.img}
+                                    alt={item.id}
+                                    />
+                                   {item.content}
+                                </div>
+                            </div>
+                            ))
+                        }
+                    </div>
+            </div>
+            )}
+        </>
+    );
+};
+
+export default Slider;
+
+Slider.propTypes = {
+    data: PropTypes.array,
+    containerCss : PropTypes.string
+};
+
+Slider.defaultProps = {
+    data: [],
+    containerCss: 'SliderContainer',
+    itemCss: 'inSide_slide',
+    contentCss: 'RV_slideImgArea',
+    imgCss: 'RV_imgSize',
+  }
+
+  

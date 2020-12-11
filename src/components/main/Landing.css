@@ -1,9 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 
-
 body {
-	max-width : 1920px;
 	text-align: center;
 	margin: auto !important;
     float : none !important;
@@ -14,6 +12,8 @@ body {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+
+
 }
 * {
 	-webkit-box-sizing: border-box;
@@ -24,24 +24,20 @@ body {
 }
 
 /*------------------------------------------
-  Responsive Grid Media Queries - 1280, 1024, 768, 360
+  Responsive Grid Media Queries - 1180, 1024, 768, 360
    1920-1024   - desktop (default grid)
-   1024-768    - tablet
-   360-less    - phone landscape & smaller
+   1024-768    - tablet(제외)
+   360-650~767 - phone landscape & smaller
 --------------------------------------------*/
 
-/* For desktop: */
-@media only screen and (min-width: 1024px) and (max-width: 1920px){
-.clearBoth{
-	clear : both;
-}
+
+
 header {
 	position: fixed;
 	width: 100%;
-	top: 0;
-	left: 0;
 	z-index: 1;
 	padding: 0 15px;
+	text-align: center;
 	color: #030303;
 	/* background-color: rgba( 255, 255, 255, 0.5 ); */
 	display: inline-block;
@@ -55,6 +51,8 @@ section {
 	-webkit-background-size: contain;
 	background-size: cover;
 	padding: 0 15px;
+
+
 }
 section.right {
 	background-position: center center;
@@ -74,44 +72,34 @@ h1 {
 
 /* 전체스크린 ----------------------------------------------------*/
 .full_screen {
-	height: 100vh;
 	overflow: hidden;
 	position: relative;
+	
 }
 .full_screen .main_content {
 	position: relative;
 	/* width: 100%; */
-	height: 70vh;
+	height: 100vh;
 	-webkit-transition: transform 0.56s ease-out;
 	-o-transition: transform 0.56s ease-out;
 	transition: transform 0.56s ease-out; 
-	
+
+
 }
+
 .full_screen section {
 	height: 100vh;
 	justify-content: center;
 	align-items:center;
-
+	overflow-y: hidden;
+	overflow-x:scroll;
+	color: #ffffff;
 }
 .full_screen .section_container .main {
 	padding-top: 140px;
+	
 }
 
-/* 네비바 */
-.section_navigation {
-	position: fixed;
-	background-color: rgba(255,255,255,0.77);
-	right: 40px;
-	top: calc(80% + 55px);
-	-webkit-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	padding: 20px 0;
-	border-radius: 35px;
-	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.07), 0 7px 14px rgba(0,0,0,0.14);
-	box-shadow: 0 2px 4px rgba(0,0,0,0.07), 0 7px 14px rgba(0,0,0,0.14);
-}
 .section_button {
 	position: relative;
 	width: 40px;
@@ -171,34 +159,70 @@ h1 {
 }
 
 
-.font1{
-	/* font-size: 62px; */
-	font-size: 4vw;
-	font-weight: 900;
-	color: #000000;
-	font-family: Noto Sans KR;	
-	font-stretch: normal;
-	font-style: normal;
-	line-height: 1.16;
-	letter-spacing: normal;
-	margin-bottom: 1vh;
-}
-
+/* For desktop: */
+@media only screen and (min-width: 769px){
+	.clearBoth{
+		clear : both;
+	}
+	
+	.font1{
+		font-size: 4.6vh;
+		font-weight: 900;
+		color: #000000;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.16;
+		letter-spacing: normal;
+		margin-bottom: 1vh;
+	}
 
 /* 메인페이지 ----------------------------------------------------*/
 .main {
 	background-color: #ffffff;
-	
+	height: 100%;
+
+}
+
+
+/* 네비바 */
+.linkArea {
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	width: 213px;
+	left: 45vw;
+	-webkit-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	transform: translateY(-100%); 
+}
+
+
+.section_link {
+	width: 212px;
+	height: auto;
+	margin: 18px 2px 3.5vh 0;
+	border-radius: 20px;
+	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
+}
+.section_link :hover{
+	transition: ease-out 0.3s;
+	border-radius: 20px;
+
+	border: #ffffff;
+
 }
 .outSide_Image{
 	position: relative;
-	width: 1180px;
-	height: 808px;
-	padding: 191px 50px 0 50px;
+	width: 1140px;
+	height: 71.67vh;
 	border-radius: 7vh;
 	align-items: center;
 	justify-content: center;
+	background-size: cover;
 	background-image: url("../../resource/pcbg_pattern.png");
+	/* padding: 157px 50px 0 0px; */
 }
 
 
@@ -221,9 +245,9 @@ h1 {
 
 .ayi_img{
 	position: relative;
-	height: auto;
-	width: 330px;
-	margin: 55px 153px 23px 0;
+	height: 5.93vh;
+	width: auto;
+	margin: 0 50px 23px 0;
 	
 }
 .ayi_img2{
@@ -238,7 +262,7 @@ h1 {
 
 
 .firstPage_thumnail{
-	position: relative;
+	position: absolute;
 	width: 420px;
 	height: 450px;
 	text-align: left;
@@ -247,6 +271,8 @@ h1 {
 	font-style: normal;
 	font-weight: 800;
 	display: inline-block;
+	margin: 21.2vh 0 0 0;
+	padding: 0 0 0 68px;
 	float: left;
 
 }
@@ -254,9 +280,10 @@ h1 {
 .firstPage_thumnail .font2{
 	position: relative;
 	margin: 0 0 0 0.8vw;
-	font-size: 40px;
+	font-size: 3.7vh;
 	width: auto;
 	color: #000000;
+	margin-bottom: 0;
 	font-family: Noto Sans KR;	
 	font-stretch: normal;
 	font-style: normal;
@@ -265,51 +292,47 @@ h1 {
 }
 
 .inSide_Img{
-	position: relative;
-	width: 531px;
-	height: 617px;
-	margin: 0 0 ;
-	padding: 0 0 0 80px;
-	float: left;
-
+	height: 57.13vh;
+	padding: 0 0 0 130px;
+	margin-top: 14.54vh;
+	float: right;
 }
 
-.inSide_Img .main_phnGif{/* -------------desktop */
-	position: relative;
-	width: 531px;
-	height: 617px;
+.inSide_Img .main_phnGif{
+	width: auto;
+	height: 57.13vh;
 	display: inline-block;
-
 }
 
 .section_link_1 {
-	position: relative;
-	width: auto;
-	height: 60px;
+	position: absolute;
+	width: 23.52vh;
+	height: 5.56vh;
 	display: inline-block;
-	padding: 15px 76px 14px;
+	padding: 10px 10px 10px 10px;
 	color: #ffffff;
 	border: solid 3px #34613f;
 	background-color: #34613f;
 	box-shadow: 0 3px 6px 0	rgba(0,0,0,0.16);
-	border-radius: 12px;
-	margin: 54px 17vw 21vh 8px;
+	border-radius: 1.11vh;
+	margin: 5vh 1vw 0vh 8px;
 	transition: ease-out 0.3s;
-	
+	justify-items: center;
+	align-items: center;
 }
 .section_link_1 .link1_text{
-	position: relative;
-	width: 102px;
-	height: 31px;
-	font-size: 21px;
-	line-height: 1.3;
+	/* position: absolute;
+	width: 108px;
+	height: 31px; */
+	font-size: 2.04vh;
+	margin: 0;
 	font-family: Noto Sans KR;	
 	font-stretch: normal;
 	font-style: normal;
 	font-weight: bold;
 	text-decoration: none;
 	text-align: center;
-}
+} 
 .section_link_1:hover {
 	color: #34613f;
 	border-color: #34613f;
@@ -320,57 +343,97 @@ h1 {
 
 }
 
+.mouseDown{
+	position: absolute;
+	margin-bottom: 5vh;
+	bottom: 0;
+	width: 10vw;
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+
+
+.fas.fa-mouse{
+	position: absolute;
+	display: inline-block;
+	width: 36.6px;
+	height: 48px;
+	background-color: #ffffff;
+	color: #d9ccc9;
+	align-items: center;
+
+}
+
+.fas.fa-angle-double-down{
+	position: absolute;
+	display: inline-block;
+    margin-top: 80px;
+	width: 36.6px;
+	height: 48px;
+	font-size: xx-large;
+	background-color: #ffffff;
+	color: #d9ccc9;
+}
+
 
 
 /* 2페이지 ----------------------------------------------------*/
 
 .delivery {
 	background-color: #ffffff;
+	height: 100%;
+
 }
 
 .outSide_Image2{
 	position: relative;
-	width: 1180px;
-	height: 780px;
-	padding: 0 0 0 50px;
+	width: 1140px;
+	height: 74.35vh;
 	border-radius: 7vh;
+	margin-top: 6.02vh;
 	justify-content: center;
 	align-items: center;
+	background-size: cover;
 	background-image: url("../../resource/pcbg_pattern.png");
 }
 
 
 .inSide_Img2{
 	position: relative;
-	width: 968px;
-	height: 780px;
+	width: auto;
+	height: 74.35vh;
+	padding-right: 1.6vw;
 	float: right;
 	z-index: 1;
 
 }
 .inSide_Img2 .delivery_phnGif{
-	width: 968px;
-	height: 780px;
+	width: auto;
+	height: 74.35vh;
 	float: right;
 }
 
 .section_container_2 {
 	position: relative;
-	width: 1100px;
-	height: 780px;
+	width: 1140px;
+	height: 74.35vh;
 	color: #ffffff;
 }
 
 .section_container_2 .delivery {
-
-
+	color: #ffffff;
 }
 
 .secondPage_thumnail{
 	position: absolute;
-	width: 520px;
+	width: auto;
 	height: 450px;
-	margin: 300px 0 0 0;
+	padding: 23.98vh 0 0 68px;
+	/* margin: 300px 0 0 0; */
 	font-family: Noto Sans KR;	
 	font-stretch: normal;
 	font-style: normal;
@@ -379,7 +442,7 @@ h1 {
 	float: left;
 }
 .secondPage_thumnail .font1-2{
-	font-size: 46px;
+	font-size: 4.26vh;
 	color: #000000;
 	font-weight: bold;
 	font-family: Noto Sans KR;	
@@ -388,12 +451,12 @@ h1 {
 }
 
 .secondPage_thumnail .font2{
-	font-size: 17px;
+	font-size: 1.57vh;
 	margin: 24px 141px 0 12px;
 	font-family: Noto Sans KR;	
 	font-stretch: normal;
 	font-style: normal;
-	font-weight: bold;
+	font-weight: normal;
 	line-height: 1.65;
 	letter-spacing: normal;
 	color: #222222;
@@ -414,52 +477,68 @@ h1 {
 	border: #ffffff;
 
 }
-
+.mouseDown2{
+	position: relative;
+	bottom: 0;
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.mouseDown2 .fas fa-angle-double-down{
+	position: absolute;
+	display: inline-block;
+	margin-top: 100px;
+	background-color: #ffffff;
+	color: #d9ccc9;
+}
 
 /* 3페이지 ----------------------------------------------------*/
 .review {
 	background-color: #ffffff ;
+	height: 100%;
+	position: relative;
+
 }
+
+
+.outSide_Image_3{
+	position: absolute;
+	width: 74.5%;
+	height: 84%;
+	margin: 0 22% 15% 0;
+	padding: 0 0 0 17vw;  
+	background-color : #ffc4b5;
+	border-radius:  0 0 7vh;
+}
+
 
 .section_container_3 {
 	position: relative;
 	width: 1180px;
 	height: 906px;
 	color: rgb(0, 0, 0);
-	margin: 0 370px;
-	padding: 174px 20px 1128px 20px;
+	padding: 140px 21px 14px 50px;
+	float: right; 
+	right: 0;
 }
 
-.outSide_Image_3{
-	position: relative;
-	width: 1294px;
-	height: 906px;
-	margin: 0 626px 174px 0;
-	background-color : #ffc4b5;
-	border-radius:  0 0 7vh;
-}
+
 
 
 /* 내부 후기카드 */
 .revSlide{
-	position: relative;
-	/* width: 1230px; */
+	position: absolute;
 	width: 73vw;
 	height: 535px;
-	margin: 37px 0 0 300px;
+	margin: 37px 0 0 23.5%;
 	display: flex;
 	overflow: hidden;
 	z-index: 1;
 }
 
-.slide_text{
-	position: relative;
-	width: 255px;
-	height: 218px;
-	font-size: 12px;
-	justify-content: center;
-	align-items: center;
-}
+
 
 .section_container .review {
 	text-align: center;
@@ -468,8 +547,8 @@ h1 {
 
 .thirdPage_thumnail{
 	position: absolute;
-	margin: 210px 0 0 10px;
-	width: 300px;
+	margin-top: 180px;
+	width: 280px;
 	height: 320px;
 	z-index: 2;
 }
@@ -477,7 +556,7 @@ h1 {
 .thirdPage_thumnail .font1-2{
 	width: 151px;
 	height: 61px;
-	margin: 15px 119px 14px 22px;
+	margin: 15px 119px 14px 35px;
 	font-size: 41px;
 	font-weight: 900;
 	font-family: Noto Sans KR;	
@@ -488,9 +567,9 @@ h1 {
 }
 
 .thirdPage_thumnail .font2{
-	width: 16vw;
+	width: 11vw;
 	font-size: 17px;
-	margin: 4px 119px 14px 22px;
+	margin: 4px 119px 14px 35px;
 	line-height: 1.65;
 	font-family: Noto Sans KR;	
 	font-weight: normal;
@@ -505,7 +584,7 @@ h1 {
 	z-index: 3;
 	width: 276px;
 	height: 182px;
-	margin: 100px 380px 0 420px;
+	margin: 100px 380px 0 465px;
 	border-radius: 20px;
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
@@ -518,53 +597,103 @@ h1 {
 	color: #fff;
 
 }
+.mouseDown3{
+	position: relative;
+	bottom: 0;
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.mouseDown3 .fas fa-angle-double-down{
+	position: absolute;
+	display: inline-block;
+	margin-top: 100px;
+	background-color: #ffffff;
+	color: #d9ccc9;
+}
+.outSide{
+	position: absolute;
+	width: 74.5%;
+	height: 84%;
+	margin: 0 22% 15% 0;
+	padding: 0 0 0 17vw;  
+	background-color : #ffc4b5;
+	border-radius:  0 0 7vh;
+}
+
+
+.aaa{
+	position: relative;
+	display: inline-block;
+	width: 1180px;
+	height: 906px;
+	color: rgb(0, 0, 0);
+	padding: 230px 21px 14px 50px;
+	float: right; 
+	right: 0;
+	background-color: aqua;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 /* 4페이지 ----------------------------------------------------*/
+.hotmenu	{
+	background-color:  #ffffff;
+	height: 100%;
+
+}
 .HT_sectionarea{
 	position: absolute;
-	/* display: flex; */
-	width: 67vw;
-	height: 50vh;
-	margin: 0 20px 0 310px;
+	overflow: hidden;
+	width: 72vw;
+	height: 48vh;
+	margin: 0 20px 0 335px;
 	z-index: 1;
 	float: right;
 }
 .HTSliderList{
 	position: relative;
-	z-index: 1;
-	width: 100vw;
+	width: 1920px;
 	height: 500px;
 	margin: 0 0 0 90px; 
 	overflow: hidden;
 }
 
-.hotmenu	{
-	background-color:  #ffffff;
-
-}
 
 .outSide_Image_4{
-	position: relative;
-	width: 1078px;
-	height: 906px;
+	position: absolute;
+	width: 68%;
+	height: 84%;
 	background-color :#ffc4b5 ;
 	border-radius:  0 0 0 7vh;
-	z-index: 2;
-	margin: 0 -15px 198px 823px;
+	margin: 0 0 16% 32%;
+
+
 }
 .section_container_4 {
 	position: relative;
 	z-index: 1;
-	width: 1920px;
-	height: 50vh;
-	margin: 374px 0 0 -450px;
+	width: 1180px;
+	height: 40vh;
 	color: rgb(0, 0, 0);
 	float: left;
 
 }
+
 /* .right .section_container {
 	text-align: right;
 } */
@@ -576,15 +705,13 @@ h1 {
 
 
 .section_link_4 {
-	position: absolute;
-	left: 15vw;
-	top: 78vh;
-	width: 14vw;
-	height: 17vh;
+	position: relative;
+	z-index: 3;
+	width: 276px;
+	height: 182px;
+	margin: 50px 380px 0 15px;
 	border-radius: 20px;
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
-	background-size: 11vw;
-	border: none;
 }
 
 .section_link_4:hover {
@@ -596,73 +723,74 @@ h1 {
 
 
 .fourthPage_thumnail{
-	position: absolute;
+	/* position: absolute;
 	width: 35vh;
 	height: 18vh;
 	margin: 50px 10px 0 5px;
-	text-align: left;
-	
+	text-align: left; */
+	position: absolute;
+	margin: 70px 0 0 55px;
+	width: 290px;
+	height: 320px;
+	z-index: 2;
 }
 .fourthPage_thumnail .fourth_font1{
-	width: 40.1px;
+	width: 151px;
+	height: 61px;
+	margin: 15px 119px 14px 0;
+	font-size: 41px;
+	font-weight: 900;
+	font-family: Noto Sans KR;	
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	line-height: 1;
+	
+	/* width: 40.1px;
 	height: 40.1px;
-	/* font-size: 15px; */
 	margin: 50px 10px 0 5px;
-	text-align: left;
+	text-align: left; */
 	
 }
 .fourthPage_thumnail .font2{
-	width: 16.5vw;
-	height: 53px;
-	margin-left: 2.8vw;
+	width: 175px;
 	font-size: 17px;
+	margin: 4px 119px 14px 35px;
 	line-height: 1.65;
 	font-family: Noto Sans KR;	
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: normal;
 	color: #222222;
-	
 }
 .font3{
+	width: 151px;
+	height: 61px;
+	margin: 15px 119px 14px 35px;
 	font-size: 41px;
-	margin-left: 2.5vw;
-	margin-bottom: 0.5vh;
 	font-weight: 900;
 	font-family: Noto Sans KR;	
 	font-stretch: normal;
 	font-style: normal;
-	line-height: 1.4;
-	margin-bottom: 1vh;
-
+	letter-spacing: normal;
+	line-height: 1.37;
 }
-/* .moreArea{
-	position: relative;
-	width: 4.3vw;
-	height: 3.4vh;
-	top: 8vh;
-	left: 12vw;
-	margin: 51px 178px 144px 5.1px;
-	background-color: yellow;
-	border-radius: 15px;
 
-} */
 .moreBtn{
 	position: relative;
-	width: 5vw;
-	height: 3.4vh;
-	left: 2.5vw;
-
+	width: 103px;
+	height: 44px;
+	
 	font-family: Noto Sans KR;	
-	font-size: 0.8vw;
+	font-size: 16px;
 	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
-
+	color: #565656;
 	line-height: 1.75;
 	border-radius: 44px;
 	border: solid 1px #bdbdbd;
-	margin: 18px 178px 150px 5.1px;
+	margin: 10px 20px 20px 30px;
 	background-color: #ffffff;
 	text-align: center;
 	letter-spacing: normal;
@@ -671,7 +799,8 @@ h1 {
 	
 }
 .moreBtn:hover{
-	border-radius: 15px;
+	border-radius: 44px;
+	color: #ffffff;
 	background-color: #34613f;
 	/* background-color: #ffffff; */
 
@@ -680,9 +809,9 @@ h1 {
 
 .modal-dialog .modal-content{
 	position: relative;
-	top: 30vh;
-	width: 25vw;
-	height: 30vh;
+	width: 500px;
+	height: 350px;
+	margin-top: 65%;
 	display: flex;
 	flex-direction: column;
 	pointer-events: auto;
@@ -718,7 +847,8 @@ h1 {
 
 .modal-text{
 	font-family: Noto Sans KR;	
-	font-size: 1vw;
+	font-size: 21px;
+	margin: 17px 0 0 0;
 	font-weight: bold;
 	font-style: normal;
 	font-stretch: normal;
@@ -728,30 +858,36 @@ h1 {
 	
 }
 
-.modal-btn{
-	width: 7vw;
-	height: 3.5vh;
+.modal_btn{
+	position: relative;
+	width: 140px;
+	height: 35px;
 	background-color: #4a7755;
 	border-radius: 40px;
 	padding: 1px 1px 1px 1px;
 	line-height: 1.5;
 }
-.modal-btn .btnWord{
+.modal_btn .btnWord{
+	position: absolute;
 	color: white;
-	width: 4vw;
-	height: 2.5vh;
+	font-family: Noto Sans KR;	
+	float: right;
+
+	width: 160px;
+	height: 35px;
 	font-weight: bolder;
 	font-style: normal;
 	font-stretch: normal;
-	line-height: 1.5;
+	line-height: 2;
 	letter-spacing: normal;
 	text-align: center;
-	margin: 0 0 0 0.7vw;
 }
 .material-icons{
 	color: white;
-	font-size: 0.8vw;
-	margin: 0;
+	font-size: 25px;
+	width: 45px;
+	height: 20px;
+	float: left;
 }
 
 
@@ -759,56 +895,39 @@ h1 {
 /* 5페이지 ----------------------------------------------------*/
 .downintro {
 	background-color:  #ffffff ;
+	/* height: 50%; */
 
 }
 .outSide_Image_5{
 	position: relative;
-	width: 70vw;
-	height: 50vh;
-	bottom: 12vh;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
+	width: 996px;
+	height: 460px;
 	background-color : #ffc4b5 ;
 	border-radius: 5vh;
-
+	margin:0 0 150px 0;
 }
 
 
 
 .section_container_5 {
 	position: relative;
-	width: 70vw;
-	height: 50vh;
+	width: 996px;
+	height: 460px;
 	overflow: hidden;
 	color: rgb(0, 0, 0);
+	padding:40px 15px 0 50px;
+
 }
 .right .section_container {
 	text-align: right;
 }
-/* .foot-insta{
-	position: absolute;
-	z-index: 1;
-} */
-.fab {
-	position: relative;
-	right: 78vw;
-	top: 18vh;
-	font-weight:400;
-	font-size: 2vw;
-	color: #a19999;
-}
 
-.fab fa-instagram{
-	width: 5vw;
-	height: 5vh;
-}
 
 .fas{
 	position: relative;
 	font-weight: 900;
-	font-size: 2.2vw;
+	font-size: 40px;
+	width: 35px;
 }
 .fas-hashtag{
 	font-weight: 900;
@@ -830,17 +949,15 @@ h1 {
 
 .fifthPage_thumnail{
 	position: absolute;
-	top: 10vh;
-	/* left: 1vw; */
-	margin-left: 8vw;
-	width: 25vw;
-	height: 18vh;
+	width: 270px;
+	height: auto;
+	margin : 75px 0 20px 40px;
 	text-align: left;
 }
 .fifthPage_thumnail .font2{
 	font-size: 18px;	
-	width: 24vw;
-	height: 9vh;
+	width: 250px;
+	height: auto;
 	margin: 2vh 7vw 2vh 0.7vw;
 	font-family: Noto Sans KR;	
 	font-weight: normal;
@@ -851,51 +968,52 @@ h1 {
 	text-align: left;
 	color: #000000;
 }
+.inSide_Img5_area{
+	float: right;
+	width: 525px;
+	height: 421px;
+	/* margin: 130px 0 0 36px; */
+}
 
 .inSide_Img_5{
-	position: absolute;
-	width: 27.5vw;
-	height: 43.5vh;
-	/* left: 1vw; */
-	top: 29.5vh;
-	margin: 0 3vh 0 10vh;
+	float: right;
+	width: 525px;
+	height: 421px;
 }
 
-.inSide_Img5_area{
-	position: relative;
-	width: 27.5vw;
-	height: 43.5vh;
-	/* right: 1vh; */
-	left: 33.5vw;
-	bottom: 23vh;
-	margin: 0 10vh 0 0;
-}
 
 .section_link_5 {
-	position: relative;
-	bottom: 24vh;
-	left : 8vw;
-	width: 11.5vw 11vh;
-	font-size: 0.9vw;
-	font-family: Noto Sans KR;	
-	font-stretch: normal;
-	font-style: normal;
-	font-weight: bold;
-	text-decoration: none;
-	text-transform: uppercase;
+	position: absolute;
+	height: 48px;
+    width: 210px;
+	margin: 35px 65px 40px 8px;
+    padding: 14px 50px;
 	display: inline-block;
-	margin-top: 7vh;
-	padding: 1.2vh 3vw;
 	line-height: 1;
 	border: solid 3px #34613f;
 	color: #ffffff;
-	background-color: #4a7755;
+	background-color: #34613f;
 	box-shadow: 0 3px 6px 0
 		rgba(0,0,0,0.16);
 	border-radius: 0.5vw;
 	transition: ease-out 0.3s;
 	
 }
+.section_link_5 .link5_text {
+	margin: 0;
+	width: 100px;
+	height: 27px;
+	font-family: NotoSansKR;
+	font-size: 18px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+}
+
+
 .section_link_5:hover {
 	color: #34613f;
 	border-color: #34613f;
@@ -905,21 +1023,39 @@ h1 {
 	background-color: #ffffff;
 
 }
+.fab {
+	position: absolute;
+	font-weight:400;
+	font-size: 2vw;
+	color: #a19999;
+	float: left;
+	margin: 15px 0 0 45px;
+	text-decoration: none; 
+	outline: none
+}
 
+.fab .fa-instagram {
+	text-decoration: none; 
+	outline: none;
+	color:#fff; 
+	/* width: 5vw;
+	height: 5vh; */
+	
+}
 
 .full_footer{
-	position: absolute;
-	width: 30vw;
-	left: 40vw;
-	height: 43vh;
-	top: 52vh;
+	position: relative;
+	width: 360px;
+	height: 30vh;
+	margin: 19px 170px 0 0px;
+	float: right;
 }
 
 .full_footer .underword{
-	width: 1vw;
-	height: 2.5vh;
-    width: 30vw;
-	font-size: 0.9vw;
+	position: relative;
+	width: 360px;
+	height: auto;
+	font-size: 13px;
 	font-family: Noto Sans KR;	
 	line-height: 1.62;
 	letter-spacing: normal;
@@ -932,18 +1068,838 @@ h1 {
 }
 /* Desktop end */
 
-/* For Tablet: */
-/* @media only screen and (min-width: 1024px) and (max-width: 1920px){
-	.clearBoth{
-		clear : both;
-	}
-} */
-/* Tablet end */
-
 /* For Phone: */
-/* @media only screen and (min-width: 1024px) and (max-width: 1920px){
+	
+@media only screen and (max-width: 768px){
 	.clearBoth{
 		clear : both;
 	}
-} */
+
+
+	.font1{
+		width: 200px;
+  		height: 24px;
+		font-size: 32px;
+		font-weight: 900;
+		color: #000000;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.16;
+		letter-spacing: normal;
+	}
+	
+	/* 메인페이지 ----------------------------------------------------*/
+	
+	.main {
+		background-color: #ffffff;
+		height: 100%;
+	
+	}
+	
+	
+	/* 네비바 */
+	.linkArea {
+		position: fixed;
+		justify-content: center;
+		align-items: center;
+		width: 150px;
+		left: 32vw;
+		-webkit-transform: translateY(-100%);
+		-ms-transform: translateY(-100%);
+		-o-transform: translateY(-100%);
+		transform: translateY(-100%); 
+	}
+	
+	
+	.section_link {
+		width: 146px;
+  		height: 103px;
+		margin: 18px 2px 12px  0;
+		border-radius: 20px;
+		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
+	}
+	.section_link :hover{
+		transition: ease-out 0.3s;
+		border-radius: 20px;
+	
+		border: #ffffff;
+	
+	}
+	.outSide_Image{
+		width: 310px;
+		height: 499px;
+		background-size: 550px;
+		margin: 100px 25px 44px;
+		padding: 20px 28px 1px 22px;
+		border-radius: 30px;
+		align-items: center;
+		justify-content: center;
+		background-image: url("../../resource/pcbg_pattern.png");
+	}
+	
+	
+	.section_container_1 {
+		position: relative;
+		width: 265px;
+		height: 480px;
+		color: #ffffff;
+	}
+	
+	.section_container_1.main {
+		text-align: center;
+	}
+	
+	.thumImage{
+		width: 26vw;
+		height: 10vh;
+	
+	}
+	
+	.ayi_img{
+		width: 187px;
+		height: 36px;
+		margin: 0 73px 8px 0;
+		padding: 1.1px 2.1px 0.3px 2.3px;
+	}
+	.ayi_img2{
+		position: absolute;
+		width: 239px;
+		height: 46px;
+	}
+	.ayi_img3{
+		width: 145px;
+		height: 28px;
+		margin: 0 6px 8px 0;
+		padding: 0.7px 2.6px 0.6px 1.8px;
+	}
+	
+	
+	.firstPage_thumnail{
+		position: absolute;
+		width: 220px;
+		height: 175px;
+		margin: 32px 0 0 0;
+		text-align: left;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		font-weight: 800;
+		display: inline-block;
+		z-index: 1;
+	}
+	
+	.firstPage_thumnail .font2{
+		position: relative;
+		width: 150px;
+		height: 57px;
+		margin: 8px 123px 20px 4px;
+		font-family: NotoSansKR;
+		font-size: 20px;
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.4;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+	}
+	
+	.inSide_Img{
+		position: absolute;
+		width: 254px;
+		height: 295px;
+		margin: 0 0 0 6px;
+		bottom: 0;
+		/* padding: 123px 87px 47px 71px; */
+	
+	}
+	
+	.inSide_Img .main_phnGif{
+		width: 254px;
+		height: 295px;
+		/* margin: 32px 0 0 6px; */
+		/* padding: 123px 87px 47px 71px; */
+			
+	}
+	
+	.section_link_1 {
+		position: relative;
+		width: 143px;
+		height: 44px;
+		/* margin: 0 10px 10px 5px; */
+		/* padding: 10px 10px 10px 10px; */
+		border-radius: 8px;
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		background-color: #34613f;
+		text-align: center;
+		
+	}
+	.section_link_1 .link1_text{
+		position: relative;
+		width: 100px;
+		height: 25px;
+		margin: 0 0 0 20px; 
+		font-family: NotoSansKR;
+		font-size: 17px;
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.82;
+		letter-spacing: normal;
+		color: #ffffff;
+	}
+	.section_link_1 .link1_text:hover {
+		color: #34613f;
+		border-color: #34613f;
+		background-color: #ffffff;
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		border: solid 3px #34613f;
+	
+	}
+	
+	
+	
+	/* 2페이지 ----------------------------------------------------*/
+	
+	.delivery {
+		background-color: #ffffff;
+		height: 100%;
+	
+	}
+	
+	.outSide_Image2{
+		position: relative;
+		width: 310px;
+		height: 499px;
+		padding: 0 0 0 20px;
+		border-radius: 7vh;
+		justify-content: center;
+		align-items: center;
+		background-image: url("../../resource/pcbg_pattern.png");
+	}
+	
+	
+	.inSide_Img2{
+		position: relative;
+		width: 308px;
+		height: 307px;
+		z-index: 1;
+	
+	}
+	.inSide_Img2 .delivery_phnGif{
+		width: 308px;
+		height: 307px;
+	}
+	
+	.section_container_2 {
+		position: relative;
+		width: 270px;
+		height: 500px;
+		color: #ffffff;
+	}
+	
+	.section_container_2 .delivery {
+	
+	
+	}
+	
+	.secondPage_thumnail{
+		position: absolute;
+		width: 270px;
+		height: 180px;
+		margin: 300px 0 0 0;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		font-weight: 800;
+		z-index: 2;
+		float: left;
+	}
+	.secondPage_thumnail .font1-2{
+		width: 220px;
+		height: 31px;
+		margin: 0 27px 6px 0;
+		font-family: NotoSansKR;
+		font-size: 21px;
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.52;
+		letter-spacing: normal;
+		text-align: left;
+		color: #000000;
+	}
+	
+	.secondPage_thumnail .font2{
+		width: 240px;
+		height: 62px;
+		margin: 6px 0 0;
+		font-family: NotoSansKR;
+		font-size: 14px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.5;
+		letter-spacing: normal;
+		text-align: left;
+		color: #222222;
+	}
+	
+	
+	.section_link_2 {
+		position: relative;
+		z-index: 3;
+		width: 276px;
+		height: 182px;
+		margin: -80px 380px 0 420px;
+		border-radius: 20px;
+		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
+	}
+	.section_link_2 :hover{
+		transition: ease-out 0.3s;
+		border: #ffffff;
+	
+	}
+	
+	
+	/* 3페이지 ----------------------------------------------------*/
+	.review {
+		background-color: #ffffff ;
+		height: 100%;
+	
+	}
+	
+	.section_container_3 {
+		position: relative;
+		width: 360px;
+		height: 563px;
+		color: rgb(0, 0, 0);
+		padding: 125px 20px 10px 20px;
+		top: 25%;
+		transform: translate(0, -25%);
+	}
+	
+	.outSide_Image_3{
+		position: relative;
+		width: 272px;
+		height: 563px;
+		margin : 0 88px 77px 0;
+		background-color : #ffc4b5;
+		border-radius:  0 0 7vh;
+	}
+	
+	
+	/* 내부 후기카드 */
+	.revSlide{
+		position: relative;
+		width: 340px;
+  		height: 328px;
+		margin: 60px  12px 0 0;
+		/* padding: 20px 18px 27px 19px; */
+		border-radius: 10px;
+		display: flex;
+		overflow: hidden;
+		z-index: 1;
+		background-color: #ffffff;
+	}
+	
+	
+	.section_container .review {
+		text-align: center;
+	}
+	
+	
+	.thirdPage_thumnail{
+		position: absolute;
+		width: 240px;
+		height: 60px;
+		z-index: 2;
+	}
+	.thirdPage_thumnail .font1{
+		width: 170px;
+		height: 60px;
+		font-size: 32px;
+		font-weight: 900;
+		color: #000000;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.16;
+		letter-spacing: normal;
+	}
+
+	.thirdPage_thumnail .font1-2{
+		float: right;
+		width: 130px;
+		height: 40px;
+		margin: 0 0 0 7px;
+		font-size: 27px;
+		font-weight: 900;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		letter-spacing: normal;
+		line-height: 1.26;
+	}
+	
+	.thirdPage_thumnail .font2{
+		width: 16vw;
+		font-size: 17px;
+		margin: 4px 119px 14px 35px;
+		line-height: 1.65;
+		font-family: Noto Sans KR;	
+		font-weight: normal;
+		font-stretch: normal;
+		letter-spacing: normal;
+		color: #222222;
+	
+	}
+	
+	.section_link_3 {
+		position: relative;
+		z-index: 3;
+		width: 276px;
+		height: 182px;
+		margin: 100px 380px 0 465px;
+		border-radius: 20px;
+		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
+	}
+	.section_link_3:hover {
+		border-color: #fff;
+	}
+	.section_link_3 .size2{
+		font-size: 2vh;
+		line-height: 2.8vh;
+		color: #fff;
+	
+	}
+	
+	
+	
+	
+	/* 4페이지 ----------------------------------------------------*/
+	.hotmenu	{
+		background-color:  #ffffff;
+		height: 100%;
+	
+	}
+	.HT_sectionarea{
+		position: absolute;
+		overflow: hidden;
+		width: 95vw;
+		height: 68vh;
+		/* margin: 0 20px 0 310px; */
+		z-index: 1;
+		float: right;
+	}
+	.HTSliderList{
+		position: relative;
+		/* width: 350px; */
+		height: 300px;
+		margin: 140px 0 0 0; 
+		/* overflow: hidden; */
+		display: flex;
+	}
+	
+	
+	.outSide_Image_4{
+		position: relative;
+		width: 272px;
+		height: 563px;
+		background-color :#ffc4b5 ;
+		z-index: 2;
+		border-radius: 0 0 0 25px;
+		margin: 0 0 87px 89px;
+	}
+	.section_container_4 {
+		/* position: relative;
+		z-index: 1;
+		width: 270px;
+		height: 87vh;
+		color: rgb(0, 0, 0);
+		float: left; */
+
+		position: relative;
+		width: 360px;
+		height: 563px;
+		color: rgb(0, 0, 0);
+		padding: 90px 20px 10px 20px;
+		right: 90px;
+	}
+	/* .right .section_container {
+		text-align: right;
+	} */
+	/* 
+	.section_container_4 .hotmenu {
+		padding-top: 250px;
+		text-align: center;
+	} */
+	
+	
+	.section_link_4 {
+		position: relative;
+		z-index: 3;
+		width: 276px;
+		height: 182px;
+		margin: 50px 380px 0 15px;
+		border-radius: 20px;
+		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
+	}
+	
+	.section_link_4:hover {
+		transition: ease-out 0.3s;
+		border: #ffffff;
+		border-radius: 20px;
+	
+	}
+	
+	
+	.fourthPage_thumnail{
+		/* position: absolute;
+		width: 35vh;
+		height: 18vh;
+		margin: 50px 10px 0 5px;
+		text-align: left; */
+		position: absolute;
+		margin: 15px 10px 0 10px;
+		width: 320px;
+		height: 150px;
+		z-index: 2;
+	}
+	.fourthPage_thumnail .fourth_font1{
+		width: 190px;
+		height: 42px;
+		margin: 15px 119px 0 0;
+		font-size: 27px;
+		font-weight: 900;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		letter-spacing: normal;
+		
+		/* width: 40.1px;
+		height: 40.1px;
+		margin: 50px 10px 0 5px;
+		text-align: left; */
+		
+	}
+	.fourthPage_thumnail .font2{
+		position: absolute;
+		width: 48vw;
+		font-size: 17px;
+		/* margin: 4px 119px 14px 35px; */
+		line-height: 1.65;
+		font-family: Noto Sans KR;	
+		font-weight: normal;
+		font-stretch: normal;
+		letter-spacing: normal;
+		color: #222222;
+	}
+	.font3{
+		position: absolute;
+		width: 100px;
+		height: 40px;
+		margin: 0 119px 0 40px;
+		font-size: 27px;
+		font-weight: 900;
+		font-stretch: normal;
+		font-style: normal;
+		letter-spacing: normal;
+		text-align: left;
+		color: #000000;
+	}
+	
+	.moreBtn{
+		position: relative;
+		width: 103px;
+		height: 44px;
+		
+		font-family: Noto Sans KR;	
+		font-size: 16px;
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+	
+		line-height: 1.75;
+		border-radius: 44px;
+		border: solid 1px #bdbdbd;
+		margin: 10px 20px 20px 30px;
+		background-color: #ffffff;
+		text-align: center;
+		letter-spacing: normal;
+		transition: ease-out 0.3s;	
+		opacity: 0.9;	
+		
+	}
+	.moreBtn:hover{
+		border-radius: 44px;
+		background-color: #34613f;
+	}
+	
+	.moreBtn_mobile{
+		position: absolute;
+		width: 24px;
+		height: 23.2px;
+		margin: 10px 0 0 10px;
+		opacity: 0.87;
+	}
+	
+	
+	.modal-dialog .modal-content{
+		position: relative;
+		width: 288px;
+		height: 266px;
+		margin: 114px 29px 0 23px;
+		display: flex;
+		flex-direction: column;
+		pointer-events: auto;
+		background-clip: padding-box;
+		border: 4px solid #34613f;
+		border-radius: 15px;
+		background-color: #ffffff;
+		text-align: center;
+		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
+	}
+	
+	.modal_Img{
+		width: 30vw;
+		height: 20vh;
+	}
+	
+	.modal-header.header{
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		padding: 1rem 1rem;
+		border-top-left-radius: calc(.3rem - 1px);
+		border-top-right-radius: calc(.3rem - 1px);
+		border: none;
+	}
+	
+	.modal-body.body{
+		/* bottom: 2vh; */
+		height: 15vw;
+		text-align: center;
+		border-bottom-left-radius: calc(.3rem - 1px);
+		border-bottom-right-radius: calc(.3rem - 1px);
+	}
+	
+	.modal-text{
+		font-family: Noto Sans KR;	
+		font-size: 17px;
+		font-weight: bold;
+		font-style: normal;
+		font-stretch: normal;
+		letter-spacing: normal;
+		color: #000000;
+		/* line-height: 2.5; */
+		
+	}
+	
+	.modal_btn{
+		position: relative;
+		width: 140px;
+		height: 35px;
+		background-color: #4a7755;
+		border-radius: 40px;
+		padding: 1px 1px 1px 1px;
+		line-height: 1.5;
+	}
+	.modal_btn .btnWord{
+		position: absolute;
+		color: white;
+		font-family: Noto Sans KR;	
+		float: right;
+	
+		width: 160px;
+		height: 35px;
+		font-weight: bolder;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 2;
+		letter-spacing: normal;
+		text-align: center;
+	}
+	.material-icons{
+		color: white;
+		font-size: 25px;
+		width: 45px;
+		height: 20px;
+		float: left;
+	}
+	.fas{
+		position: absolute;
+		font-weight: 900;
+		font-size: 30px;
+		margin: 5px 0 0 0;
+	}
+
+	.fas-hashtag{
+		width: 24px;
+  		height: 24px;
+		font-weight: 900;
+		color: #000000;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.16;
+		letter-spacing: normal;
+		margin: none;
+		float: left;
+	}
+	
+	
+	/* 5페이지 ----------------------------------------------------*/
+	
+	
+	.downintro {
+		background-color:  #ffffff ;
+		/* height: 50%; */
+	
+	}
+	.outSide_Image_5{
+		position: relative;
+		width: 326px;
+  		height: 241px;
+		background-color : #ffc4b5 ;
+		border-radius: 12px;
+		margin:0 0 260px 0;
+	}
+	
+	.section_container_5 {
+		position: relative;
+		width: 326px;
+  		height: 241px;
+		overflow: hidden;
+		color: rgb(0, 0, 0);
+		padding: 40px 15px 0 20px;
+	
+	}
+	.right .section_container {
+		text-align: right;
+	}
+	
+	
+	.section_container .review {
+		padding-top: 250px;
+		text-align: center;
+	}
+	
+	.fifthPage_thumnail{
+		position: absolute;
+		width: 14px;
+		height: 151px;
+		text-align: left;
+	}
+	.fifthPage_thumnail .font2{
+		font-size: 14px;	
+		width: 151px;
+		height: 60px;
+		margin: 8px 0 19px;
+		font-family: Noto Sans KR;	
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.56;
+		letter-spacing: normal;
+		text-align: left;
+		color: #000000;
+	}
+	.inSide_Img5_area{
+		float: right;
+		width: 165px;
+		height: 201px;
+		/* margin: 130px 0 0 36px; */
+	}
+	
+	.inSide_Img_5{
+		float: right;
+		width: 165px;
+		height: 201px;
+	}
+	
+	
+	.section_link_5 {
+		position: absolute;
+		width: 130px;
+		height: 35px;
+		margin: 10px 21px 0 0;
+		padding: 8px 31px 7px;
+		font-size: 14px;
+		font-family: Noto Sans KR;	
+		font-stretch: normal;
+		font-style: normal;
+		font-weight: bold;
+		text-decoration: none;
+		text-transform: uppercase;
+		display: inline-block;
+		line-height: 1;
+		border: solid 3px #34613f;
+		color: #ffffff;
+		background-color: #34613f;
+		box-shadow: 0 3px 6px 0
+			rgba(0,0,0,0.16);
+		border-radius: 8px;
+		transition: ease-out 0.3s;
+		
+	}
+	.section_link_5 .link5_text{
+		width: 68px;
+		height: 20px;
+		margin: 0;
+	}
+
+	.section_link_5:hover {
+		color: #34613f;
+		border-color: #34613f;
+		background-color: #ffffff;
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		border: solid 3px #34613f;
+		background-color: #ffffff;
+	
+	}
+	.fab {
+		position: absolute;
+		font-weight:400;
+		width: 24px;
+		height: 24px;
+		color: #a19999;
+		float: left;
+		margin: 15px 0 0 8px;
+		text-decoration: none; 
+		outline: none
+	}
+	
+	.fab fa-instagram{
+		text-decoration: none; 
+		outline: none
+	}
+	
+	.full_footer{
+		position: relative;
+		width: 320px;
+		height: 30vh;
+		margin-top: 37px;
+		float: right;
+	}
+	
+	.full_footer .underword{
+		position: relative;
+		width: 360px;
+		height: auto;
+		font-size: 13px;
+		font-family: Noto Sans KR;	
+		line-height: 1.62;
+		letter-spacing: normal;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal; 
+		padding-top: 0.5vh;
+		color: #757575;
+	}
+
+
+
+}
 /* Phone end */

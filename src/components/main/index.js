@@ -1,5 +1,6 @@
 import Landing from "./Landing";
-export {
-    Landing
+import DownImg from "./DownImg"
 
+export {
+    Landing,DownImg
 }

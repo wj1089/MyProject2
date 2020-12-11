@@ -8,17 +8,30 @@ import HoverImage from "react-hover-image"
 import './Landing.css'
 import '../contentCard/ContentCard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import AyiImage from '../../resource/logo_wm.png'
 import BtnRight from "../../resource/arrow_forward_ios.svg";
 import BtnLeft from "../../resource/arrow_back_ios.svg";
 import phoneImg from "../../resource/phone_section1.gif"
 import deliveryImg from "../../resource/phone_section2_pc.gif"
+import deliveryImg_phone from "../../resource/phone_section2_mobile.png"
+
 import footerImg from "../../resource/footer_pc.png"
+import footerImgM from "../../resource/footer_mobile.png"
+
 import greenDown from "../../resource/appdownload_pc.png"
 import whiteDown from "../../resource/appdownload_pc-hover.png"
 
+import Slider from "../contentCard/Slider.js"
+import { computeHeadingLevel } from '@testing-library/react';
+
+
+
+
+
 const TOTAL_SLIDES = 2;
+const desktop = window.innerWidth >  768 ? "desktop": "";
+const phone   = window.innerWidth <= 768 ? "phone" : "";
+
 const Landing = () => {
     
     // const history = useHistory();
@@ -26,6 +39,8 @@ const Landing = () => {
     const [canScroll, setCanScroll] = useState(true);
     const sectionTitle = [ 'Main', 'Delivery', 'Review','Hotmenu','Downintro' ];
     const mainContent = useRef();
+    
+
 
     //Route to Google PlayStore
         function handleClick(e) {
@@ -39,12 +54,14 @@ const Landing = () => {
         useEffect(() => {        
             scrollContent(spinIndex);
             console.log(spinIndex)
-
+            // console.log("Scroll Content")
         }, [spinIndex]);
 
         useEffect(() => {
             setTimeout(function() {
                 setCanScroll(true);
+                // console.log("Can Scroll")
+                // console.log(spinIndex)
             }, 100);  
         }, [canScroll]);
 
@@ -74,35 +91,37 @@ const Landing = () => {
             ');
         };
 
-
-        let start = 0;
-        const touchStart = e =>{
-            start = e.touches[0]
-        }
-
-        const touchFinish = e =>{
-            if ( canScroll ) {
-                setCanScroll(false);
-                if ( start.clientY > e.changedTouches[0].clientY ) {
-                    // scroll down
-                    if ( spinIndex < sectionTitle.length-1 ) setSpinIndex(spinIndex + 1);
-                } else {
-                    // scroll up
-                    if ( spinIndex > 0 )  setSpinIndex(spinIndex - 1); 
-                }
-            }   
-        }
+        // function slideContent(count) {
+        //     mainContent.current.setAttribute('style', '\
+        //     -webkit-transform: translateX(-'+ count*30 +'vh);\
+        //     -ms-transform: translateX(-'+ count*30 +'vh);\
+        //     -o-transform: translateX(-'+ count*30 +'vh);\
+        //     transform: translateX(-'+ count*30 +'vh);\
+        //     ');
+        // };
 
 
 
 //Review section && Slide
         const [currentSlide, setCurrentSlide] = useState(0);
         const slideRef = useRef(null);
-        const [currentSlide2, setCurrentSlide2] = useState(0);
-        const slideRef2 = useRef(null);
 
-        // Review 다음 슬라이드
+        // Review 왼쪽 슬라이드
+        const slideBtn_L = () => {
+            // console.log("currentSlide_L")
+            // console.log(currentSlide)
+
+            if (currentSlide === 0) {
+            setCurrentSlide(TOTAL_SLIDES);
+            } else {
+            setCurrentSlide(currentSlide - 1);
+            }
+        };
+
+        // Review 오른쪽 슬라이드
             const slideBtn_R = () => {
+                // console.log("currentSlide_R")
+                // console.log(currentSlide)
                 if (currentSlide >= TOTAL_SLIDES) { // 더 이상 넘어갈 슬라이드가 없으면 슬라이드를 초기화합니다.
                 setCurrentSlide(0);
                 } else {
@@ -110,41 +129,59 @@ const Landing = () => {
                 }
             };
 
-        // Review 전 슬라이드
-            const slideBtn_L = () => {
-                if (currentSlide === 0) {
-                setCurrentSlide(TOTAL_SLIDES);
-                } else {
-                setCurrentSlide(currentSlide - 1);
-                }
-            };
 
-        // HotTrack 다음 슬라이드
-        const HTslideBtn_R = () => {
-            if (currentSlide2 >= TOTAL_SLIDES) { // 더 이상 넘어갈 슬라이드가 없으면 슬라이드를 초기화합니다.
-            setCurrentSlide2(0);
-            } else {
-            setCurrentSlide2(currentSlide2 + 1);
-            }
-        };
 
-        // HotTrack 전 슬라이드
-            const HTslideBtn_L = () => {
-                if (currentSlide2 === 0) {
-                setCurrentSlide2(TOTAL_SLIDES);
-                } else {
-                setCurrentSlide2(currentSlide2 - 1);
-                }
-            };
-
-        useEffect(() => {
-            //section 3
-            slideRef.current.style.transition = "all 1.5s ease-in-out";
-            slideRef.current.style.transform = `translateX(-${currentSlide}00%)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
-            //section 4
-            slideRef2.current.style.transition = "all 1.5s ease-in-out";
-            slideRef2.current.style.transform = `translateX(-${currentSlide2}00%)`; 
-        }, [currentSlide,currentSlide2]);
+            
+//Review axios, API 연결
+        const [reviewItem, setReviewItem] = useState([]);
+            useEffect(()=>{
+                axios
+                .get(`https://childsnack-test.appspot.com/_ah/api/review/v1/getReviewList?count=20&startCursor=0`)
+                .then(res=>{
+                    if(res && res.data.code === "1"){
+                        const parseJson = JSON.parse(res.data.msg)
+                        const aaaa = parseJson.item
+                        // console.log("aaaa")
+                        // console.log(aaaa)
+                        var RevArr = [];
+                        aaaa.map( item => (  
+                            RevArr.push({
+                                id: item.id,
+                                img: item.product.thumnail,
+                                content: makeReviewElement(item.point, item.description)
+                            })
+                            ))
+                        setReviewItem(RevArr);
+                    }
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+            },[]);
+      
+                        console.log("reviewItem.item.id")
+                        console.log(reviewItem[0])
+        
+        function makeReviewElement(point, description) {
+            return (    
+                <div className="RV_downArea">
+                    <div className="RV_iconArea">
+                        <span className="material-icons">
+                            favorite</span>
+                            </div>
+                    <div className="RV_slideText"
+                         
+                    >
+                        <p className="RV_contentName">1
+                            {point}
+                            </p>
+                            <p className="RV_contentDescrip">
+                            {description}
+                            </p>
+                    </div>
+                </div>
+            )
+        }
 
 
 //HotTrack axios, API연결
@@ -154,11 +191,24 @@ const Landing = () => {
                 axios
                 .get(`https://igre-prod.appspot.com/_ah/api/category/v1/getList?id=6476096291733504`)
                 .then(response=>{
+                    
                     if(response && response.data.code === "1"){
+                    // 1번(데이터를 가져온다.)
                         const parseJson = JSON.parse(response.data.msg);
-                        // console.log(parseJson)
-                        setProductItem(parseJson[0].products)
-                        console.log(parseJson)
+                    // 2번(데이터 가공)
+                        const bbbb = parseJson[0].products;
+                        var hotTrackArr = [];
+                        bbbb.map( product => (
+                            hotTrackArr.push({
+                                id: product.prodectId,
+                                img: product.thumnail,
+                                content: makeHotTrackElement(product.name, product.description)
+
+                            })
+                            ))
+                            
+                    // 3번 데이터저장
+                        setProductItem(hotTrackArr);
                     }
                 })
                 .catch(error=>{
@@ -166,31 +216,56 @@ const Landing = () => {
                 })
             },[])
 
+
+        function makeHotTrackElement(name, description) {
+            return (    
+                <>            
+                        
+                        <p className="HT_contentText">
+                            <p className="HT_contentName">
+                                {name}
+                            </p>
+                            <p className="HT_contentDescrip">
+                                {description}
+                            </p> 
+                        </p>
+                </>
+            )
+        }
+
+
             const [show, setShow] = useState(false);
 
             const handleClose = () => setShow(false);
             const handleShow = () => setShow(true);
 
 
-    
+    //슬라이드 이동(상하)
+        let start = 0;
+        const touchStart = e =>{
+            // start = e.touches[0]
+            e.stopPropagation();
+            start = e.touches[0]
+        }
 
-//Review axios, API 연결
-        // const [msga, setMsga] = useState([]);
-        const [reviewItem, setReviewItem] = useState([]);
-        useEffect(()=>{
-            axios
-            .get(`https://childsnack-test.appspot.com/_ah/api/review/v1/getReviewList?count=20&startCursor=0`)
-            .then(res=>{
-                if(res && res.data.code === "1"){
-                    const parseJson = JSON.parse(res.data.msg)
-                    const aaaa = parseJson.item
-                    setReviewItem(aaaa);
-                }
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-        },[]);
+        const touchFinish = e =>{
+            setCanScroll(false);
+            e.stopPropagation();
+
+        if ( canScroll ) {
+            if ( start.clientY > e.changedTouches[0].clientY ) {
+                // scroll down
+                if ( spinIndex < sectionTitle.length-1 ) setSpinIndex(spinIndex + 1);
+                
+            } else {
+                // scroll up
+                if ( spinIndex > 0 )  setSpinIndex(spinIndex - 1); 
+            }
+        }   
+    }
+
+
+
 
 
     return (
@@ -198,7 +273,7 @@ const Landing = () => {
 
             {/* 상단메뉴바 */}
             <MenuBar/>
-            <div 
+            <div
             className="main_content" 
             onTouchStart={touchStart} 
             onTouchEnd={touchFinish}
@@ -209,9 +284,6 @@ const Landing = () => {
     {/* 첫번째 페이지 */}
                 <section className="fbp main" data-title="Main">
                         <div className="outSide_Image">   
-
-                                
-
                             <div className="section_container_1">
                                 <div className="firstPage_thumnail">
                                     <img 
@@ -227,7 +299,7 @@ const Landing = () => {
                                         onClick={handleClick}
                                         >
                                     <p className="link1_text">앱 다운로드</p>
-                                </button>
+                                    </button>
                                 </div>
                                 {/* InSide Image */}
                                 <div className="inSide_Img">
@@ -236,12 +308,11 @@ const Landing = () => {
                                         alt="아이그레infoSlide"
                                         className="main_phnGif"/>
                                 </div>
-                                
-
-                                
-                                
                             </div>
-                            
+                        </div>
+                        <div className="mouseDown">
+                            <i className="fas fa-mouse"/>
+                            <i className="fas fa-angle-double-down"/>
                         </div>
                 </section>
 
@@ -261,108 +332,141 @@ const Landing = () => {
                                 </p>
                             </span>
 
-                            <span className="inSide_Img2">
-                                <img 
-                                className="delivery_phnGif" 
-                                src={deliveryImg}
-                                alt="아이그레gifImage-1"
-                                >
-                                </img>
-                            </span>
-                            <HoverImage 
-                                className="section_link_2" 
-                                onClick={handleClick}
-                                src={greenDown}
-                                hoverSrc={whiteDown}
-                                alt="아이그레다운이미지"
-                                />
+                            { 
+                                desktop &&(
+                                    <span className="inSide_Img2">
+                                        <img 
+                                        className="delivery_phnGif" 
+                                        src={deliveryImg}
+                                        alt="아이그레gifImage-1"
+                                        >
+                                        </img>
+                                    </span>
+                                
+                            
+                            )
+                            }
+
+                            { 
+                                phone &&(
+                                    <span className="inSide_Img2">
+                                        <img 
+                                        className="delivery_phnGif" 
+                                        src={deliveryImg_phone}
+                                        alt="아이그레gifImage-1"
+                                        />
+                                    </span>
+                                )
+                            }
                         </div>
+                    <div className="mouseDown2">
+                            <i className="fas fa-angle-double-down"/>
+                    </div>
                     </div>
                 </section>
-
+                            
 
 
 
 
     {/* 세번째 페이지 */}
                 <section className="fbp review" data-title="Review">
-                    <div className="outSide_Image_3">      
-                        <div className="section_container_3">
-                            
-                            <div className="thirdPage_thumnail">
-                                <div className="font1">
-                                    <div className="fas fa-hashtag">
-                                        <img 
-                                            className="ayi_img2" 
-                                            src={AyiImage}
-                                            alt="아이그레mainLogo-2"
-                                        />
-                                        <p className="font1-2">고객후기</p>
-                                        <p className="font2">
-                                            정기배송을 경험한 <br/>
-                                            고객님들의 후기를 <br/>
-                                            확인해보세요. 
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                    
+                { desktop &&(
+                    <>
+                    <div className="outSide_Image_3"/>  
+                    <div className="section_container_3"> 
+                                <div className="thirdPage_thumnail">
+                                        <div className="font1">
+                                            <div className="fas fa-hashtag">
+                                                <img 
+                                                    className="ayi_img2" 
+                                                    src={AyiImage}
+                                                    alt="아이그레mainLogo-2"
+                                                />
+                                                <p className="font1-2">고객후기</p>
+                                                <p className="font2">
+                                                    정기배송을 경험한 <br/>
+                                                    고객님들의 후기를 <br/>
+                                                    확인해보세요. 
+                                                </p>
+                                            </div>
+                                        </div>
+                                </div> 
 
                             {/* 상품리뷰 슬라이드 */}
-                            
-                            <div className="revSlide">
-                                    <button className="clickBtn_L" onClick={slideBtn_L}>
-                                        <img className="btnSize" src={BtnLeft}/>
-                                    </button>
-                                <div className="SliderContainer" ref={slideRef}>
+                             <div className="revSlide">
+
+                                <Slider 
+                                data={reviewItem} 
+                                containerCss={"SliderContainer"}
+                                itemCss= {"inSide_slide"}
+                                contentCss= {"RV_slideImgArea"}
+                                imgCss= {"RV_imgSize"}
+                                />
+                                </div> 
+                        </div> 
+                    </>
+                         ) }
+
+                { phone &&(
+                    <div className="outSide_Image_3">      
+                        <div className="section_container_3">
+                            <div className="thirdPage_thumnail">
+                                    <div className="font1">
+                                        <p className="fas fa-hashtag"></p>
+                                        <p className="font1-2">고객후기</p>
+                                    </div>
+                            </div>
+
+                             <div className="revSlide">
+
+                                <Slider data={reviewItem}/>
+
+                                {/* <div className="SliderContainer" ref={slideRef}>
                                     {
                                         reviewItem.map( reviewItem => (
                                             <div className="inSide_slide">
-                                                <div className="slide_img" key={reviewItem.id}>
+                                                <div className="RV_slideImgArea" key={reviewItem.id}>
                                                     <img 
                                                     className="RV_imgSize" 
-                                                    src={reviewItem.product.thumnail}
+                                                    src={reviewItem.img}
                                                     alt="아이그레ReviewImage"
                                                     />
                                                 </div>
+
                                                     <div className="RV_downArea">
                                                         <div className="RV_iconArea">
                                                             <span className="material-icons">
                                                                 favorite
                                                             </span>
                                                         </div>
-                                                        <div className="slide_text">
-                                                            <p className="RV_contentName">{reviewItem.point}</p>
-                                                            <p className="RV_contentDes">{reviewItem.description}</p> 
+                                                        <div className="RV_slideText">
+                                                            <p className="RV_contentName">{reviewItem.content.point}</p>
+                                                            <p className="RV_contentDescrip">{reviewItem.content.description}</p> 
                                                         </div>
                                                     </div>
                                             </div>
                                         ))
                                     }
-                                </div>
-                                    <button className="clickBtn_R" onClick={slideBtn_R}>
-                                        <img className="btnSize"  src={BtnRight}/>
-                                    </button>
-                            </div>
-                            {/* 다운버튼 */}
-                            <HoverImage 
-                            className="section_link_3" 
-                            onClick={handleClick}
-                            src={greenDown}
-                            hoverSrc={whiteDown}
-                            alt="아이그레다운로고"
-                            />
-
+                                </div> */}
+                            </div> 
                         </div>
                     </div>
-
+                )}
+                <div className="mouseDown3">
+                    <i className="fas fa-angle-double-down"/>
+                </div>
                 </section>
 
-    {/*  네번째 페이지 */}
+    {/* 네번째 페이지 */}
                 <section className="fbp hotmenu" data-title="Hotmenu">
 
-                <div className="outSide_Image_4">    
-                    <div className="section_container_4" ref={slideRef2}>
+                    { desktop &&(
+                    <>
+                    <div className="outSide_Image_4"/>    
 
+                        <div className="section_container_4" >
                             <div className="fourthPage_thumnail">
                                 <div className="fourth_font1">
                                     <div className="fas fa-hashtag"/>
@@ -371,112 +475,132 @@ const Landing = () => {
                                             src={AyiImage}
                                             alt="아이그레mainLogo-2"
                                         />
-                                </div>
+                                
                                     <p className="font3">인기상품<br/></p>
                                     <p className="font2">
                                     아이그레가 자신있게<br/>
-                                    추천드리는 상품입니다.
-                                    </p>
-                                
+                                    추천드리는 상품입니다. </p>
                                     <button className="moreBtn"  onClick={handleClick}>
                                         더보기
                                     </button>
-                            </div>
-
-                        {/* 인기상품 슬라이드 */}
-                            
-
+                                </div>
+                            </div> 
+                        
                             <div className="HT_sectionarea">
 
-                                {/* 슬라이드 버튼 */}
-                                <button className="HTclickBtn_L" onClick={HTslideBtn_L}>
-                                    <img className="btnSize" src={BtnLeft}/>
-                                </button>
-                                <button className="HTclickBtn_R" onClick={HTslideBtn_R}>
-                                    <img className="btnSize"  src={BtnRight}/>
-                                </button>
-
-                                <div className="HTSliderList" key={productItem.categoryId}>
-                                {
-                                    productItem.map(productItem=>(
-                                        <div className="HT_sectionimgs">
-                                            <div className="HT_cardArea"  >
-                                                <img 
-                                                src={productItem.thumnail} 
-                                                className="HT_imgSize" 
-                                                alt="아이그레HotTrack_Image"
-                                                />
-                                                <p className="HT_contentText"  onClick={handleShow} >
-                                                    <p className="HT_contentName">{productItem.name}</p>
-                                                    <p className="HT_contentDes">{productItem.description}</p> 
-                                                </p>
-                                               
-                                            </div>
-                                        </div>
-                                    ))
-                                }
-                                
+                                <Slider 
+                                    data={productItem} 
+                                    containerCss={"HTSliderList"}
+                                    itemCss={"HT_sectionimgs"}
+                                    contentCss={"HT_cardArea"}
+                                    imgCss={"HT_imgSize"}
+                                    />
                             </div>
-                            
                         </div>
-                    </div>
-                        {/* </div> */}
-                
-                        {/* 모달버튼 */}
-                        <Modal
-                                show={show}
-                                onHide={handleClose}
-                                
-                                backdrop="static"
-                                keyboard={false}
-                                // dialogClassName="modal-90w"
-                                role="dialog"
-                                aria-modal="true"
-                                trbindex="-1"
-                                className="efef"
-                            >
-                            
-                            <Modal.Header 
-                                className="header"
-                                closeButton>
-                            </Modal.Header>
+                    </>
 
-                            <Modal.Body
-                            className="body"
-                            >
-                                <br/>
-                                <p className="modal-text">더 많은 정보가 궁금하시다면
-                                <br/>
-                                <img 
-                                    className="modal_logo" 
-                                    src={AyiImage}
-                                    alt="아이그레Modal_LogoImg"
-                                />
-                                , 더 간편하게 앱으로 만나보세요!</p>
-                                <br/>
 
-                            <button className="modal-btn" onClick={handleClick}>
-                                <p className="btnWord">
-                                <p className="material-icons" >
-                                save_alt
-                                앱 다운로드</p></p>
-                            </button>
-                            </Modal.Body>
-                           
-                        </Modal>
 
-            
+                    )}
+                       
+                        {/* { phone &&(
+                            <div className="section_container_4" >
+                                <div className="fourthPage_thumnail">
+                                    <div className="fourth_font1">
+                                        <p className="fas fa-hashtag"/>
+                                        <p className="font3">인기상품
+                                        <img 
+                                        src={BtnRight}
+                                        className="moreBtn_mobile" 
+                                        onClick={handleClick}/>
+                                        </p>
+                                        
+                                    </div>
+                                        <p className="font2">
+                                        아이그레가 자신있게<br/>
+                                        추천드리는 상품입니다. 
+                                        </p>
+                                </div>
                         
+                                <div className="HT_sectionarea">
 
-                        {/* 2번섹션기능 중복사용 */}
-                            <HoverImage 
-                                className="section_link_4" 
-                                onClick={handleClick}
-                                src={greenDown}
-                                hoverSrc={whiteDown}
-                                alt="아이그레 다운링크 로고"
-                                />
-                        </div>
+                                    <Slider 
+                                        data={productItem} 
+                                        containerCss={"HTSliderList"}
+                                        itemCss={"HT_sectionimgs"}
+                                        contentCss={"HT_cardArea"}
+                                        imgCss={"HT_imgSize"}
+                                        /> */}
+
+
+                                    {/* <div 
+                                        className="HTSliderList" 
+                                        key={productItem.categoryId}
+                                        // ref={slideRef2}
+                                    >
+                                        {
+                                        productItem.map(productItem=>(
+                                            <div className="HT_sectionimgs">
+                                                <div className="HT_cardArea"  >
+                                                    <img 
+                                                    src={productItem.thumnail} 
+                                                    className="HT_imgSize" 
+                                                    alt="아이그레HotTrack_Image"
+                                                    />
+                                                    <p className="HT_contentText"  onClick={handleShow} >
+                                                        <p className="HT_contentName">{productItem.name}</p>
+                                                        <p className="HT_contentDescrip">{productItem.description}</p> 
+                                                    </p>
+                                                
+                                                </div>
+                                            </div>
+                                        ))
+                                        }
+                                    </div> */}
+                                {/* </div> */}
+                        {/* </div>
+                        )} */}
+
+
+                            {/* 모달버튼
+                            <Modal
+                                    show={show}
+                                    onHide={handleClose}
+                                    
+                                    backdrop="static"
+                                    keyboard={false}
+                                    // dialogClassName="modal-90w"
+                                    role="dialog"
+                                    aria-modal="true"
+                                    trbindex="-1"
+                                    className="efef"
+                                >
+                                <Modal.Header 
+                                    className="header"
+                                    closeButton>
+                                </Modal.Header>
+
+                                <Modal.Body
+                                className="body"
+                                >
+                                    <p className="modal-text">더 많은 정보가 궁금하시다면
+                                    <br/>
+                                    <img 
+                                        className="modal_logo" 
+                                        src={AyiImage}
+                                        alt="아이그레Modal_LogoImg"
+                                    /><br/>
+                                    더 간편하게 앱으로 만나보세요!</p>
+                                    <br/>
+
+                                <button className="modal_btn" onClick={handleClick}>
+                                    <p className="material-icons" >
+                                        save_alt</p>
+                                    <p className="btnWord">
+                                        앱 다운로드</p>
+                                </button>
+                                </Modal.Body>
+                            </Modal> */}
             </section>
 
     {/* 다섯번째 페이지 */}
@@ -499,34 +623,47 @@ const Landing = () => {
                                                 편리한 정기배송 서비스를<br/> 
                                                 이용해보세요 <br/>
                                     </p>
+                                    <button 
+                                        className="section_link_5" 
+                                        data-toggle="modal"
+                                        onClick={handleClick} 
+                                        > 
+                                        <p className="link5_text">앱 다운로드</p>
+                                    </button>
                             </div>
-                            <div className="inSide_Img5_area">
-                                <img 
-                                className="inSide_Img_5" 
-                                src={footerImg}
-                                alt="아이그레logo2"
-                                />
-                            </div>
-                        </div>
-                            <button className="section_link_5" 
-                            data-toggle="modal"
-                            onClick={handleClick} 
-                            
-                            > 
-                                앱 다운로드
-                            </button>
-                            
-            {/* 풋터*/}
-                        <Footer/>
-                        </div>
 
+                            <div className="inSide_Img5_area">
+                                {desktop &&(
+                                    <img 
+                                    className="inSide_Img_5" 
+                                    src={footerImg}
+                                    alt="아이그레PCLogo2"
+                                    />
+                                )}
+                                    {phone &&(
+                                    <img 
+                                    className="inSide_Img_5" 
+                                    src={footerImgM}
+                                    alt="아이그레MobileLogo2"
+                                    />
+                                )}
+                            </div>
+                        </div>
+                            
                         {/* FontAwesome Instagram  */}
-                        <a className="fab fa-instagram" href="https://www.instagram.com"/>
-                    </section>
+                        <a 
+                        className="fab fa-instagram" 
+                        href="https://www.instagram.com"
+                        style={{ textDecoration: 'none', outline: 'none' }}
+                        />
+                        <Footer/>
+
+                    </div>
+                </section>
                     
             </div>
-
-            <div className="section_navigation">
+           
+             {/* <div className="section_navigation">
                 {sectionTitle.map((nl, index) => {
                     return (
                         <div className={`section_button ${spinIndex === index ? "active" : ""}`}
@@ -538,11 +675,24 @@ const Landing = () => {
                         </div>
                     );
                 })}
-            </div>
+            </div> */}
 
-
-            
+            {
+                (spinIndex > 0 && spinIndex < 4)&&(
+                    <div className="linkArea">
+                        <HoverImage 
+                        className="section_link" 
+                        onClick={handleClick}
+                        src={greenDown}
+                        hoverSrc={whiteDown}
+                        alt="아이그레다운이미지"
+                        />
+                    </div>
+                )
+            } 
         </main>
+
+        
     );
 };
 
