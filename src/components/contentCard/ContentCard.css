@@ -167,7 +167,9 @@
     width: 48px;
     height: 48px; 
     margin-top: 230px;
-    left: 60vw;
+    right: 0;
+    margin-right: 50px;
+    /* left: 56vw; */
     float: right;
     z-index: 1;
     background-color: rgba(150, 150, 150, 0);
@@ -224,7 +226,7 @@
 .HT_contentName{
     width: 252px;
     font-weight: bolder;
-    text-align: right;
+    text-align: center;
     text-overflow:ellipsis;
     white-space:nowrap;
     overflow: hidden;
@@ -232,7 +234,7 @@
 .HT_contentDescrip{
     margin : 4px 4px 0 4px;
     color: #454545;
-    height: 66px;
+    height: 62px;
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
@@ -416,7 +418,9 @@
 .clickBtn_R{
     position: relative;
     width: 120px;
-    height: 328px;  
+    height: 328px; 
+    right: 0;
+    margin-right: 50px; 
     z-index: 1;
     background-color: rgba(150, 150, 150, 0);
     opacity: 0.8;

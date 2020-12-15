@@ -2,8 +2,9 @@ import React from 'react';
 import NotFoud from './NotFound'
 import { Route,Switch } from 'react-router-dom';
 
-import Landing from './components/main/Landing.js';
+// import Landing from './components/main/Landing.js';
 import MenuBar from './components/navigation/MenuBar.js';
+import ProjectLD from './components/main/ProjectLD';
 
 
 
@@ -17,7 +18,7 @@ const Page = () => (
 
 
     <Switch>
-        <Route exact path="/" component={Landing}/>
+        <Route exact path="/" component={ProjectLD}/>
         <Route exact path="/MenuBar"component={MenuBar}/>
         <Route component = {NotFoud}/>
 

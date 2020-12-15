@@ -12,7 +12,7 @@ import AyiImage from "../../resource/logo_wm.png";
 const desktop = window.innerWidth > 768 ? "desktop" : "";
 const phone = window.innerWidth <= 768 ? "phone" : "";
 
-const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent }) => {
+const SliderTest = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent }) => {
     let start = 0; // 터치 이벤트
 
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,8 +37,8 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
                 let contenMarginL = contentCss.marginLeft.replace("px", "");
                 let calWidth =
                     contentWidth * 1 + contenMarginR * 1 + contenMarginL * 1;
-                
-                var containerWidth = slideRef.current.offsetParent.clientWidth;
+                    // offsetParent
+                var containerWidth = slideRef.current.clientWidth;
                 setSlideWidth(calWidth);
                 
                 
@@ -158,9 +158,9 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
     );
 };
 
-export default Slider;
+export default SliderTest;
 
-Slider.propTypes = {
+SliderTest.propTypes = {
     data: PropTypes.array,
     containerCss: PropTypes.string,
     itemCss: PropTypes.string,
@@ -168,7 +168,7 @@ Slider.propTypes = {
     imgCss: PropTypes.string,
 };
 
-Slider.defaultProps = {
+SliderTest.defaultProps = {
     data: [],
     containerCss: "SliderContainer",
     itemCss: "inSide_slide",
