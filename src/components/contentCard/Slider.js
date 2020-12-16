@@ -38,7 +38,7 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
                 let calWidth =
                     contentWidth * 1 + contenMarginR * 1 + contenMarginL * 1;
                     // offsetParent
-                var containerWidth = slideRef.current.clientWidth;
+                var containerWidth = slideRef.current.parentNode.clientWidth;
                 setSlideWidth(calWidth);
                 
                 
@@ -141,7 +141,7 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
                     <div className={containerCss} ref={slideRef}>
                         {data.map((item) => (
                             <div className={itemCss} ref={itemRef}>
-                                <div className={contentCss} key={item.id}>
+                                <div className={contentCss} key={item.id} onClick={onClickEvent}>
                                     <img
                                         className={imgCss}
                                         src={item.img}

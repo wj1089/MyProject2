@@ -27,7 +27,7 @@ import whiteDown from "../../resource/appdownload_pc-hover.png";
 const desktop = window.innerWidth > 768 ? "desktop" : "";
 const phone = window.innerWidth <= 768 ? "phone" : "";
 
-const ProjectLD = () => {
+const Landing = () => {
   // const history = useHistory();
   const [spinIndex, setSpinIndex] = useState(0);
   const [canScroll, setCanScroll] = useState(true);
@@ -38,14 +38,11 @@ const ProjectLD = () => {
   function handleClick(e) {
     e.preventDefault();
     window.open("https://igre.onelink.me/5OuA");
-    // console.log('Link to Google PlayStore!!')
-    // https://play.google.com/store/apps/details?id=com.moriahtown.ismail
   }
 
 //   main 스크롤
     useEffect(() => {
       scrollContent(spinIndex);
-      console.log(spinIndex);
     }, [spinIndex]);
 
     useEffect(() => {
@@ -170,7 +167,6 @@ const ProjectLD = () => {
   //슬라이드 이동(상하)
   let start = 0;
   const touchStart = (e) => {
-    // start = e.touches[0]
     e.stopPropagation();
     start = e.touches[0];
   };
@@ -181,15 +177,14 @@ const ProjectLD = () => {
 
     if (canScroll) {
       if (start.clientY > e.changedTouches[0].clientY) {
-        // scroll down
         if (spinIndex < sectionTitle.length - 1) setSpinIndex(spinIndex + 1);
+      } else if (start.clientY == e.changedTouches[0].clientY)  {
+        if(spinIndex === 0 ) setSpinIndex(0)
       } else {
-        // scroll up
-        if (spinIndex > 0) setSpinIndex(spinIndex - 1);
+        if(spinIndex > 0) setSpinIndex(spinIndex - 1);
       }
     }
   };
-
   return (
     <main className="full_screen"
     >
@@ -265,10 +260,6 @@ const ProjectLD = () => {
           </div>
           
         )}
-          {/* <div className="mouseDown">
-            <i className="fas fa-mouse" />
-            <i className="fas fa-angle-double-down" />
-          </div>  */}
       </section>
 
         {/* <두번째 페이지> */}
@@ -362,7 +353,13 @@ const ProjectLD = () => {
                 </div>
 
                 <div className="RV_SlideWrapper">
-                  <Slider data={reviewItem} />
+                  <Slider
+                      data={reviewItem}
+                      containerCss={"SliderContainer"}
+                      itemCss={"inSide_slide"}
+                      contentCss={"RV_slideImgArea"}
+                      imgCss={"RV_imgSize"}
+                    />
                 </div>
               </div>
             </div>
@@ -526,7 +523,7 @@ const ProjectLD = () => {
           </div>
               <a
                 className="fab fa-instagram"
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/igre.official/"
                 style={{ textDecoration: "none", outline: "none" }}
               />
               <Footer />
@@ -552,4 +549,4 @@ const ProjectLD = () => {
   );
 };
 
-export default ProjectLD;
+export default Landing;

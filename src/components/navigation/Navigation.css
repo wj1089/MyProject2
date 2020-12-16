@@ -58,7 +58,7 @@
 .contentArea{
 	position: absolute;
 	width: 300px;
-	margin-left: 12vw;
+	margin-left: 13vw;
 }
 .one{
 	width: 90px;
@@ -113,11 +113,11 @@ a{
 	
 		position: relative;
 		display: inline-flex;
-		width: 85vw;
-		justify-content: center;
-		text-align: center;
+		width: 300px;
+		/* justify-content: center;
+		text-align: center; */
 		height: 40px;
-		margin: 30px 4vw 10px 4vw;
+		margin: 30px 1vw 10px 1vw;
 		list-style: none;
 		font-family: Noto Sans KR;	
 		font-size: 25px;
@@ -130,6 +130,7 @@ a{
 	}
 	.nav_ul{
 		width: auto;
+		padding: 0;
 	}
 
 	.nav_menu .one{
@@ -137,7 +138,7 @@ a{
 		width: 100px;
 		height: auto;
 		font-size: 16px;
-		margin: 10px 0 12px 11vw;
+		margin: 10px 0 12px 10vw;
 		line-height: 1.16;
 		font-family: Noto Sans KR;	
 		font-weight: normal;

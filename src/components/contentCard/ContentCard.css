@@ -105,13 +105,6 @@
     text-align: center;
 }
 
-/* 전체 슬라이더 영역 */
-.SliderContainer {
-    position: absolute;
-    display: flex; 
-    width: 73vw;
-    padding: 0 10px 0 58px;
-  }
 
   
   /* 버튼클릭  css */
@@ -299,6 +292,7 @@
     background-color: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
+
 .RV_slideImgArea{
     width: 119px;
     height: 119px;
@@ -315,10 +309,7 @@
     border-radius: 20px;
 }
 
-.IMG {
-    width: 100%;
-    height: 70vh;
-}
+
 .RV_downArea{
     position: absolute;
     justify-content: center;
@@ -368,16 +359,10 @@
     text-align: left;
 }
 
-/* 전체 슬라이더 영역 */
-.SliderContainer {
-    position: relative;
-    display: flex; 
-    width: 55vw;
-  }
 
   /* 버튼클릭  css */
   .btnArea{
-    position: relative;
+    position: absolute;
     width: 65vw;
     bottom: 50vh;
 

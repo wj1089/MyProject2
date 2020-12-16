@@ -21,13 +21,13 @@ const MenuBar = () => {
                 />
               </li>
               <span className="contentArea">
-                <li className="one">
+                {/* <li className="one">
                   브랜드소개
                 </li>
 
                 <li className="two">
                   상품소개
-                </li>
+                </li> */}
               </span>
             </ul>
           </nav>
@@ -39,8 +39,8 @@ const MenuBar = () => {
               <li className="logoArea">
                 <img src={logo} className="logo" />
               </li>
-              <li className="one">브랜드소개</li>
-              <li className="two">상품소개</li>
+              {/* <li className="one">브랜드소개</li>
+              <li className="two">상품소개</li> */}
             </ul>
           </nav>
       )}
