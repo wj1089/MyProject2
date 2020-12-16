@@ -11,105 +11,31 @@ const MenuBar = () => {
 
   return (
     <>
-      {desktop && (
         <header>
-          {/* className="nav_menu" */}
-          <nav
-            style={{
-              position: "relative",
-              display: "inline-block",
-              width: "1140px",
-              // textAlign: "center",
-              height: "60px",
-              marginTop: "40px",
-              listStyle: "none",
-              fontFamily: "Noto Sans KR",
-              fontSize: "25px",
-              fontWeight: "bold",
-              fontStretch: "normal",
-              fontStyle: "normal",
-              lineHeight: "1.45",
-              letterSpacing: "normal",
-            }}
-          >
-            <ul>
-              {/* className="logoArea" */}
-              <li
-                style={{
-                  display: "inline-block",
-                  float: "left",
-                }}
-              >
-                {/* className="logo" */}
-                <img
+      {desktop && (
+          <nav className="nav_menu">
+            <ul className="nav_ul">
+              <li className="logoArea">
+                <img className="logo"
                   src={logo}
-                  style={{
-                    position: "relative",
-                    width: "44px",
-                    height: "auto",
-                  }}
                 />
               </li>
+              <span className="contentArea">
+                <li className="one">
+                  브랜드소개
+                </li>
 
-              {/* className="one" */}
-              <li
-                style={{
-                  width: "90px",
-                  display: "inline-block",
-                  float: "right",
-                  height: "auto",
-                  margin: "12px 0 12px 2%",
-                  fontSize: "17px",
-                  lineHeight: "1.16",
-                  fontWeight: "normal",
-                  fontStretch: "normal",
-                  fontFamily: "Noto Sans KR",
-                  fontStyle: "normal",
-                  letterSpacing: "normal",
-                  textAlign: "left",
-                  color: "#222222",
-                }}
-              >
-                브랜드소개
-              </li>
-
-              {/* className="two" */}
-              <li
-                style={{
-                  width: "90px",
-                  display: "inline-block",
-                  float: "right",
-                  height: "auto",
-                  margin: "12px 1% 12px 10px",
-                  fontSize: "17px",
-                  lineHeight: "1.16",
-                  fontWeight: "normal",
-                  fontStretch: "normal",
-                  fontFamily: "Noto Sans KR",
-                  fontStyle: "normal",
-                  letterSpacing: "normal",
-                  textAlign: "left",
-                  color: "#222222",
-                }}
-              >
-                상품소개
-              </li>
-
-              {/* onClick={()=>{history.push('/WidePage')}}
-               */}
-              {/* <li><a>Delivery</a></li>
-                        <li><a>Comment</a></li>
-                        <li><a>News</a></li> */}
-              {/* className="introMunu"
-                        className="productMunu" */}
+                <li className="two">
+                  상품소개
+                </li>
+              </span>
             </ul>
           </nav>
-        </header>
       )}
+
       {phone && (
-        <header>
           <nav className="nav_menu">
-            <ul>
+            <ul className="nav_ul">
               <li className="logoArea">
                 <img src={logo} className="logo" />
               </li>
@@ -117,8 +43,8 @@ const MenuBar = () => {
               <li className="two">상품소개</li>
             </ul>
           </nav>
-        </header>
       )}
+      </header>
     </>
   );
 };

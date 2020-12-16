@@ -37,8 +37,8 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
                 let contenMarginL = contentCss.marginLeft.replace("px", "");
                 let calWidth =
                     contentWidth * 1 + contenMarginR * 1 + contenMarginL * 1;
-                
-                var containerWidth = slideRef.current.offsetParent.clientWidth;
+                    // offsetParent
+                var containerWidth = slideRef.current.clientWidth;
                 setSlideWidth(calWidth);
                 
                 

@@ -98,7 +98,6 @@
 }
 .RV_contentDescrip{
     position: absolute;
-    
     height: 11vh;
 	font-family: Noto Sans KR;	
     font-size: 14px;
@@ -139,16 +138,15 @@
 /* 좌측 버튼 */
 .clickBtn_L{
     position: absolute;
+    width: 60px;
+    height: 55px; 
+    z-index: 1;
     text-align: center;
     justify-items: center;
     align-items: center;
     margin-top: 230px;
-    z-index: 1;
-    width: 48px;
-    height: 48px;
-    border: solid 1px #bdbdbd;
-    background-color: rgba(150, 150, 150, 0);
     border: none;
+    background-color: rgba(150, 150, 150, 0);
     border-radius: 24px;
 
 }
@@ -158,28 +156,25 @@
     background-color:#34613f;
     background-size: 5vh;
     border-radius: 24px;
-
 }
 
 /* 우측버튼 */
 .clickBtn_R{
     position: absolute;
-    width: 48px;
-    height: 48px; 
-    margin-top: 230px;
-    right: 0;
-    margin-right: 50px;
-    /* left: 56vw; */
-    float: right;
+    width: 60px;
+    height: 55px; 
     z-index: 1;
+    right: 0;
+    margin-top: 230px;
+    margin-right: 50px;
     background-color: rgba(150, 150, 150, 0);
-    opacity: 0.8;
     border: none;
     border-radius: 24px;
+    opacity: 0.8;
 
 }
 
-.clickBtn_R:hover{
+.clickBtn_R :hover{
     transition:  0.3s ease-in-out;
     background-color:#34613f;    
     background-size: 5vh;
@@ -221,7 +216,6 @@
     width: 252px;
     height: 22vh;
     padding: 1vh 0 0 0;
-
 }
 .HT_contentName{
     width: 252px;
@@ -284,7 +278,7 @@
 
 /* Review image --------------------------*/
 .inSide_slide{
-	position: relative;
+	/* position: relative;
 	width: 289px;
 	height: 328px;
 	border-radius: 10px;
@@ -292,13 +286,23 @@
     padding: 20px 18px 27px 19px;
     background-color: #ffffff;
     cursor:pointer;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
     /* border: 1px solid #000000; */
+
+    position: relative;
+    width: 289px;
+    height:322px;
+    border-radius: 10px;
+    margin: 0 12px 0 0;
+    padding: 20px 37px 33px 34px;
+    cursor: pointer;
+    background-color: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
 .RV_slideImgArea{
     width: 119px;
     height: 119px;
-    margin: 0 67px 12px 66px;
+    margin: 0 67px 12px 52px;
     border-radius: 12px;
     text-align: center;
 	background-color:  rgba( 255, 255, 255, 0);
@@ -320,14 +324,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 25px 25px 18px 25px;
-    width: 210px;
+    margin: 5%;
+    width: 230px;
     height: 145px;
     left: 15px;
     overflow: hidden;
 }
 .RV_iconArea{
-    width: 210px;
+    width: 190px;
 	height: 25px;
 	font-size: 12px;
     text-align: center;
@@ -341,15 +345,12 @@
     height: 18px;
 }
 .RV_slideText{
-    width: 210px;
-    height: 145px;
+    height: 130px;
     font-size: 12px;
-    justify-content: center;
-    align-items: center;
+    float: left;
 }
 
 .RV_contentName{
-    position: ;
     width: 210px;
     justify-content: center;
     align-items: center;
@@ -359,13 +360,12 @@
 
 }
 .RV_contentDescrip{
-    position: absolute;
-    
-    height: 11vh;
+    height: 130px;
+    width: 230px;
 	font-family: Noto Sans KR;	
     font-size: 14px;
     font-weight: 300;
-    text-align: center;
+    text-align: left;
 }
 
 /* 전체 슬라이더 영역 */

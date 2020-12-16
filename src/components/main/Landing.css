@@ -46,6 +46,7 @@ section {
 
 /* 전체스크린 ----------------------------------------------------*/
 .full_screen {
+	overflow-x: hidden;
     overflow-y: hidden;
 	position: relative;
 	align-items: center;
@@ -64,7 +65,6 @@ section {
 	justify-content: center;
 	align-items:center;
 	overflow-y: hidden;
-	overflow-x:scroll;
 	color: #ffffff;
 }
 .full_screen .section_container .main {
@@ -137,18 +137,6 @@ section {
 		clear : both;
 	}
 	
-	.font1{
-		font-size: 4.6vh;
-		font-weight: 900;
-		color: #000000;
-		font-family: Noto Sans KR;	
-		font-stretch: normal;
-		font-style: normal;
-		line-height: 1.16;
-		letter-spacing: normal;
-		margin-bottom: 1vh;
-	}
-
 /* 메인페이지 ----------------------------------------------------*/
 .fbp .main {
 	position: relative;
@@ -191,7 +179,7 @@ section {
 .outSide_Image{
 	position: relative;
 	width: 1140px;
-	/* height: 71.67%; */
+	margin-left: 50px;
 	height: 774px;
 	border-radius: 45px;
 	align-items: center;
@@ -258,7 +246,7 @@ section {
 	line-height: 1.4;
 }
 
-.inSideImage{
+.inSide_Img{
 	display: inline-block;
 	width: 520px;
 	height:617px;
@@ -308,7 +296,7 @@ section {
 	position: fixed;
 	display: flex;
 	width: 1920px;
-	height: 150px;
+	height: 120px;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
@@ -320,7 +308,7 @@ section {
 .fas.fa-mouse{
 	position: absolute;
 	height: 48px;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	color: #d9ccc9;
 	align-items: center;
 }
@@ -329,7 +317,7 @@ section {
 	position: absolute;
     margin-top: 70px;
 	font-size: xx-large;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	color: #d9ccc9;
 }
 
@@ -347,7 +335,7 @@ section {
 
 }
 
-.outSide_Image2{
+.outSide_Image_2{
 	position: relative;
 	width: 1140px;
 	height: 803px;
@@ -512,7 +500,7 @@ section {
 
 .thirdPage_thumnail{
 	position:relative;
-	width:39%;
+	width:40%;
 	height:60%;
 }
 .thumnailContent_3{
@@ -634,8 +622,8 @@ section {
 
 .fourthPage_thumnail{
 	position:relative;
-	width:39%;
-	height:60%;
+	width: 40%;
+	height: 60%;
 }
 
 .thumnailContent_4{
@@ -892,7 +880,8 @@ section {
 	position: relative;
 	width: 47%;
 	height: 100%;
-	padding: 6%;
+	padding: 116px 6% 0 6%;
+	z-index: 2;
 }
 .thumNailContent_5{
 	position:absolute;
@@ -917,6 +906,7 @@ section {
 .inSide_Img5_area{
 	position:relative;
 	height:100%;
+	z-index: 1;
 }
 
 .inSide_Img_5{
@@ -931,7 +921,7 @@ section {
 	position: absolute;
 	height: 48px;
     width: 210px;
-	margin: 35px 65px 40px 8px;
+	margin: 0 65px 40px 8px;
     padding: 14px 50px;
 	display: inline-block;
 	line-height: 1;
@@ -1060,7 +1050,7 @@ section {
 		width: 146px;
   		height: 103px;
 		margin: 18px 2px 12px  0;
-		border-radius: 20px;
+		border-radius: 9px;
 		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	}
 	.section_link :hover{
@@ -1102,8 +1092,8 @@ section {
 	
 	.ayi_img{
 		position: relative;
-		height: 64px;
-		width: 330px;
+		width: 187px;
+  		height: 36px;
 		margin: 0 50px 23px 0;
 	}
 	.ayi_img2{
@@ -1154,14 +1144,14 @@ section {
 		width: 254px;
 		height: 295px;
 		margin: 0 0 0 6px;
-		bottom: 0;
 		/* padding: 123px 87px 47px 71px; */
-	
+		bottom:0;
 	}
 	
 	.inSide_Img .main_phnGif{
 		width: 254px;
 		height: 295px;
+		
 		/* margin: 32px 0 0 6px; */
 		/* padding: 123px 87px 47px 71px; */
 			
@@ -1171,27 +1161,30 @@ section {
 		position: relative;
 		width: 143px;
 		height: 44px;
+		margin: auto;
 		border-radius: 8px;
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		color: #ffffff;
 		background-color: #34613f;
 		text-align: center;
-		
+		justify-content: center;
+		align-items: center;
+		font-size: 17px;
 	}
+	
 	.section_link_1 .link1_text{
 		position: relative;
-		width: 100px;
-		height: 25px;
-		margin: 0 0 0 20px; 
+		margin: auto;
 		font-family: Noto Sans KR;
-		font-size: 17px;
 		font-weight: bold;
 		font-stretch: normal;
 		font-style: normal;
 		line-height: 1.82;
 		letter-spacing: normal;
-		color: #ffffff;
 	}
-	.section_link_1 .link1_text:hover {
+
+	.section_link_1:hover {
+		transition: ease-out 0.3s;
 		color: #34613f;
 		border-color: #34613f;
 		background-color: #ffffff;
@@ -1210,7 +1203,7 @@ section {
 	
 	}
 	
-	.outSide_Image2{
+	.outSide_Image_2{
 		position: relative;
 		width: 310px;
 		height: 499px;
@@ -1229,7 +1222,7 @@ section {
 		z-index: 1;
 	
 	}
-	.inSide_Img2 .delivery_phnGif{
+	.delivery_phnGif{
 		width: 308px;
 		height: 307px;
 	}
@@ -1243,11 +1236,7 @@ section {
 		font-stretch: normal;
 		font-style: normal;
 	}
-	
-	.section_container_2 .delivery {
-	
-	
-	}
+
 	
 	.secondPage_thumnail{
 		position: absolute;
@@ -1261,12 +1250,27 @@ section {
 		z-index: 2;
 		float: left;
 	}
-	.section_container_2 .font1-2{
-		width: 220px;
-		height: 31px;
+	
+	.firstWords_2{
+		width: 200px;
+		height: 42px;
 		margin: 0 27px 6px 0;
 		font-family: Noto Sans KR;
-		font-size: 21px;
+		font-size: 34px;
+		font-weight: 900;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.52;
+		letter-spacing: normal;
+		text-align: left;
+		color: #000000;
+	}
+	.secondWords_2{
+		width: 220px;
+		height: 30px;
+		margin: 2px 24px 9px 0;
+		font-family: Noto Sans KR;
+		font-size: 23px;
 		font-weight: bold;
 		font-stretch: normal;
 		font-style: normal;
@@ -1276,16 +1280,16 @@ section {
 		color: #000000;
 	}
 	
-	.section_container_2 .font2{
+	.thirdWords_2{
 		width: 240px;
-		height: 62px;
-		margin: 6px 0 0;
+		height: 68px;
+		margin: 9px 0 0 ;
 		font-family: Noto Sans KR;	
-		font-size: 14px;
+		font-size: 15px;
 		font-weight: normal;
 		font-stretch: normal;
 		font-style: normal;
-		line-height: 1.5;
+		line-height: 1.53;
 		letter-spacing: normal;
 		text-align: left;
 		color: #222222;
@@ -1347,7 +1351,6 @@ section {
 		display: flex;
 		overflow: hidden;
 		z-index: 1;
-		background-color: #ffffff;
 	}
 	
 	
@@ -1435,19 +1438,16 @@ section {
 		overflow: hidden;
 		width: 95vw;
 		height: 68vh;
-		/* margin: 0 20px 0 310px; */
 		z-index: 1;
 		float: right;
 	}
 	.HT_SliderList{
 		position: relative;
-		/* width: 350px; */
 		height: 300px;
 		margin: 140px 0 0 0; 
 		/* overflow: hidden; */
 		display: flex;
 	}
-	
 	
 	.outSide_Image_4{
 		position: absolute;
@@ -1724,7 +1724,7 @@ section {
 		height: 151px;
 		text-align: left;
 	}
-	.fifthPage_thumnail .font2{
+	.fifthPage_thumnail .secondWords_5{
 		font-size: 14px;	
 		width: 151px;
 		height: 60px;
