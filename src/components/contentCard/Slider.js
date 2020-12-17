@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../main/Landing.css";
-import "./ContentCard.css";
 import BtnRight from "../../resource/arrow_forward_ios.svg";
 import BtnLeft from "../../resource/arrow_back_ios.svg";
 import PropTypes from "prop-types";
-import HoverImage from "react-hover-image/build";
-
 import { Modal } from "react-bootstrap";
 import AyiImage from "../../resource/logo_wm.png";
+import "../main/Landing.css";
+import "./ContentCard.css";
 
 const desktop = window.innerWidth > 768 ? "desktop" : "";
 const phone = window.innerWidth <= 768 ? "phone" : "";
 
 const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent }) => {
-    let start = 0; // 터치 이벤트
+    let start = 0;
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [slideWidth, setSlideWidth] = useState(0);
@@ -23,31 +21,37 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
     const slideRef = useRef(null);
     const itemRef = useRef(null);
 
-    ////////// region useEffect //////////    
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    //Route to Google PlayStore
+    function handleClick(e) {
+        e.preventDefault();
+        window.open("https://igre.onelink.me/5OuA");
+    }
+    
+
+
     useEffect(() => {
         if (data.length > 0) {                   
             if (itemRef.current != null) {
-                // 현재 컨텐츠의 element 를 가지고온다.
-                // 현재 적용중인 css의 넓이를 알아오기위해.
-                // css의 넓이와, 현재 컨텐츠의 넓이를 비교하여
-                // 보여지는 슬라이드와, 남겨진 슬라이드의 개수를 비교한다.
                 let contentCss = window.getComputedStyle(itemRef.current);
                 let contentWidth = contentCss.width.replace("px", "");
                 let contenMarginR = contentCss.marginRight.replace("px", "");
                 let contenMarginL = contentCss.marginLeft.replace("px", "");
                 let calWidth =
                     contentWidth * 1 + contenMarginR * 1 + contenMarginL * 1;
-                    // offsetParent
                 var containerWidth = slideRef.current.parentNode.clientWidth;
                 setSlideWidth(calWidth);
                 
                 
-                let viewCount = containerWidth / calWidth; // 화면에 보여지는 개수
+                let viewCount = containerWidth / calWidth; 
                 setSlideViewCount(Math.floor(viewCount));
                 
                 let totalCnt = data.length / viewCount;
-                setTotalSlide(Math.ceil(totalCnt)); // 총 슬라이드의 개수
-                
+                setTotalSlide(Math.ceil(totalCnt));
             }
         }
     }, [data]);
@@ -59,16 +63,12 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
         let movePix = currentSlide * (slideWidth * slideViewCount) 
 
         slideRef.current.style.transition = "all 2s ease-in-out";
-        slideRef.current.style.transform = `translateX(-${movePix}px)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
+        slideRef.current.style.transform = `translateX(-${movePix}px)`;
     }, [currentSlide]);
-    ////////// endregion useEffect //////////
 
-    // Review 왼쪽 슬라이드
     const slideBtn_L = () => {
         moveSlide(-1);        
     };
-
-    // Review 오른쪽 슬라이드
     const slideBtn_R = () => {
         moveSlide(1);        
     };
@@ -83,18 +83,17 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
         let value = start.clientX - e.changedTouches[0].clientX;
         if (value > 0) {
             moveSlide(1);            
-        } else if (value == 0) {
+        } else if (value === 0) {
         } else {
             moveSlide(-1);
         }
     };
 
-    // slide move func.
     const moveSlide = (direction) => {        
         var calCurrentSlide = 0;
         if (direction > 0) {
             calCurrentSlide = currentSlide + 1;
-        } else if (direction == 0) {
+        } else if (direction === 0) {
         } else {
             calCurrentSlide = currentSlide - 1;
         }
@@ -103,6 +102,8 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
         else if (calCurrentSlide < 0) calCurrentSlide = 0;        
         setCurrentSlide(calCurrentSlide);
     };
+
+
 
     return (
         <>
@@ -121,7 +122,7 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
                                 <div
                                     className={contentCss}
                                     key={item.id}
-                                    onClick={onClickEvent}
+                                    onClick={handleShow}
                                 >
                                     <img
                                         className={imgCss}
@@ -138,14 +139,15 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
 
             {phone && (
                 <div onTouchStart={touchStart} onTouchEnd={touchFinish}>
-                    <div className={containerCss} ref={slideRef}>
+                    <div className={containerCss} ref={slideRef} >
                         {data.map((item) => (
-                            <div className={itemCss} ref={itemRef}>
-                                <div className={contentCss} key={item.id} onClick={onClickEvent}>
+                            <div className={itemCss} ref={itemRef} >
+                                <div className={contentCss} key={item.id} >
                                     <img
                                         className={imgCss}
                                         src={item.img}
                                         alt={item.id}
+                                        onClick={onClickEvent}
                                     />
                                     {item.content}
                                 </div>
@@ -154,6 +156,37 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent 
                     </div>
                 </div>
             )}
+            
+          <Modal 
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+            role="dialog"
+            aria-modal="true"
+            trbindex="-1"
+            className="efef"
+          >
+            <Modal.Header className="header" closeButton />
+
+            <Modal.Body className="body">
+              <p className="modal-text">
+                더 많은 정보가 궁금하시다면 <br/>
+                <img
+                  className="modal_logo"
+                  src={AyiImage}
+                  alt="아이그레Modal_LogoImg"
+                /><br/>
+                더 간편하게 앱으로 만나보세요!
+              </p><br />
+
+              <button className="modal_btn" onClick={handleClick}>
+                <p className="material-icons">save_alt</p>
+                <p className="btnWord">앱 다운로드</p>
+              </button>
+            </Modal.Body>
+          </Modal>
+          
         </>
     );
 };
@@ -172,7 +205,7 @@ Slider.defaultProps = {
     data: [],
     containerCss: "SliderContainer",
     itemCss: "inSide_slide",
-    contentCss: "RV_slideImgArea",
+    contentCss: "RV_slideImgArea", 
     imgCss: "RV_imgSize",
     onClickEvent : null,
 };

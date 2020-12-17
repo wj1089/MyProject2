@@ -49,6 +49,7 @@
 	position: relative;
 	width: 44px;
 	height: auto;
+	cursor: pointer;
 }
 
 .logo .img{
@@ -74,7 +75,8 @@
 	letter-spacing: normal;
 	text-align: left;
 	color: #222222;
-	
+	cursor: pointer;
+
 }
 
 .two{
@@ -92,6 +94,8 @@
 	letter-spacing: normal;
 	text-align: left;
 	color: #222222;
+	cursor: pointer;
+
 }
 
 a{
@@ -147,6 +151,8 @@ a{
 		letter-spacing: normal;
 		text-align: right;
 		color: #222222;
+		cursor: pointer;
+
 	}
 
 	.nav_menu .two{
@@ -163,6 +169,8 @@ a{
 		letter-spacing: normal;
 		text-align: left;
 		color: #222222;
+		cursor: pointer;
+
 	}
 
 
@@ -174,17 +182,13 @@ a{
 
 	.logoArea{
 		float: left;
-		/* width: 35px;
-		height: 35px;
-		margin: 0 8vw 0 2vw; */
 		display: inline-block;
 	}
 
 	.logo{
-		/* float: left; */
 		width: 35px;
 		height: 35px;
-		/* padding: 0.6px 1.3px 0.9px 0.4px; */
+		cursor: pointer;
 	}
 }
 /* Phone end */
