@@ -257,9 +257,9 @@ section {
 
 .ayi_img{
 	position: relative;
-	height: 64px;
+	height: 56px;
 	width: auto;
-	margin: 0 50px 23px 0;
+	margin: 0 50px 23px 20px;
 	
 }
 .ayi_img2{
@@ -283,15 +283,15 @@ section {
 .firstPage_thumnail .font2{
 	position: relative;
 	margin: 0 0 0 25px;
-	font-size: 40px;
-	width: auto;
-	color: #000000;
-	margin-bottom: 0;
+	font-size: 34px;
+	color: #222222;
 	font-family: Noto Sans KR;
 	font-stretch: normal;
 	font-style: normal;
 	font-weight: bold;
-	line-height: 1.4;
+	letter-spacing: normal;
+  	text-align: left;
+	line-height: 1.41;
 }
 
 .inSide_Img{
@@ -307,22 +307,23 @@ section {
 
 .section_link_1 {
 	position: absolute;
-	width: 254px;
- 	height: 60px;
+	width: 200px;
+ 	height: 46px;
 	display: inline-block;
-	padding: 10px 10px 10px 10px;
+	/* padding: 10px 10px 10px 10px; */
 	color: #ffffff;
 	border: solid 3px #34613f;
 	background-color: #34613f;
 	box-shadow: 0 3px 6px 0	rgba(0,0,0,0.16);
-	border-radius: 1.11vh;
-	margin: 5% 1% 0 8px;
+	border-radius: 12px;
+	margin: 55px 0 0 28px;
 	transition: ease-out 0.3s;
 	justify-items: center;
 	align-items: center;
 }
+
 .section_link_1 .link1_text{
-	font-size: 21px;
+	font-size: 19px;
 	margin: 0;
 	border-color: #34613f;
 	font-family: Noto Sans KR;	
@@ -404,9 +405,9 @@ section {
 	float: right;
 }
 .delivery_phnGif{
-	width: 997px;
+	width:  884px;
 	height: 712px;
-	margin: 0 0 0 75px;
+	margin: 0 0 0 188px;
 }
 
 .section_container_2 {
@@ -422,16 +423,17 @@ section {
 .secondPage_thumnail{
 	position:absolute;
 	display: inline-block;
-	width: 500px;
+	/* width: 500px; */
 	height: 350px;
 	z-index:1;
 	top: 23%;
 	transform:translate(0, 20%);
 }
 .firstWords_2{
-	font-size: 62px;
-	height: "92px";
-	margin-bottom: 1%;
+	width: 299px;
+	height: 77px;
+	font-size: 52px;
+	margin: 0;
 	color: #000000;
 	font-family: Noto Sans KR;
 	font-stretch: normal;
@@ -442,27 +444,26 @@ section {
 
 
 .secondWords_2{
-	width: auto;
 	height: auto;
 	font-family: Noto Sans KR;
-	font-size: 46px;
+	font-size: 34px;
 	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
 	letter-spacing: normal;
 	text-align: left;
-	color: #000000
+	color: #000000;
+	line-height: 2.12;
 }
 
 .thirdWords_2{
-	width: auto;
 	height: 81px;
 	font-family: Noto Sans KR;
-	font-size: 17px;
+	font-size: 16px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	line-height: 1.65;
+	line-height: 1.75;
 	letter-spacing: normal;
 	text-align: left;
 	color: #222222;
@@ -539,9 +540,8 @@ section {
 /* 내부 후기카드 */
 .RV_SlideWrapper{
 	position:relative;
-	
 	width:65%;
-	height:60%;
+	height:65%;
 	overflow:hidden;
 }
 
@@ -590,7 +590,7 @@ section {
 }
 
 .thirdWords_3{
-	width: 200px;
+	width: 185px;
 	font-size: 17px;
 	margin: 4px 119px 14px 35px;
 	line-height: 1.65;
@@ -598,6 +598,8 @@ section {
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: normal;
+	letter-spacing: normal;
+  	text-align: left;
 	color: #222222;
 
 }
@@ -770,7 +772,7 @@ section {
 .HT_SlideWrapper{
 	position:relative;
 	width:65%;
-	height:60%;
+	height:55%;
 	overflow:hidden
 }
 .HT_SliderList{
@@ -851,7 +853,7 @@ section {
 .modal-body .modal-text{
 	font-family: Noto Sans KR;	
 	font-size: 20px;
-	margin: 0 0 0 7px;
+	margin: 20px 0 0 7px;
 	font-weight: bold;
 	font-style: normal;
 	font-stretch: normal;
@@ -892,8 +894,9 @@ section {
 	font-stretch: normal;
 	line-height: 2;
 	letter-spacing: normal;
-	
 }
+
+
 .modal-input{
 	width: 277px;
 	height: 40px;
@@ -963,14 +966,12 @@ section {
 .extra-content{
 	/* background-color: lightgreen; */
 	width: auto;
-	height: auto;
-	margin: 5px 50px 4px 55px;
+	height: 80;
 	font-family: NotoSansKR;
 	font-size: 12px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	line-height: 1.5;
 	letter-spacing: normal;
 	text-align: center;
 	color: #757575;
@@ -979,7 +980,6 @@ section {
 .footer{
 	position: relative;
 	display: flex;
-	height: 100px;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -1024,8 +1024,8 @@ section {
 }
 .outSide_Image_5{
 	position: relative;
-	width: 996px;
-	height: 460px;
+	width: 946px;
+  	height: 367px;
 	background-color : #ffc4b5 ;
 	border-radius: 40px;
 	bottom:20%;
@@ -1067,53 +1067,53 @@ section {
 	position: relative;
 	width: 47%;
 	height: 100%;
-	padding: 116px 6% 0 6%;
+	padding: 80px 6% 0 6%;
 	z-index: 2;
 }
 .thumNailContent_5{
 	position:absolute;
 	width:300px;
-	height:300px;
+	/* height:300px; */
 }
 
 .secondWords_5{
-	width: 194px;
-	height: 83px;
-	margin: 22px 178px 44px 8px;
-	font-size: 18px;
+	width: 173px;
+	height: 72px;
+	margin: 22px 178px 29px 8px;
+	font-size: 16px;
 	font-family: Noto Sans KR;	
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	line-height: 1.56;
+	line-height: 1.5;
 	letter-spacing: normal;
 	text-align: left;
 	color: #000000;
 }
 .inSide_Img5_area{
 	position:relative;
-	height:100%;
+	/* height:100%; */
 	z-index: 1;
 }
 
 .inSide_Img_5{
 	float: right;
-	width: 525px;
-	height: 421px;
-	margin-top: 3.5%;
+	width: 446px;
+  	height: 356px;
 }
 
 
 .section_link_5 {
 	position: absolute;
-	height: 48px;
-    width: 210px;
-	margin: 0 65px 40px 8px;
-    padding: 11px 50px;
+    width: 170px;
+	height: 44px;
+	margin-left: 8px;
+    padding: 11px 30px 9px;
 	display: inline-block;
 	line-height: 1;
 	border: solid 3px #34613f;
 	color: #ffffff;
+	text-align:center;
 	background-color: #34613f;
 	box-shadow: 0 3px 6px 0
 		rgba(0,0,0,0.16);
@@ -1149,7 +1149,7 @@ section {
 	position: relative;
 	width: 360px;
 	height: 30vh;
-	margin: 19px 170px 0 0px;
+	margin: 19px 125px 0 0px;
 	float: right;
 }
 
@@ -1171,6 +1171,7 @@ section {
 	position: relative;
 	display: inline-flex;
 	width: 200px;
+	margin-top: 15px;
 }
 
 .fab {

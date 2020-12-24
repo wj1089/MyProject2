@@ -32,20 +32,16 @@ const Landing = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-    setShow(false); 
-    
-
-  }
-
+    setShow(false);
+  };
   const handleShow = () => {
     setShow(true);
     setReadMore(false);
-    setInputNum('');
+    setInputNum("");
     setCheckBox(false);
     setFinalCheck(false);
-    setInputCode('');
-  }
-
+    setInputCode("");
+  };
 
   function handleClick(e) {
     e.preventDefault();
@@ -59,7 +55,6 @@ const Landing = () => {
     e.preventDefault();
     window.open(urls.igreInsta);
   }
-
 
   //   main 스크롤
   useEffect(() => {
@@ -109,21 +104,24 @@ const Landing = () => {
   const [reviewItem, setReviewItem] = useState([]);
   useEffect(() => {
     axios
-    .get(urls.reviewList)
-    .then((res) => {
-      if (res && res.data.code === "1") {
-        const parseJson = JSON.parse(res.data.msg);
-        const aaaa = parseJson.item;
-        let RevArr = [];
-        aaaa.map((item) =>
-        RevArr.push({
-          id: item.id,
-          img: item.product.thumnail,
-          content: makeReviewElement(item.product.name, item.point, item.description)
-        })
-        );
-        setReviewItem(RevArr);
-        
+      .get(urls.reviewList)
+      .then((res) => {
+        if (res && res.data.code === "1") {
+          const parseJson = JSON.parse(res.data.msg);
+          const aaaa = parseJson.item;
+          let RevArr = [];
+          aaaa.map((item) =>
+            RevArr.push({
+              id: item.id,
+              img: item.product.thumnail,
+              content: makeReviewElement(
+                item.product.name,
+                item.point,
+                item.description
+              ),
+            })
+          );
+          setReviewItem(RevArr);
         }
       })
       .catch((err) => {
@@ -131,42 +129,76 @@ const Landing = () => {
       });
   }, []);
 
-
-
-
   function makeReviewElement(name, point, description) {
-
-   
-    let maxCount= (5) ;
+    let maxCount = 5;
     let numberToPoint = Number(point).toFixed(1);
     let halfStar = Math.round(numberToPoint % 1);
     let drawStar = Math.floor(numberToPoint);
-    let blankStar = maxCount-halfStar-drawStar;
-
+    let blankStar = maxCount - halfStar - drawStar;
 
     return (
+      <>
+      {desktop && (
       <div className="RV_downArea">
         <div className="RV_contentName">{name}</div>
-
         <div className="RV_iconArea">
-          { Array(drawStar).fill(null).map(() => (<span className="fas fa-star"/>
-          ))} 
-          { Array(halfStar).fill(null).map(() => (<span className="fas fa-star-half"/>
-          ))} 
-          { Array(blankStar).fill(null).map(() => (<span className="fas fa-star" 
-          style={{color : "gray"}}
-          />
-          ))} 
-          <p className="pointNumber"style={{fontSize : "15px"}}>{numberToPoint}</p>
+          {Array(drawStar)
+            .fill(null)
+            .map(() => (
+              <span className="fas fa-star" />
+            ))}
+          {Array(halfStar)
+            .fill(null)
+            .map(() => (
+              <span className="fas fa-star-half" />
+            ))}
+          {Array(blankStar)
+            .fill(null)
+            .map(() => (
+              <span className="fas fa-star" style={{ color: "gray" }} />
+            ))}
+          <p className="pointNumber" style={{ fontSize: "15px" }}>
+            {numberToPoint}
+          </p>
         </div>
-        
+
         <div className="RV_slideText">
           <p className="RV_contentDescrip">{description}</p>
         </div>
       </div>
+      )}
+      {phone && (
+      <div className="RV_downArea">
+        <div className="RV_contentName">{name}</div>
+        <div className="RV_iconArea">
+          {Array(drawStar)
+            .fill(null)
+            .map(() => (
+              <span className="fas fa-star" />
+            ))}
+          {Array(halfStar)
+            .fill(null)
+            .map(() => (
+              <span className="fas fa-star-half" />
+            ))}
+          {Array(blankStar)
+            .fill(null)
+            .map(() => (
+              <span className="fas fa-star" style={{ color: "gray" }} />
+            ))}
+          <p className="pointNumber" style={{ fontSize: "15px" }}>
+            {numberToPoint}
+          </p>
+        </div>
+
+        <div className="RV_slideText">
+          <p className="RV_contentDescrip">{description}</p>
+        </div>
+      </div>
+      )}
+      </>
     );
   }
-
 
   //HotTrack axios, API연결
   const [productItem, setProductItem] = useState([]);
@@ -204,7 +236,6 @@ const Landing = () => {
     );
   }
 
-
   //슬라이드 이동(상하)
   let start = 0;
   const touchStart = (e) => {
@@ -227,24 +258,25 @@ const Landing = () => {
     }
   };
 
-// 모달 (web)
+  // 모달 (web)
   const [inputNum, setInputNum] = useState("");
   const [checkBox, setCheckBox] = useState(false);
   const [finalCheck, setFinalCheck] = useState(false);
-  const [authId, setAuthId] = useState("")
-  const [inputCode, setInputCode] =useState("")
+  const [authId, setAuthId] = useState("");
+  const [inputCode, setInputCode] = useState("");
 
   const onChange = (e) => {
     setInputNum(e.target.value);
   };
-  const codeNum = (e) =>{
-    setInputCode(e.target.value)
-  }
-  
-  const checkYn = () => {
-    setCheckBox(!checkBox);
+  const codeNum = (e) => {
+    setInputCode(e.target.value);
   };
 
+  const checkYn = () => {
+    setCheckBox(!checkBox);
+
+    console.log(checkBox);
+  };
 
   function phoneHandle() {
     if (checkBox === false) {
@@ -253,9 +285,9 @@ const Landing = () => {
       return;
     }
     axios
-      .get(urls.sendNum + inputNum) 
+      .get(urls.sendNum + inputNum)
       .then((response) => {
-        console.log(response)
+        console.log(response);
         if (response && response.data.code === "1") {
           const parseJson = JSON.parse(response.data.msg);
           const authId = parseJson.authId;
@@ -269,48 +301,49 @@ const Landing = () => {
       });
   }
 
-
-  function checkHandle(){
-    if(inputCode.length !== 6){
-      alert("정확한 인증번호를 입력해주세요.")
+  function checkHandle() {
+    if (inputCode.length !== 6) {
+      alert("정확한 인증번호를 입력해주세요.");
       return;
     }
-    console.log("timecheck")
-    if(minutes === 0 && seconds === 0){
-      alert("입력시간이 초과되었습니다, 다시 입력해주세요.")
-      return
+    if (minutes === 0 && seconds === 0) {
+      alert("입력시간이 초과되었습니다, 다시 입력해주세요.");
+      return;
     }
 
     axios
-    .post(urls.checkPhone,{authId : authId, code :inputCode })
-    .then((response)=>{
-        console.log(response)
-        if(response && response.data.code === "1"){
-          handleClose()
+      .post(urls.checkPhone, { authId: authId, code: inputCode })
+      .then((response) => {
+        console.log(response);
+        if (response && response.data.code === "1") {
+          handleClose();
+        } else {
+          alert(response.data.msg);
         }
       })
-      .catch((error)=>{
-        console.log(error)
+      .catch((error) => {
+        console.log(error);
       });
-    }
+  }
 
   // 모달 보기, 접기 버튼
   const [readMore, setReadMore] = useState(false);
 
   const extraContent = (
-    <div className="extra-area">
       <p className="extra-content">
         - SMS 발송 및 부정이용 방지용으로 핸드폰 번호를 수집하며
         <br />
         목적 달성 1일 후 파기할 예정입니다.
         <br />- 한개의 휴대폰 번호로 하루 최대 3번까지 전송 가능합니다.
       </p>
-    </div>
   );
+    {/* </div> */}
 
-  const moreName = readMore ? "접기" : "보기"; 
+  const moreName = readMore ? "접기" : "보기";
 
- // 모달 조건 변경
+  console.log(moreName);
+
+  // 모달 조건 변경
   function conditionCheck() {
     return (
       <>
@@ -326,64 +359,101 @@ const Landing = () => {
             <a> [{moreName}] </a>
           </div>
         </div>
-        {readMore && extraContent}
-        <div className="footer">
-          <button className="modal_btn" onClick={phoneHandle}>
-            <p className="btnWord">인증번호 발송</p>
-          </button> 
-        </div>
-        
+        {/* {readMore && extraContent} */}
+
+        {moreName == "보기" && (
+          <>
+            <div style={{ height: 80 }}></div>
+            <div className="footer">
+              {checkBox == false && (
+                <button
+                  className="modal_btn"
+                  style={{ backgroundColor: "gray" }}
+                >
+                  <p className="btnWord">인증번호 발송</p>
+                </button>
+              )}
+              {checkBox == true && (
+                <button className="modal_btn" onClick={phoneHandle}>
+                  <p className="btnWord">인증번호 발송</p>
+                </button>
+              )}
+            </div>
+          </>
+        )}
+
+        {moreName == "접기" && (
+          <>
+            <div style={{ height: 80, alignContent: "center" }}>
+              {extraContent}
+            </div>
+
+            <div className="footer">
+              {checkBox == false && (
+                <button
+                  className="modal_btn"
+                  style={{ backgroundColor: "gray" }}
+                >
+                  <p className="btnWord">인증번호 발송</p>
+                </button>
+              )}
+              {checkBox == true && (
+                <button className="modal_btn" onClick={phoneHandle}>
+                  <p className="btnWord">인증번호 발송</p>
+                </button>
+              )}
+            </div>
+          </>
+        )}
       </>
     );
   }
-  
-  function condiChange(){
-    return(
+
+  function condiChange() {
+    return (
       <>
         <div className="modal-CAfirstLine">
-          <input className="modal-input" 
-          onChange={codeNum}
-          value={inputCode}
-          />
+          <input className="modal-input" onChange={codeNum} value={inputCode} />
         </div>
         <div className="footer">
-          <div className="modal_timer">        
-          인증번호가 발송되었습니다
-          (남은 시간 : {minutes}:{seconds < 10 ? `0${seconds}` : seconds})
+          <div className="modal_timer">
+            인증번호가 발송되었습니다 (남은 시간 : {minutes}:
+            {seconds < 10 ? `0${seconds}` : seconds})
           </div>
-
-          <button className="modal_btn" onClick={checkHandle}>
-            <p className="btnWord">전화번호 인증</p>
-          </button> 
+          {inputCode.length !== 6 && (
+            <button className="modal_btn"style={{backgroundColor:"gray"}}>
+              <p className="btnWord">전화번호 인증</p>
+            </button>
+          )}
+          {inputCode.length === 6 && (
+            <button className="modal_btn" onClick={checkHandle}>
+              <p className="btnWord">전화번호 인증</p>
+            </button>
+          )}
         </div>
       </>
-    )
+    );
   }
 
-  
-      const [minutes, setMinutes] = useState(0);
-      const [seconds, setSeconds] = useState(0);
-    
-      useEffect(() => {
-        const countdown = setInterval(() => {
-          if (parseInt(seconds) > 0) {
-            setSeconds(parseInt(seconds) - 1);
-          }
-          if (parseInt(seconds) === 0) {
-            if (parseInt(minutes) === 0) {
-              clearInterval(countdown);
-            } else {
-              setMinutes(parseInt(minutes) - 1);
-              setSeconds(59);
-            }
-          }
-        }, 1000);
-        return () => clearInterval(countdown);
-      }, [minutes, seconds]);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
-
-
-
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      if (parseInt(seconds) > 0) {
+        setSeconds(parseInt(seconds) - 1);
+      }
+      if (parseInt(seconds) === 0) {
+        if (parseInt(minutes) === 0) {
+          clearInterval(countdown);
+        } else {
+          setMinutes(parseInt(minutes) - 1);
+          setSeconds(59);
+        }
+      }
+    }, 1000);
+    return () => clearInterval(countdown);
+  }, [minutes, seconds]);
 
   return (
     <main className="full_screen">
@@ -413,10 +483,7 @@ const Landing = () => {
                       어린이 식품 <br />
                       정기배송 서비스
                     </p>
-                    <button
-                      className="section_link_1"
-                      onClick={handleShow}
-                    >
+                    <button className="section_link_1" onClick={handleShow}>
                       <p className="link1_text">앱 다운로드</p>
                     </button>
                   </div>
@@ -522,7 +589,7 @@ const Landing = () => {
                     </div>
                     <p className="secondWords_3">고객후기</p>
                     <p className="thirdWords_3">
-                      정기배송을 경험한 <br />
+                      아이그레 서비스를 결정한 <br />
                       고객님들의 후기를 <br />
                       확인해보세요.
                     </p>
@@ -591,8 +658,10 @@ const Landing = () => {
                       추천드리는 상품입니다
                     </p>
 
-                    <button className="moreBtn" onClick={handleShow}> 더보기</button>
-                    
+                    <button className="moreBtn" onClick={handleShow}>
+                      {" "}
+                      더보기
+                    </button>
                   </div>
                 </div>
 
@@ -702,7 +771,7 @@ const Landing = () => {
               />
               <img className="brand" src={brand} onClick={blogLink} />
             </div>
-            <Footer/>
+            <Footer />
           </div>
         </section>
       </div>
@@ -740,10 +809,9 @@ const Landing = () => {
             />
             <br />
 
-            <div className="modal-changeArea">              
-              {finalCheck ? condiChange() : conditionCheck()}              
+            <div className="modal-changeArea">
+              {finalCheck ? condiChange() : conditionCheck()}
             </div>
-
           </Modal.Body>
         </Modal>
       )}

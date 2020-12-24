@@ -25,7 +25,7 @@
     height: 505px;
     display: flex;
 	border-radius: 16px;
-    margin: 0 14px 0 0;
+    margin: 0 5px 0 10px;
     padding: 44px 37px 33px 34px;
     cursor:pointer;
     background-color: white;
@@ -47,10 +47,6 @@
     border-radius: 20px;
 }
 
-/* .IMG {
-    width: 100%;
-    height: 70vh;
-} */
 .RV_downArea{
     position: absolute;
     justify-content: center;
@@ -74,28 +70,25 @@
 
 .RV_iconArea .fa-star{
     position: relative;
-    /* display: flex; */
     font-weight: 900;
     font-size: 20px;
-    width: 35px;
+    width: 23px;
     color: #ffc53e;
 }
 
 .RV_iconArea .fa-star-half-alt{
     position: relative;
-    /* display: flex; */
     font-weight: 900;
     font-size: 20px;
-    width: 35px;
+    width: 23px;
     color: #ffc53e;
 }
 
 .RV_iconArea .fa-star .blank{
     position: relative;
-    /* display: flex; */
     font-weight: 900;
     font-size: 20px;
-    width: 35px;
+    width: 23px;
     color: gray;
 }
 .RV_iconArea  .pointNumber{
@@ -162,14 +155,14 @@
     text-align: center;
     justify-items: center;
     align-items: center;
-    margin-top: 230px;
+    margin: 196px 13px 0 0;
     background-color: rgba(150, 150, 150, 0);
     border-radius: 24px;
     border: none;
     outline: none;
 }
 
-.clickBtn_L :hover{
+/* .clickBtn_L :hover{
     transition:  0.3s ease-in-out;
     background-color:#34613f;
     background-size: 5vh;
@@ -177,7 +170,7 @@
     border: none;
     outline: none;
 
-}
+} */
 
 /* 우측버튼 */
 .clickBtn_R{
@@ -189,7 +182,7 @@
     align-items: center;
     z-index: 1;
     right: 0;
-    margin-top: 230px;
+    margin-top: 196px;
     margin-right: 50px;
     background-color: rgba(150, 150, 150, 0);
     border: none;
@@ -214,9 +207,9 @@
     color: #000000;
 }
 
-.clickBtn_L .material-icons:hover{
+/* .clickBtn_L .material-icons:hover{
     color: #ffffff;
-}
+} */
 
 
 .clickBtn_R .material-icons{
@@ -362,12 +355,43 @@
     overflow: hidden;
 }
 .RV_iconArea{
-    width: 190px;
+    /* width: 190px; */
 	height: 25px;
 	font-size: 12px;
     text-align: center;
     justify-content: center;
 }
+
+
+.RV_iconArea .fa-star{
+    position: relative;
+    font-weight: 900;
+    font-size: 20px;
+    width: 23px;
+    color: #ffc53e;
+}
+
+.RV_iconArea .fa-star-half-alt{
+    position: relative;
+    font-weight: 900;
+    font-size: 20px;
+    width: 23px;
+    color: #ffc53e;
+}
+
+.RV_iconArea .fa-star .blank{
+    position: relative;
+    font-weight: 900;
+    font-size: 20px;
+    width: 23px;
+    color: gray;
+}
+.RV_iconArea  .pointNumber{
+    margin-top: 5px;
+    width: auto;
+    display: inline-block;
+}
+
 
 .RV_iconArea .material-icons{
     position: absolute;
@@ -383,21 +407,22 @@
 }
 
 .RV_contentName{
-    width: 210px;
+    /* width: 210px; */
     justify-content: center;
     align-items: center;
     text-align: center;
     font-weight: normal;
 	font-family: Noto Sans KR;	
-
 }
 .RV_contentDescrip{
-    height: 130px;
+    height: 100px;
     width: 230px;
 	font-family: Noto Sans KR;	
     font-size: 14px;
     font-weight: 300;
     text-align: left;
+    margin-top: 12px;
+
 }
 
   
@@ -481,7 +506,7 @@
 .HT_contentName{
     width: 147px;
     font-weight: bolder;
-    text-align: right;
+    /* text-align: right; */
     text-overflow:ellipsis;
     white-space:nowrap;
     overflow: hidden;
