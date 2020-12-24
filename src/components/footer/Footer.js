@@ -23,7 +23,7 @@ const Footer = () => {
                     <p className="underword"  >
                         사업자번호:215-86-89431 <br/>
                         통신판매업 신고 : 2011-서울송파-1572호
-                        <a className="fairTrade"onClick={clickLink}>
+                        <a className="fairTrade"onClick={clickLink} style={{target: "_blank"}}>
                             (통신판매업조회)
                         </a>
                     </p>

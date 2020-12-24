@@ -23,6 +23,11 @@ body {
 	box-sizing: border-box;
 }
 
+a{
+	outline: 0;
+}
+
+
 /*------------------------------------------
   Responsive Grid Media Queries - 1180, 1024, 768, 360
    1920-1024   - desktop (default grid)
@@ -880,9 +885,6 @@ section {
 	color: #000000;
 }
 
-.modal-body .modal-text3{
-
-}
 
 
 .modal_btn .btnWord{
@@ -900,8 +902,7 @@ section {
 .modal-input{
 	width: 277px;
 	height: 40px;
-	/* margin: 11px 0 12px 0; */
-	/* padding: 10px 88px 10px 12px; */
+	padding: 10px 88px 10px 12px;
 	border-radius: 8px;
 	border: solid 1px #e0e0e0;
 	background-color: #ffffff;
@@ -926,9 +927,7 @@ section {
 }
 .modal-changeArea{
 	display: inherit;
-	margin: 15px 0 0 0;
 	height: 105px;
-	/* background-color: lightpink; */
 }
 .modal-CAfirstLine{
 	width: 100%;
@@ -1183,14 +1182,19 @@ section {
 	float: left;
 	margin: 15px 0 0 45px;
 	text-decoration: none; 
-	outline: none
+	outline: none;
+	cursor: pointer;
+
 }
 
 .fab .fa-instagram {
 	text-decoration: none; 
 	outline: none;
-	color:#fff; 
+	color:#fff; 		
+	cursor: pointer;
+
 }
+
 .brand{
 	display: inline-flex;
 	margin: 15px 0 0 20px;
@@ -1203,6 +1207,8 @@ section {
 .fairTrade{
 	color: #000000;
 	cursor: pointer;
+	text-decoration: none; 
+	outline: none;
 }
 }
 
@@ -1969,7 +1975,6 @@ section {
 		position: absolute;
 		width: 130px;
 		height: 35px;
-		/* margin: 10px 21px 0 0; */
 		padding: 8px 31px 7px;
 		font-size: 14px;
 		font-family: Noto Sans KR;	
@@ -2034,14 +2039,19 @@ section {
 		float: left;
 		margin: 15px 0 0 10px;
 		text-decoration: none; 
-		outline: none
+		outline: none;
+		cursor: pointer;
+
 	}
 	
 	.fab .fa-instagram {
 		text-decoration: none; 
 		outline: none;
 		color:#fff; 
+		cursor: pointer;
+
 	}
+
 	.brand{
 		display: inline-flex;
 		margin: 15px 0 0 20px;
@@ -2054,6 +2064,9 @@ section {
 	.fairTrade{
 		color: #000000;
 		cursor: pointer;
+		text-decoration: none; 
+		outline: none
+
 	}
 	
 	.full_footer{

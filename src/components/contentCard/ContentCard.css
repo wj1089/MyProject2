@@ -26,7 +26,7 @@
     display: flex;
 	border-radius: 16px;
     margin: 0 5px 0 10px;
-    padding: 44px 37px 33px 34px;
+    padding: 100px 37px 33px 34px;
     cursor:pointer;
     background-color: white;
     box-shadow: 0 3px 6px 0
@@ -35,7 +35,7 @@
 .RV_slideImgArea{
     width: 153px;
     height: 153px;
-    margin: 0 54px 18px 53px;
+    margin: 0 54px 0 53px;
     text-align: center;
 	background-color:  rgba( 255, 255, 255, 0);
 }
@@ -52,9 +52,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 25px 15px 18px 15px;
+    margin: 12px 15px 18px 15px;
     width: 270px;
-    height: 255px;
+    height: 200px;
     left: 15px;
     overflow: hidden;
 }
@@ -89,14 +89,12 @@
     font-weight: 900;
     font-size: 20px;
     width: 23px;
-    color: gray;
+    color: #e0e0e0;
 }
 .RV_iconArea  .pointNumber{
-    width: auto;
+    width: 40px;
     display: inline-block;
 }
-
-
 
 .RV_iconArea .material-icons{
     position: absolute;
@@ -321,6 +319,7 @@
     border-radius: 10px;
     margin: 0 12px 0 0;
     padding: 20px 37px 33px 34px;
+    
     cursor: pointer;
     background-color: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -384,11 +383,11 @@
     font-weight: 900;
     font-size: 20px;
     width: 23px;
-    color: gray;
+    color: #e0e0e0;;
 }
 .RV_iconArea  .pointNumber{
     margin-top: 5px;
-    width: auto;
+    width: 40px;
     display: inline-block;
 }
 
@@ -410,6 +409,7 @@
     /* width: 210px; */
     justify-content: center;
     align-items: center;
+    text-overflow: ellipsis;
     text-align: center;
     font-weight: normal;
 	font-family: Noto Sans KR;	

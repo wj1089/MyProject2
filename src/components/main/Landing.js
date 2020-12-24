@@ -155,7 +155,7 @@ const Landing = () => {
           {Array(blankStar)
             .fill(null)
             .map(() => (
-              <span className="fas fa-star" style={{ color: "gray" }} />
+              <span className="fas fa-star" style={{ color: "#e0e0e0" }} />
             ))}
           <p className="pointNumber" style={{ fontSize: "15px" }}>
             {numberToPoint}
@@ -184,7 +184,7 @@ const Landing = () => {
           {Array(blankStar)
             .fill(null)
             .map(() => (
-              <span className="fas fa-star" style={{ color: "gray" }} />
+              <span className="fas fa-star" style={{ color: "#e0e0e0" }} />
             ))}
           <p className="pointNumber" style={{ fontSize: "15px" }}>
             {numberToPoint}
@@ -274,8 +274,6 @@ const Landing = () => {
 
   const checkYn = () => {
     setCheckBox(!checkBox);
-
-    console.log(checkBox);
   };
 
   function phoneHandle() {
@@ -287,7 +285,6 @@ const Landing = () => {
     axios
       .get(urls.sendNum + inputNum)
       .then((response) => {
-        console.log(response);
         if (response && response.data.code === "1") {
           const parseJson = JSON.parse(response.data.msg);
           const authId = parseJson.authId;
@@ -314,7 +311,6 @@ const Landing = () => {
     axios
       .post(urls.checkPhone, { authId: authId, code: inputCode })
       .then((response) => {
-        console.log(response);
         if (response && response.data.code === "1") {
           handleClose();
         } else {
@@ -328,7 +324,6 @@ const Landing = () => {
 
   // 모달 보기, 접기 버튼
   const [readMore, setReadMore] = useState(false);
-
   const extraContent = (
       <p className="extra-content">
         - SMS 발송 및 부정이용 방지용으로 핸드폰 번호를 수집하며
@@ -337,11 +332,7 @@ const Landing = () => {
         <br />- 한개의 휴대폰 번호로 하루 최대 3번까지 전송 가능합니다.
       </p>
   );
-    {/* </div> */}
-
   const moreName = readMore ? "접기" : "보기";
-
-  console.log(moreName);
 
   // 모달 조건 변경
   function conditionCheck() {
@@ -359,7 +350,6 @@ const Landing = () => {
             <a> [{moreName}] </a>
           </div>
         </div>
-        {/* {readMore && extraContent} */}
 
         {moreName == "보기" && (
           <>
@@ -368,7 +358,7 @@ const Landing = () => {
               {checkBox == false && (
                 <button
                   className="modal_btn"
-                  style={{ backgroundColor: "gray" }}
+                  style={{ backgroundColor: "#cccccc" }}
                 >
                   <p className="btnWord">인증번호 발송</p>
                 </button>
@@ -392,7 +382,7 @@ const Landing = () => {
               {checkBox == false && (
                 <button
                   className="modal_btn"
-                  style={{ backgroundColor: "gray" }}
+                  style={{ backgroundColor: "#cccccc" }}
                 >
                   <p className="btnWord">인증번호 발송</p>
                 </button>
@@ -420,11 +410,13 @@ const Landing = () => {
             인증번호가 발송되었습니다 (남은 시간 : {minutes}:
             {seconds < 10 ? `0${seconds}` : seconds})
           </div>
+
           {inputCode.length !== 6 && (
-            <button className="modal_btn"style={{backgroundColor:"gray"}}>
+            <button className="modal_btn"style={{backgroundColor:"#cccccc"}}>
               <p className="btnWord">전화번호 인증</p>
             </button>
           )}
+
           {inputCode.length === 6 && (
             <button className="modal_btn" onClick={checkHandle}>
               <p className="btnWord">전화번호 인증</p>
@@ -589,7 +581,7 @@ const Landing = () => {
                     </div>
                     <p className="secondWords_3">고객후기</p>
                     <p className="thirdWords_3">
-                      아이그레 서비스를 결정한 <br />
+                      아이그레 서비스를 경험한 <br />
                       고객님들의 후기를 <br />
                       확인해보세요.
                     </p>
@@ -628,6 +620,9 @@ const Landing = () => {
                     contentCss={"RV_slideImgArea"}
                     imgCss={"RV_imgSize"}
                     onClickEvent={handleShow}
+                    viewButton ={ false}
+                    enableTouch ={ false}
+                    autoSlide={ true}
                   />
                 </div>
               </div>
@@ -688,10 +683,11 @@ const Landing = () => {
                     <p className="fas fa-hashtag" />
                     <p className="font3">
                       인기상품
+                      
                       <img
                         src={BtnRight}
                         className="moreBtn_mobile"
-                        onClick={handleClick}
+                        onClick={handleShow}
                       />
                     </p>
                   </div>
@@ -710,6 +706,9 @@ const Landing = () => {
                     contentCss={"HT_cardArea"}
                     imgCss={"HT_imgSize"}
                     onClickEvent={handleShow}
+                    viewButton ={ false}
+                    enableTouch ={ false}
+                    autoSlide={ true}
                   />
                 </div>
               </div>
@@ -739,7 +738,7 @@ const Landing = () => {
                   <button
                     className="section_link_5"
                     data-toggle="modal"
-                    onClick={handleShow}
+                    onClick={handleClick}
                   >
                     <p className="link5_text">앱 다운로드</p>
                   </button>
@@ -764,7 +763,7 @@ const Landing = () => {
               </div>
             </div>
             <div className="linkSite">
-              <a
+              <p
                 className="fab fa-instagram"
                 onClick={instaLink}
                 style={{ textDecoration: "none", outline: "none" }}
@@ -852,7 +851,7 @@ const Landing = () => {
         <div className="linkArea">
           <HoverImage
             className="section_link"
-            onClick={handleShow}
+            onClick={handleClick}
             src={greenDown}
             hoverSrc={whiteDown}
             alt="아이그레다운이미지"
