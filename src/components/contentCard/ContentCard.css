@@ -72,6 +72,38 @@
 
 }
 
+.RV_iconArea .fa-star{
+    position: relative;
+    /* display: flex; */
+    font-weight: 900;
+    font-size: 20px;
+    width: 35px;
+    color: #ffc53e;
+}
+
+.RV_iconArea .fa-star-half-alt{
+    position: relative;
+    /* display: flex; */
+    font-weight: 900;
+    font-size: 20px;
+    width: 35px;
+    color: #ffc53e;
+}
+
+.RV_iconArea .fa-star .blank{
+    position: relative;
+    /* display: flex; */
+    font-weight: 900;
+    font-size: 20px;
+    width: 35px;
+    color: gray;
+}
+.RV_iconArea  .pointNumber{
+    width: auto;
+    display: inline-block;
+}
+
+
 
 .RV_iconArea .material-icons{
     position: absolute;
@@ -343,6 +375,7 @@
     font-size: 20px;
     height: 18px;
 }
+
 .RV_slideText{
     height: 130px;
     font-size: 12px;

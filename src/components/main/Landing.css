@@ -998,8 +998,17 @@ section {
     outline: none;
 }
 .modal_timer{
-	width: 150px;
-	background-color: lightcoral;
+	height: 19px;
+	margin: 11px 94px 20px 79px;
+	font-family: NotoSansKR;
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.54;
+	letter-spacing: normal;
+	text-align: center;
+	color: #565656;
 }
 
 

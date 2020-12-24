@@ -31,17 +31,21 @@ const Landing = () => {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false); 
+    
+
+  }
 
   const handleShow = () => {
     setShow(true);
     setReadMore(false);
     setInputNum('');
     setCheckBox(false);
-
     setFinalCheck(false);
     setInputCode('');
   }
+
 
   function handleClick(e) {
     e.preventDefault();
@@ -126,19 +130,43 @@ const Landing = () => {
         console.log(err);
       });
   }, []);
+
+
+
+
   function makeReviewElement(name, point, description) {
+
+   
+    let maxCount= (5) ;
+    let numberToPoint = Number(point).toFixed(1);
+    let halfStar = Math.round(numberToPoint % 1);
+    let drawStar = Math.floor(numberToPoint);
+    let blankStar = maxCount-halfStar-drawStar;
+
+
     return (
       <div className="RV_downArea">
         <div className="RV_contentName">{name}</div>
+
         <div className="RV_iconArea">
-          <span className="material-icons">favorite</span> {point}
+          { Array(drawStar).fill(null).map(() => (<span className="fas fa-star"/>
+          ))} 
+          { Array(halfStar).fill(null).map(() => (<span className="fas fa-star-half"/>
+          ))} 
+          { Array(blankStar).fill(null).map(() => (<span className="fas fa-star" 
+          style={{color : "gray"}}
+          />
+          ))} 
+          <p className="pointNumber"style={{fontSize : "15px"}}>{numberToPoint}</p>
         </div>
+        
         <div className="RV_slideText">
           <p className="RV_contentDescrip">{description}</p>
         </div>
       </div>
     );
   }
+
 
   //HotTrack axios, API연결
   const [productItem, setProductItem] = useState([]);
@@ -224,7 +252,6 @@ const Landing = () => {
       setFinalCheck(false);
       return;
     }
-   
     axios
       .get(urls.sendNum + inputNum) 
       .then((response) => {
@@ -234,6 +261,7 @@ const Landing = () => {
           const authId = parseJson.authId;
           setAuthId(authId);
           setFinalCheck(true);
+          setMinutes(3);
         }
       })
       .catch((error) => {
@@ -242,10 +270,17 @@ const Landing = () => {
   }
 
 
- // finalCheck가 중복
- // 유효성 검사를 위한 관리(미입력, 자릿수6자리 여부확인)
-
   function checkHandle(){
+    if(inputCode.length !== 6){
+      alert("정확한 인증번호를 입력해주세요.")
+      return;
+    }
+    console.log("timecheck")
+    if(minutes === 0 && seconds === 0){
+      alert("입력시간이 초과되었습니다, 다시 입력해주세요.")
+      return
+    }
+
     axios
     .post(urls.checkPhone,{authId : authId, code :inputCode })
     .then((response)=>{
@@ -258,9 +293,6 @@ const Landing = () => {
         console.log(error)
       });
     }
-//성공
-
-    
 
   // 모달 보기, 접기 버튼
   const [readMore, setReadMore] = useState(false);
@@ -315,7 +347,11 @@ const Landing = () => {
           />
         </div>
         <div className="footer">
-          <div className="modal_timer">{Timer}</div>
+          <div className="modal_timer">        
+          인증번호가 발송되었습니다
+          (남은 시간 : {minutes}:{seconds < 10 ? `0${seconds}` : seconds})
+          </div>
+
           <button className="modal_btn" onClick={checkHandle}>
             <p className="btnWord">전화번호 인증</p>
           </button> 
@@ -325,35 +361,25 @@ const Landing = () => {
   }
 
   
-  const [minutes, setMinutes] = useState(3);
-  const [seconds, setSeconds] = useState(0);
-
-  function Timer () {
-    return (
-      <>
-        {minutes} : {seconds < 10 ? `0${seconds}` : seconds}
-      </>
-    )
-  }
-
-  useEffect(() => {
-    const countdown = setTimeout(() => {
-      if (parseInt(seconds) > 0) {
-        setSeconds(parseInt(seconds) - 1);
-      }
-      if (parseInt(seconds) === 0) {
-        if (parseInt(minutes) === 0) {
-          clearInterval(countdown);
-        } else {
-          setMinutes(parseInt(minutes) - 1);
-          setSeconds(59);
-        }
-      }
-    }, 1000);
+      const [minutes, setMinutes] = useState(0);
+      const [seconds, setSeconds] = useState(0);
     
-    return () => clearInterval(countdown);
-  }, [minutes, seconds]);
-  
+      useEffect(() => {
+        const countdown = setInterval(() => {
+          if (parseInt(seconds) > 0) {
+            setSeconds(parseInt(seconds) - 1);
+          }
+          if (parseInt(seconds) === 0) {
+            if (parseInt(minutes) === 0) {
+              clearInterval(countdown);
+            } else {
+              setMinutes(parseInt(minutes) - 1);
+              setSeconds(59);
+            }
+          }
+        }, 1000);
+        return () => clearInterval(countdown);
+      }, [minutes, seconds]);
 
 
 
