@@ -1,5 +1,5 @@
 import React from "react";
-import * as urls from "../cabinet/urls";
+// import * as urls from "../cabinet/urls";
 import "../../styles/cssfiles/CssFolder.js"
 import logo from "../../resource/logo_sb.png";
 
@@ -14,7 +14,7 @@ const MenuBar = () => {
           <nav className="nav_menu">
             <ul className="nav_ul">
               <a className="logoArea" href="/">
-                  <img   className="logo" src={logo} />
+                  <img className="logo" src={logo} alt="igre_logo"/>
               </a>
               <span className="contentArea">
                 {/* <li className="one">
@@ -33,7 +33,7 @@ const MenuBar = () => {
           <nav className="nav_menu">
             <ul className="nav_ul">
               <a className="logoArea" href="/">
-                  <img className="logo" src={logo} />
+                  <img className="logo" src={logo} alt="igre_logo"/>
               </a>
               {/* <li className="one">브랜드소개</li>
               <li className="two">상품소개</li> */}

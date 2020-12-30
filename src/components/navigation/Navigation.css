@@ -19,7 +19,6 @@
 	display: inline-block;
 	width: 1140px;
 	height: 60px;
-	left: 1.5vw;
 	padding: 0 0 0 15px;
 	margin-top: 40px;
 	list-style: none;
@@ -33,7 +32,6 @@
 	max-width: 1140px;
 }
 .nav_ul{
-	width: 60vw;
 	height: 60px;
 	padding: 0;
 	max-width: 1140px;

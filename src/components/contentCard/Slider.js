@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import "../../styles/cssfiles/CssFolder.js";
+import "../../styles/cssfiles/CssFolder";
 
-const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent, viewButton, enableTouch, autoSlide }) => {
+const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, 
+    onClickEvent, enableTouch, autoSlide, onMoveEvent }) => {
     let start = 0;
-    let INTERVAL_TIME = 5000;
+    const INTERVAL_TIME = 5000;
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [slideWidth, setSlideWidth] = useState(0);
     const [totalSlide, setTotalSlide] = useState(2);
-    const [slideViewCount, setSlideViewCount] = useState(2);   
+    const [slideViewCount, setSlideViewCount] = useState(2);
     
     // auto slide 를 위한 ref 설정
     const refCurrentSlide = useRef(null);    
     refCurrentSlide.current = { currentSlide, setCurrentSlide };
     const refTotalSlide = useRef(null);    
     refTotalSlide.current = { totalSlide,  setTotalSlide};
-
     
     const slideRef = useRef(null);
     const itemRef = useRef(null);
@@ -24,69 +24,31 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent,
     useEffect(() => {
         if (data.length > 0) {
             if (itemRef.current != null) {
-                let contentCss = window.getComputedStyle(itemRef.current);
-                let contentWidth = contentCss.width.replace("px", "");
-                let contenMarginR = contentCss.marginRight.replace("px", "");
-                let contenMarginL = contentCss.marginLeft.replace("px", "");
-                let calWidth = contentWidth * 1 + contenMarginR * 1 + contenMarginL * 1;
-                var containerWidth = slideRef.current.parentNode.clientWidth;
+                const contentCss = window.getComputedStyle(itemRef.current);
+                const contentWidth = contentCss.width.replace("px", "");
+                const contenMarginR = contentCss.marginRight.replace("px", "");
+                const contenMarginL = contentCss.marginLeft.replace("px", "");
+                const calWidth = contentWidth * 1 + contenMarginR * 1 + contenMarginL * 1;
+                
+                const containerWidth = slideRef.current.parentNode.clientWidth;
                 setSlideWidth(calWidth);
 
-                let viewCount = containerWidth / calWidth;
+                const viewCount = containerWidth / calWidth;
                 setSlideViewCount(Math.floor(viewCount));
 
-                let totalCnt = data.length / viewCount;
+                const totalCnt = data.length / viewCount;
                 setTotalSlide(Math.ceil(totalCnt));
-
-               
             }
         }
     }, [data]);
-
-    useEffect(() => {
-    }, [slideWidth, totalSlide]);
-
-    useEffect(() => {        
-        let movePix = currentSlide * (slideWidth * slideViewCount);
-
-        slideRef.current.style.transition = "all 2s ease-in-out";
-        slideRef.current.style.transform = `translateX(-${movePix}px)`;
-    }, [currentSlide, slideViewCount, slideWidth]);
-
-    const slideBtn_L = () => {
-        moveSlide(-1);
-    };
-    const slideBtn_R = () => {
-        moveSlide(1);
-    };
-
-    const touchStart = (e) => {
-        if(!enableTouch)
-            return;
-        e.stopPropagation();
-        start = e.touches[0];
-    };
-
-    const touchFinish = (e) => {
-        if(!enableTouch)
-            return;
-
-        e.stopPropagation();
-        let value = start.clientX - e.changedTouches[0].clientX;
-        if (value > 0) {
-            moveSlide(1);
-        } else if (value === 0) {
-        } else {
-            moveSlide(-1);
-        }
-    };
     
+    const [moveEvent, setMoveEvent] = useState(0);
+
     const moveSlide = (direction) => {
-        var calCurrentSlide = 0;
+        let calCurrentSlide = 0;
         if (direction > 0) {
             calCurrentSlide = currentSlide + 1;
-        } else if (direction === 0) {
-        } else {
+        } else if (direction === 0)  {
             calCurrentSlide = currentSlide - 1;
         }
 
@@ -95,9 +57,63 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent,
 
         setCurrentSlide(calCurrentSlide);
     };    
+    
+    useEffect(() => {
+        setMoveEvent(onMoveEvent);
+    }, [onMoveEvent]);
+
+
+    useEffect(() => {  
+        if(moveEvent > 0){
+            moveSlide(-1);
+        }
+        else if(moveEvent < 0) {
+            moveSlide(1);
+        }
+    }, [moveEvent]);
+
+
+  
+    useEffect(() => {
+    }, [slideWidth, totalSlide]);
+
+    useEffect(() => {        
+        const movePix = currentSlide * (slideWidth * slideViewCount);
+        slideRef.current.style.transition = "all 2s ease-in-out";
+        slideRef.current.style.transform = `translateX(-${movePix}px)`;
+    }, [currentSlide, slideViewCount, slideWidth]);
+
+    // const slideBtn_L = () => {
+    //     moveSlide(-1);
+    // };
+    // const slideBtn_R = () => {
+    //     moveSlide(1);
+    // };
+
+    const touchStart = (e) => {
+        if(!enableTouch)
+            return;
+        e.stopPropagation();
+        start = e.touches[0];
+        console.log(start)
+    };
+
+    const touchFinish = (e) => {
+        if(!enableTouch)
+            return;
+
+        e.stopPropagation();
+        const value = start.clientX - e.changedTouches[0].clientX;
+        if (value > 0) {
+            moveSlide(1);
+        } else if (value === 0) {
+            moveSlide(-1);
+        }
+    };
 
     // autoSlide 설정
     useEffect(() => {
+        // return ;
         if(autoSlide){
             const interval = setInterval(() => {     
                 refCurrentSlide.current.setCurrentSlide(refCurrentSlide.current.currentSlide + 1 >= refTotalSlide.current.totalSlide ? 0 : refCurrentSlide.current.currentSlide + 1);
@@ -105,25 +121,25 @@ const Slider = ({ data, containerCss, itemCss, contentCss, imgCss, onClickEvent,
             return () => clearInterval(interval);
         }
       }, [autoSlide, INTERVAL_TIME]);
-
       
-    return (
-        <>
+      return (
+          <>
+          {/* { viewButton && (
+              <>
+              <button className="clickBtn_L" onClick={slideBtn_L}>
+                  <span className="material-icons">arrow_back_ios</span>
+              </button>
+              <button className="clickBtn_R" onClick={slideBtn_R}>
+                  <span className="material-icons">arrow_forward_ios</span>
+              </button>
+              </>
+          )} */}
+                
             <div onTouchStart={touchStart} onTouchEnd={touchFinish}>
-                { viewButton && (
-                    <>
-                    <button className="clickBtn_L" onClick={slideBtn_L}>
-                        <span className="material-icons">arrow_back_ios</span>
-                    </button>
-                    <button className="clickBtn_R" onClick={slideBtn_R}>
-                        <span className="material-icons">arrow_forward_ios</span>
-                    </button>
-                    </>
-                )}
                 <div className={containerCss} ref={slideRef}>
-                    {data.map((item) => (
-                        <div className={itemCss} ref={itemRef}>
-                            <div className={contentCss} key={item.id} onClick={onClickEvent}>
+                    {data.map((item, index) => (
+                        <div className={itemCss} ref={itemRef} key={index}>
+                            <div className={contentCss}  onClick={onClickEvent}>
                                 <img className={imgCss} src={item.img} alt={item.id} />
                                 {item.content}
                             </div>
@@ -144,7 +160,7 @@ Slider.propTypes = {
     contentCss: PropTypes.string,
     imgCss: PropTypes.string,
     onClickEvent : PropTypes.func,
-    viewButton : PropTypes.bool,
+    // viewButton : PropTypes.bool,
     enableTouch : PropTypes.bool,
     autoSlide : PropTypes.bool,
 };
@@ -156,7 +172,7 @@ Slider.defaultProps = {
     contentCss: "RV_slideImgArea",
     imgCss: "RV_imgSize",
     onClickEvent: null,
-    viewButton : true,
+    // viewButton : true,
     enableTouch : true,
     autoSlide : false,
 };

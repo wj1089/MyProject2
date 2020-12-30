@@ -1,5 +1,9 @@
 
+button:focus {outline:0;}
 
+*:focus {
+    outline: 0 !important;
+}
 
 /*------------------------------------------
   Responsive Grid Media Queries - 1180, 1024, 768, 360
@@ -26,7 +30,7 @@
     display: flex;
 	border-radius: 16px;
     margin: 0 5px 0 10px;
-    padding: 100px 37px 33px 34px;
+    padding: 100px 30px 20px 30px;
     cursor:pointer;
     background-color: white;
     box-shadow: 0 3px 6px 0
@@ -52,15 +56,15 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 12px 15px 18px 15px;
+    margin: 12px 15px 15px 15px;
     width: 270px;
-    height: 200px;
-    left: 15px;
+    height: 220px;
+    left: 11px;
     overflow: hidden;
 }
 .RV_iconArea{
     position: relative;
-    margin: 5px;
+    margin: 6.4px 0 6.4px 0;
 	height: 25px;
 	font-size: 12px;
     text-align: center;
@@ -104,8 +108,9 @@
 }
 
 .RV_slideText{
-	position: relative;
-	height: 218px;
+	/* position: relative; */
+    height: 149px;
+    width: auto;
 	font-size: 12px;
 	justify-content: center;
     align-items: center;
@@ -127,8 +132,8 @@
     line-height: 1.38;
 }
 .RV_contentDescrip{
-    position: relative;
-    height: auto;
+    /* position: relative; */
+    height: 150px;
     font-family: Noto Sans KR;	
     font-size: 14px;
     font-weight: normal;
@@ -143,80 +148,91 @@
   
 /* 좌측 버튼 */
 .clickBtn_L{
-    position: absolute;
-    width: 60px;
-    height: 55px; 
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+    /* position: absolute; */
+    width: 36px;
+    height: 36px; 
+    /* margin: 196px 13px 0 0; */
+    padding: 5px 6px 2px 6px;
+    
     z-index: 1;
-    text-align: center;
     justify-items: center;
     align-items: center;
-    margin: 196px 13px 0 0;
-    background-color: rgba(150, 150, 150, 0);
+    text-align: center;
+
+    background-color: rgba(86, 86, 86, 0);
     border-radius: 24px;
-    border: none;
-    outline: none;
+    border: solid 1px #9e9e9e;
+    text-decoration: none; 
+	outline: none;
 }
 
-/* .clickBtn_L :hover{
+.clickBtn_L:hover{
     transition:  0.3s ease-in-out;
-    background-color:#34613f;
-    background-size: 5vh;
+    background-color:#34613f;  
+    color: #ffffff;
     border-radius: 24px;
-    border: none;
-    outline: none;
+    text-decoration: none; 
+	outline: none;
+}
 
-} */
+
+.clickBtn_L .material-icons{
+    width: auto;
+    height: auto;
+    padding-left: 3px;
+    border-radius: 24px;
+    opacity: 0.87;
+    color: #000000;
+
+}
+
+.clickBtn_L .material-icons:hover{
+    color: #ffffff;
+    text-decoration: none; 
+	outline: none;
+}
 
 /* 우측버튼 */
 .clickBtn_R{
-    position: absolute;
-    width: 60px;
-    height: 55px; 
+    /* position: absolute; */
+    /* margin-top: 196px; */
+    width: 36px;
+    height: 36px; 
+    margin-left: 15px;
+    padding: 5px 6px 2px 6px;
     justify-content: center;
     text-align: center;
     align-items: center;
     z-index: 1;
     right: 0;
-    margin-top: 196px;
-    margin-right: 50px;
-    background-color: rgba(150, 150, 150, 0);
-    border: none;
+    background-color: rgba(86, 86, 86, 0);
+    border: solid 1px #9e9e9e;
     border-radius: 24px;
+    outline: none;
+	text-decoration: none; 
+
 }
 
-.clickBtn_R :hover{
+.clickBtn_R:hover{
     transition:  0.3s ease-in-out;
-    background-color:#34613f;    
+    background-color:#34613f;  
     color: #ffffff;
     background-size: 5vh;
     border-radius: 24px;
+
 }
 
 
-.clickBtn_L .material-icons{
-    width: 48px;
-    height: 48px;
-    padding: 0 0 0 9px;
-    font-size: 45px;
-    border-radius: 24px;
-    color: #000000;
-}
-
-/* .clickBtn_L .material-icons:hover{
-    color: #ffffff;
-} */
 
 
 .clickBtn_R .material-icons{
-    width: 48px;
-    height: 48px;
-    padding: 0 0 0 5px;
-    font-size: 45px;
+    width: auto;
+    height: auto;
     border-radius: 24px;
+    opacity: 0.87;
     color: #000000;
+    text-decoration: none; 
+	outline: none;
 }
 
 .clickBtn_R .material-icons:hover{
@@ -317,8 +333,8 @@
     width: 289px;
     height:322px;
     border-radius: 10px;
-    margin: 0 12px 0 0;
-    padding: 20px 37px 33px 34px;
+    margin: 0 12px 5px 5px;
+    padding: 32px 37px 33px 34px;
     
     cursor: pointer;
     background-color: white;
@@ -326,17 +342,15 @@
 }
 
 .RV_slideImgArea{
-    width: 119px;
-    height: 119px;
-    margin: 0 67px 12px 52px;
+    margin: 0 55px 12px 55px;
     border-radius: 12px;
     text-align: center;
 	background-color:  rgba( 255, 255, 255, 0);
 }
 
 .RV_imgSize{
-	width: 119px;
-    height: 119px;
+	width: 92px;
+    height: 92px;
     text-align:center;
     border-radius: 20px;
 }
@@ -350,7 +364,7 @@
     margin: 5%;
     width: 230px;
     height: 145px;
-    left: 15px;
+    left: 12px;
     overflow: hidden;
 }
 .RV_iconArea{
@@ -365,24 +379,24 @@
 .RV_iconArea .fa-star{
     position: relative;
     font-weight: 900;
-    font-size: 20px;
-    width: 23px;
+    font-size: 18px;
+    width: 20px;
     color: #ffc53e;
 }
 
 .RV_iconArea .fa-star-half-alt{
     position: relative;
     font-weight: 900;
-    font-size: 20px;
-    width: 23px;
+    font-size: 18px;
+    width: 20px;
     color: #ffc53e;
 }
 
 .RV_iconArea .fa-star .blank{
     position: relative;
     font-weight: 900;
-    font-size: 20px;
-    width: 23px;
+    font-size: 18px;
+    width: 20px;
     color: #e0e0e0;;
 }
 .RV_iconArea  .pointNumber{
@@ -406,17 +420,20 @@
 }
 
 .RV_contentName{
-    /* width: 210px; */
+    font-size: 14px;
     justify-content: center;
     align-items: center;
-    text-overflow: ellipsis;
     text-align: center;
     font-weight: normal;
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 	font-family: Noto Sans KR;	
 }
 .RV_contentDescrip{
-    height: 100px;
-    width: 230px;
+    /* width: 260px; */
+    height: 42px;
 	font-family: Noto Sans KR;	
     font-size: 14px;
     font-weight: 300;
@@ -543,6 +560,7 @@
 .modal_logo{
     width: 114px;
     height: 22px;
+    margin-bottom:12px;
 }
 .modal_down{
     width: 8vw;
