@@ -63,7 +63,7 @@ section {
 
 
 /* 전체스크린 ----------------------------------------------------*/
-.full_screen {
+.full-screen {
 	overflow-x: hidden;
     overflow-y: hidden;
 	position: relative;
@@ -80,7 +80,7 @@ section {
 	justify-content: center; 
 	height: -webkit-fill-available;
 }
-.full_screen .main_content {
+.full-screen .main-content {
 	position: relative;
 	height: calc(var(--vh, 1vh) * 100);
 
@@ -104,11 +104,11 @@ section {
 
 	transition: transform 0.56s ease-out; 
 }
-/* .full_screen .center_area{
+/* .full-screen .center-area{
 	width: 1140px;
 } */
 
-.full_screen section {
+.full-screen section {
 	height: calc(var(--vh, 1vh) * 100);
 	justify-content: center;
 	align-items:center;
@@ -126,18 +126,18 @@ section {
 	-moz-justify-content: center;
 	-webkit-justify-content: center;
 }
-.full_screen .section_container .main {
+.full-screen .section-container .main {
 	padding-top: 140px;
 	
 }
 
-.section_button {
+.section-button {
 	position: relative;
 	width: 40px;
 	height: 36px;
 	cursor: pointer;
 }
-.section_button::after {
+.section-button::after {
 	position: absolute;
 	width: 14px;
 	height: 14px;
@@ -150,11 +150,11 @@ section {
 	transition: border 0.26s ease-in-out;
 }
 
-.section_button.active::after {
+.section-button.active::after {
 	border-color: #404040;
 }
 
-.section_button span {
+.section-button span {
 	position: absolute;
 	visibility: hidden;
 	opacity: 0;
@@ -169,7 +169,7 @@ section {
 	-o-transition: all 0.25s ease-in-out;
 	transition: all 0.25s ease-in-out;
 }
-.section_button:hover span {
+.section-button:hover span {
 	visibility: visible;
 	opacity: 1;
 	-webkit-transform: translateX(-10px);
@@ -228,7 +228,7 @@ section {
 }
 
 
-.section_link {
+.section-link {
 	width: 212px;
 	height: auto;
 	/* margin: 18px 2px 2.5vh 0; */
@@ -236,14 +236,14 @@ section {
 	border-radius: 13px;
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
-.section_link :hover{
+.section-link :hover{
 	transition: ease-out 0.3s;
 	border-radius: 13px;
 
 	border: #ffffff;
 
 }
-.outSide_Image{
+.outSide-image{
 	position: relative;
 	width: 1140px;
 	height: 684px;
@@ -254,7 +254,7 @@ section {
 	background-image: url("../../resource/pcbg_pattern.png");
 }
 
-.section_container_1 {
+.section-container-1 {
 	position: absolute;
 	padding: 157px 75px 0 68px;
 	width: 1140px;
@@ -263,43 +263,43 @@ section {
 	display: flex;
 }
 
-.section_container_1.main {
+.section-container-1.main {
 	text-align: center;
 }
 
-.thumImage{
+.thumimage{
 	width: 26vw;
 	height: 10vh;
 
 }
 
-.ayi_img{
+.ayi-img{
 	position: relative;
 	height: 56px;
 	width: auto;
 	margin: 0 50px 23px 20px;
 	
 }
-.ayi_img2{
+.ayi-img2{
 	position: relative;
 	width: 223px;
 	height: 43px;
 }
-.ayi_img3{
+.ayi-img3{
 	height: 38px;
     width: 194px;
     padding: 1.1px 2.7px 1.1px 2.4px;
 }
 
 
-.firstPage_thumnail{
+.firstPage-thumnail{
 	display: inlineblock;
 	width: 480px;
 	height: 500px;
 	padding-top: 60px;
 }
 
-.firstPage_thumnail .font2{
+.firstPage-thumnail .font2{
 	position: relative;
 	margin: 0 0 0 25px;
 	font-size: 34px;
@@ -313,18 +313,18 @@ section {
 	line-height: 1.41;
 }
 
-.inSide_Img{
+.inSide-img{
 	display: inline-block;
 	width: 456px;
 	height: 530px;
 }
 
-.main_phnGif{
+.main-phnGif{
 	width: 456px;
 	height: 530px;
 }
 
-.section_link_1 {
+.section-link-1 {
 	position: absolute;
 	width: 200px;
  	height: 46px;
@@ -340,7 +340,7 @@ section {
 	align-items: center;
 }
 
-.section_link_1 .link1_text{
+.section-link-1 .link1-text{
 	font-size: 19px;
 	margin: 0;
 	border-color: #34613f;
@@ -351,7 +351,7 @@ section {
 	text-decoration: none;
 	text-align: center;
 } 
-.section_link_1:hover {
+.section-link-1:hover {
 	color: #34613f;
 	border-color: #34613f;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -411,7 +411,7 @@ section {
 	/* align-items: center; */
 }
 
-.outSide_Image_2{
+.outSide-image-2{
 	position: relative;
 	width: 1140px;
 	height: 712px;
@@ -422,20 +422,20 @@ section {
 }
 
 
-.inSide_Img2{
+.inSide-img2{
 	position:absolute;
 	display:inline-block;
 	width: auto;
 	height: 712px;
 	float: right;
 }
-.delivery_phnGif{
+.delivery-phnGif{
 	width:  884px;
 	height: 712px;
 	margin: 0 0 0 188px;
 }
 
-.section_container_2 {
+.section-container-2 {
 	position: absolute;
 	display: flex;
 	width: 1140px;
@@ -445,7 +445,7 @@ section {
 	color: #ffffff;
 }
 
-.secondPage_thumnail{
+.secondPage-thumnail{
 	position:absolute;
 	display: inline-block;
 	height: 350px;
@@ -453,7 +453,7 @@ section {
 	top: 23%;
 	transform:translate(0, 20%);
 }
-.firstWords_2{
+.firstWords-2{
 	width: 299px;
 	height: 77px;
 	font-size: 52px;
@@ -467,7 +467,7 @@ section {
 }
 
 
-.secondWords_2{
+.secondWords-2{
 	height: auto;
 	font-family: Noto Sans KR;
 	font-size: 34px;
@@ -480,7 +480,7 @@ section {
 	line-height: 2.12;
 }
 
-.thirdWords_2{
+.thirdWords-2{
 	height: 81px;
 	font-family: Noto Sans KR;
 	font-size: 16px;
@@ -494,7 +494,7 @@ section {
 }
 
 
-.section_link_2 {
+.section-link-2 {
 	position: relative;
 	z-index: 3;
 	width: 276px;
@@ -503,7 +503,7 @@ section {
 	border-radius: 20px;
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
-.section_link_2 :hover{
+.section-link-2 :hover{
 	transition: ease-out 0.3s;
 	border: #ffffff;
 
@@ -540,7 +540,7 @@ section {
 	align-items: center;
 }
 
-.section_container_3 {
+.section-container-3 {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -550,7 +550,7 @@ section {
 }
 
 
-.outSide_Image_3{
+.outSide-image-3{
 	position: absolute;
 	width: 65%;
 	height: 80%;
@@ -562,14 +562,14 @@ section {
 
 
 /* 내부 후기카드 */
-.RV_SlideWrapper{
+.rv-slideWrapper{
 	position:relative;
 	width:65%;
 	height:60%;
 	overflow:hidden;
 }
 
-.SliderContainer {
+.rv-sliderContainer {
     position: absolute;
     display: flex; 
     width: 73vw;
@@ -577,30 +577,30 @@ section {
   }
 
 
-.section_container .review {
+.section-container .review {
 	text-align: center;
 }
 
 
-.thirdPage_thumnail{
+.thirdPage-thumnail{
 	position:relative;
 	width:40%;
 	height:60%;
 }
-.thumnailContent_3{
+.thumnailContent-3{
 	width:300px;
 	height:350px;
 	float: right;
 	margin-top:120px;
 }
-.firstWords_3{
+.firstWords-3{
 	width:300px;
 	height:45px;
 	margin-bottom: 4px;
 	display:flex;
 }
 
-.secondWords_3{
+.secondWords-3{
 	width: 151px;
 	height: 61px;
 	margin: 0px 119px 14px 35px;
@@ -613,7 +613,7 @@ section {
 	line-height: 1.37;
 }
 
-.thirdWords_3{
+.thirdWords-3{
 	width: 185px;
 	font-size: 17px;
 	margin: 4px 119px 51px 35px;
@@ -638,7 +638,7 @@ section {
 }
 
 
-.section_link_3 {
+.section-link-3 {
 	position: relative;
 	z-index: 3;
 	width: 276px;
@@ -647,10 +647,10 @@ section {
 	border-radius: 20px;
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
-.section_link_3:hover {
+.section-link-3:hover {
 	border-color: #fff;
 }
-.section_link_3 .size2{
+.section-link-3 .size2{
 	font-size: 2vh;
 	line-height: 2.8vh;
 	color: #fff;
@@ -696,7 +696,7 @@ section {
 	align-items: center;
 }
 
-.outSide_Image_4{
+.outSide-image-4{
 	position: absolute;
 	width: 62%;
 	height: 80%;
@@ -707,7 +707,7 @@ section {
 }
 
 
-.section_container_4 {
+.section-container-4 {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -717,26 +717,26 @@ section {
 }
 
 
-.fourthPage_thumnail{
+.fourthPage-thumnail{
 	position:relative;
 	width: 40%;
 	height: 60%;
 }
 
-.thumnailContent_4{
+.thumnailContent-4{
 	width:300px;
 	height:350px;
 	float:right;
 	margin-top:120px;
 }
-.firstWords_4{
+.firstWords-4{
 	width:300px;
 	height:45px;
 	display:flex;
 	margin-bottom: 4px;
 }
 
-.secondWords_4{
+.secondWords-4{
 	width: 151px;
 	height: 61px;
 	margin: 0px 119px 14px 35px;
@@ -748,7 +748,7 @@ section {
 	letter-spacing: normal;
 	line-height: "1.37";
 }
-.thirdWords_4{
+.thirdWords-4{
 	width: 200px;
 	font-size: 17px;
 	margin: 4px 119px 51px 35px;
@@ -760,7 +760,7 @@ section {
 	color: #222222;
 }
 
-.fourthPage_thumnail .font3{
+.fourthPage-thumnail .font3{
 	width: 151px;
 	height: 61px;
 	margin: 15px 119px 14px 35px;
@@ -803,13 +803,13 @@ section {
 }
 
 
-.HT_SlideWrapper{
+.ht-slideWrapper{
 	position:relative;
 	width:65%;
 	height:55%;
 	overflow:hidden
 }
-.HT_SliderList{
+.ht-sliderList{
 	position: relative;
 	width: 1920px;
 	height: 500px;
@@ -819,7 +819,7 @@ section {
 
 
 
-.section_link_4 {
+.section-link-4 {
 	position: relative;
 	z-index: 3;
 	width: 276px;
@@ -829,7 +829,7 @@ section {
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
 
-.section_link_4:hover {
+.section-link-4:hover {
 	transition: ease-out 0.3s;
 	border: #ffffff;
 	border-radius: 20px;
@@ -854,7 +854,7 @@ section {
 	box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 }
 
-.modal_Img{
+.modal-img{
 	width: 30vw;
 	height: 20vh;
 }
@@ -918,7 +918,7 @@ section {
 
 
 
-.modal_btn .btnWord{
+.modal-btn .btnWord{
 	color: white;
 	font-family: Noto Sans KR;	
 	margin: 0;
@@ -1018,7 +1018,7 @@ section {
 	border: none;
 }
 
-.modal_btn{
+.modal-btn{
 	position: relative;
 	width: 162px;
 	height: 42px;
@@ -1029,7 +1029,7 @@ section {
 	border: none;
     outline: none;
 }
-.modal_timer{
+.modal-timer{
 	height: 19px;
 	margin: 11px 94px 20px 79px;
 	font-family: NotoSansKR;
@@ -1054,7 +1054,7 @@ section {
 	align-items: center;
 	min-width: 1180px;
 }
-.outSide_Image_5{
+.outSide-image-5{
 	position: relative;
 	width: 946px;
   	height: 367px;
@@ -1064,7 +1064,7 @@ section {
 	transform:translate(0, 20%);
 }
 
-.section_container_5 {
+.section-container-5 {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -1096,20 +1096,20 @@ section {
 	margin: none;
 }
 
-.fifthPage_thumnail{
+.fifthPage-thumnail{
 	position: relative;
 	width: 47%;
 	height: 100%;
 	padding: 80px 6% 0 6%;
 	z-index: 2;
 }
-.thumNailContent_5{
+.thumNailContent-5{
 	position:absolute;
 	width:300px;
 	/* height:300px; */
 }
 
-.secondWords_5{
+.secondWords-5{
 	width: 173px;
 	height: 72px;
 	margin: 22px 178px 29px 8px;
@@ -1123,20 +1123,20 @@ section {
 	text-align: left;
 	color: #000000;
 }
-.inSide_Img5_area{
+.inSide-img5-area{
 	position:relative;
 	/* height:100%; */
 	z-index: 1;
 }
 
-.inSide_Img_5{
+.inSide-img-5{
 	float: right;
 	width: 446px;
   	height: 356px;
 }
 
 
-.section_link_5 {
+.section-link-5 {
 	position: absolute;
 	width: 154px;
     height: 40px;
@@ -1154,7 +1154,7 @@ section {
 	transition: ease-out 0.3s;
 	
 }
-.section_link_5 .link5_text {
+.section-link-5 .link5-text {
 	margin: 0;
 	width: 100px;
 	height: 27px;
@@ -1168,7 +1168,7 @@ section {
 }
 
 
-.section_link_5:hover {
+.section-link-5:hover {
 	color: #34613f;
 	border-color: #34613f;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -1178,7 +1178,7 @@ section {
 
 
 
-.full_footer{
+.full-footer{
 	position: relative;
 	width: 360px;
 	height: 30vh;
@@ -1186,7 +1186,7 @@ section {
 	float: right;
 }
 
-.full_footer .underword{
+.full-footer .underword{
 	position: relative;
 	width: auto;
 	height: auto;
@@ -1301,21 +1301,21 @@ section {
 	}
 	
 	
-	.section_link {
+	.section-link {
 		width: 146px;
   		height: 103px;
 		margin: 18px 2px 12px  0;
 		border-radius: 9px;
 		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	}
-	.section_link :hover{
+	.section-link :hover{
 		transition: ease-out 0.3s;
 		border-radius: 20px;
 	
 		border: #ffffff;
 	
 	}
-	.outSide_Image{
+	.outSide-image{
 		width: 310px;
 		height: 499px;
 		background-size: 550px;
@@ -1328,34 +1328,34 @@ section {
 	}
 	
 	
-	.section_container_1 {
+	.section-container-1 {
 		position: relative;
 		width: 265px;
 		height: 480px;
 		color: #ffffff;
 	}
 	
-	.section_container_1.main {
+	.section-container-1.main {
 		text-align: center;
 	}
 	
-	.thumImage{
+	.thumimage{
 		width: 26vw;
 		height: 10vh;
 	
 	}
 	
-	.ayi_img{
+	.ayi-img{
 		position: relative;
 		width: 187px;
   		height: 36px;
 	}
-	.ayi_img2{
+	.ayi-img2{
 		display:inline-block;
 		width: 223px;
 		height: 43px;
 	}
-	.ayi_img3{
+	.ayi-img3{
 		width: 145px;
 		height: 28px;
 		margin: 0 6px 8px 0;
@@ -1363,7 +1363,7 @@ section {
 	}
 	
 	
-	.firstPage_thumnail{
+	.firstPage-thumnail{
 		position: absolute;
 		width: 220px;
 		height: 175px;
@@ -1377,7 +1377,7 @@ section {
 		z-index: 1;
 	}
 	
-	.firstPage_thumnail .font2{
+	.firstPage-thumnail .font2{
 		position: relative;
 		width: 150px;
 		height: 57px;
@@ -1393,7 +1393,7 @@ section {
 		color: #222222;
 	}
 	
-	.inSide_Img{
+	.inSide-img{
 		position: absolute;
 		width: 254px;
 		height: 295px;
@@ -1402,7 +1402,7 @@ section {
 		bottom:0;
 	}
 	
-	.inSide_Img .main_phnGif{
+	.inSide-img .main-phnGif{
 		width: 254px;
 		height: 295px;
 		
@@ -1411,7 +1411,7 @@ section {
 			
 	}
 	
-	.section_link_1 {
+	.section-link-1 {
 		position: relative;
 		width: 143px;
 		height: 44px;
@@ -1426,7 +1426,7 @@ section {
 		font-size: 17px;
 	}
 	
-	.section_link_1 .link1_text{
+	.section-link-1 .link1-text{
 		position: relative;
 		margin: auto;
 		font-family: Noto Sans KR;
@@ -1437,7 +1437,7 @@ section {
 		letter-spacing: normal;
 	}
 
-	.section_link_1:hover {
+	.section-link-1:hover {
 		transition: ease-out 0.3s;
 		color: #34613f;
 		border-color: #34613f;
@@ -1457,7 +1457,7 @@ section {
 	
 	}
 	
-	.outSide_Image_2{
+	.outSide-image-2{
 		position: relative;
 		width: 310px;
 		height: 499px;
@@ -1469,19 +1469,19 @@ section {
 	}
 	
 	
-	.inSide_Img2{
+	.inSide-img2{
 		position: relative;
 		width: 308px;
 		height: 307px;
 		z-index: 1;
 	
 	}
-	.delivery_phnGif{
+	.delivery-phnGif{
 		width: 308px;
 		height: 307px;
 	}
 	
-	.section_container_2 {
+	.section-container-2 {
 		position: relative;
 		width: 270px;
 		height: 500px;
@@ -1492,7 +1492,7 @@ section {
 	}
 
 	
-	.secondPage_thumnail{
+	.secondPage-thumnail{
 		position: absolute;
 		width: 270px;
 		height: 180px;
@@ -1505,7 +1505,7 @@ section {
 		float: left;
 	}
 	
-	.firstWords_2{
+	.firstWords-2{
 		width: 200px;
 		height: 42px;
 		margin: 0 27px 6px 0;
@@ -1519,7 +1519,7 @@ section {
 		text-align: left;
 		color: #000000;
 	}
-	.secondWords_2{
+	.secondWords-2{
 		width: 220px;
 		height: 30px;
 		margin: 2px 24px 9px 0;
@@ -1534,7 +1534,7 @@ section {
 		color: #000000;
 	}
 	
-	.thirdWords_2{
+	.thirdWords-2{
 		width: 240px;
 		height: 68px;
 		margin: 9px 0 0 ;
@@ -1550,7 +1550,7 @@ section {
 	}
 	
 	
-	.section_link_2 {
+	.section-link-2 {
 		position: relative;
 		z-index: 3;
 		width: 276px;
@@ -1559,7 +1559,7 @@ section {
 		border-radius: 20px;
 		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	}
-	.section_link_2 :hover{
+	.section-link-2 :hover{
 		transition: ease-out 0.3s;
 		border: #ffffff;
 	
@@ -1573,7 +1573,7 @@ section {
 	
 	}
 	
-	.section_container_3 {
+	.section-container-3 {
 		position: relative;
 		width: 350px;
 		height: 563px;
@@ -1583,7 +1583,7 @@ section {
 		transform: translate(0, -25%);
 	}
 	
-	.outSide_Image_3{
+	.outSide-image-3{
 		position: relative;
 		width: 70vw;
 		left: 0;
@@ -1595,7 +1595,7 @@ section {
 	
 	
 	/* 내부 후기카드 */
-	.RV_SlideWrapper{
+	.rv-slideWrapper{
 		/* position: absolute; */
 		overflow: hidden;
 		width: 94vw;
@@ -1604,26 +1604,26 @@ section {
 		/* float: right; */
 	}
 	
-	.SliderContainer {
+	.rv-sliderContainer {
 		position: relative;
 		height: auto;
 		/* margin-top: 60px;  */
 		display: flex;
 	}
 	
-	.section_container .review {
+	.section-container .review {
 		text-align: center;
 	}
 	
 	
-	.thirdPage_thumnail{
+	.thirdPage-thumnail{
 		/* position: absolute; */
 		display: inline-block;
 		width: 240px;
 		height: 60px;
 		z-index: 2;
 	}
-	.thirdPage_thumnail .font1{
+	.thirdPage-thumnail .font1{
 		width: 170px;
 		height: 60px;
 		font-size: 32px;
@@ -1636,7 +1636,7 @@ section {
 		letter-spacing: normal;
 	}
 
-	.thirdPage_thumnail .font1-2{
+	.thirdPage-thumnail .font1-2{
 		float: right;
 		width: 130px;
 		height: 40px;
@@ -1650,7 +1650,7 @@ section {
 		line-height: 1.26;
 	}
 	
-	.thirdPage_thumnail .font2{
+	.thirdPage-thumnail .font2{
 		width: 16vw;
 		font-size: 17px;
 		margin: 4px 119px 14px 35px;
@@ -1663,7 +1663,7 @@ section {
 	
 	}
 	
-	.section_link_3 {
+	.section-link-3 {
 		position: relative;
 		z-index: 3;
 		width: 276px;
@@ -1672,10 +1672,10 @@ section {
 		border-radius: 20px;
 		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	}
-	.section_link_3:hover {
+	.section-link-3:hover {
 		border-color: #fff;
 	}
-	.section_link_3 .size2{
+	.section-link-3 .size2{
 		font-size: 2vh;
 		line-height: 2.8vh;
 		color: #fff;
@@ -1689,19 +1689,19 @@ section {
 	.hotmenu	{
 		height: 100%;
 	}
-	.HT_SlideWrapper{
+	.ht-slideWrapper{
 		overflow: hidden;
 		width: 94vw;
 		z-index: 1;
 	}
 
-	.HT_SliderList{
+	.ht-sliderList{
 		position: relative;
 		height: 300px;
 		display: flex;
 	}
 	
-	.outSide_Image_4{
+	.outSide-image-4{
 		position: absolute;
 		width: 100%;
 		height: 70vh;
@@ -1709,7 +1709,7 @@ section {
 		border-radius: 0 0 0 25px;
 		margin: 0 0 10vh 35vw;
 	}
-	.section_container_4 {
+	.section-container-4 {
 		position: relative;
 		width: 330px;
 		height: 563px;
@@ -1717,7 +1717,7 @@ section {
 		padding: 90px 20px 10px 20px;
 	}
 	
-	.section_link_4 {
+	.section-link-4 {
 		position: relative;
 		z-index: 3;
 		width: 276px;
@@ -1727,7 +1727,7 @@ section {
 		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	}
 	
-	.section_link_4:hover {
+	.section-link-4:hover {
 		transition: ease-out 0.3s;
 		border: #ffffff;
 		border-radius: 20px;
@@ -1735,7 +1735,7 @@ section {
 	}
 	
 	
-	.fourthPage_thumnail{
+	.fourthPage-thumnail{
 		display: inline-block;
 		margin: 15px 10px 0 10px;
 		font-family: Noto Sans KR;	
@@ -1744,7 +1744,7 @@ section {
 		height: 120px;
 		z-index: 2;
 	}
-	.fourthPage_thumnail .fourth_font1{
+	.fourthPage-thumnail .fourth-font1{
 		width: 190px;
 		height: 42px;
 		margin: 15px 119px 0 0;
@@ -1756,7 +1756,7 @@ section {
 		letter-spacing: normal;
 		
 	}
-	.fourthPage_thumnail .font2{
+	.fourthPage-thumnail .font2{
 		position: absolute;
 		width: 175px;
 		font-size: 17px;
@@ -1768,7 +1768,7 @@ section {
 		color: #222222;
 	}
 
-	.fourthPage_thumnail .font3{
+	.fourthPage-thumnail .font3{
 		position: absolute;
 		width: 100px;
 		height: 40px;
@@ -1810,7 +1810,7 @@ section {
 		background-color: #34613f;
 	}
 	
-	.moreBtn_mobile{
+	.moreBtn-mobile{
 		position: absolute;
 		width: 24px;
 		height: 23.2px;
@@ -1835,7 +1835,7 @@ section {
 		box-shadow: 6px 8px 12px 0 rgba(0, 0, 0, 0.16);
 	}
 	
-	.modal_Img{
+	.modal-img{
 		width: 30vw;
 		height: 20vh;
 	}
@@ -1881,7 +1881,7 @@ section {
 		margin: 0;
 	}
 	
-	.modal_btn{
+	.modal-btn{
 		position: relative;
 		width: 162px;
 		height: 40px;
@@ -1892,7 +1892,7 @@ section {
 		border-color:#4a7755;
 		
 	}
-	.modal_btn .btnWord{
+	.modal-btn .btnWord{
 		position: absolute;
 		color: white;
 		font-family: Noto Sans KR;	
@@ -1942,7 +1942,7 @@ section {
 	.downintro {
 		background-color:  #ffffff ;
 	}
-	.outSide_Image_5{
+	.outSide-image-5{
 		position: relative;
 		width: 326px;
   		height: 241px;
@@ -1951,7 +1951,7 @@ section {
 		margin:0 0 260px 0;
 	}
 	
-	.section_container_5 {
+	.section-container-5 {
 		position: relative;
 		width: 326px;
   		height: 241px;
@@ -1960,23 +1960,23 @@ section {
 		padding: 40px 0 0 20px;
 	
 	}
-	.right .section_container {
+	.right .section-container {
 		text-align: right;
 	}
 	
 	
-	.section_container .review {
+	.section-container .review {
 		padding-top: 250px;
 		text-align: center;
 	}
 	
-	.fifthPage_thumnail{
+	.fifthPage-thumnail{
 		position: absolute;
 		width: auto;
 		height: 151px;
 		text-align: left;
 	}
-	.fifthPage_thumnail .secondWords_5{
+	.fifthPage-thumnail .secondWords-5{
 		font-size: 14px;	
 		width: 151px;
 		height: 60px;
@@ -1990,19 +1990,19 @@ section {
 		text-align: left;
 		color: #000000;
 	}
-	.inSide_Img5_area{
+	.inSide-img5-area{
 		float: right;
 		width: 165px;
 		height: 201px;
 	}
 	
-	.inSide_Img_5{
+	.inSide-img-5{
 		float: right;
 		width: 165px;
 		height: 201px;
 	}
 	
-	.section_link_5 {
+	.section-link-5 {
 		position: absolute;
 		width: 130px;
 		height: 35px;
@@ -2025,13 +2025,13 @@ section {
 		transition: ease-out 0.3s;
 	}
 
-	.section_link_5 .link5_text{
+	.section-link-5 .link5-text{
 		width: 68px;
 		height: 20px;
 		margin: 0;
 	}
 
-	.section_link_5:hover {
+	.section-link-5:hover {
 		color: #34613f;
 		border-color: #34613f;
 		background-color: #ffffff;
@@ -2105,14 +2105,14 @@ section {
 		display: inline-block;
 	}
 	
-	.full_footer{
+	.full-footer{
 		position: relative;
 		width: 320px;
 		height: 30vh;
 		float: right;
 	}
 	
-	.full_footer .underword{
+	.full-footer .underword{
 		position: relative;
 		width: auto;
 		height: auto;

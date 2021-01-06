@@ -14,7 +14,7 @@
 	
 
 /* 상단메뉴바 */
-.nav_menu {
+.nav-menu {
 	position: relative;
 	display: inline-block;
 	width: 1140px;
@@ -31,7 +31,7 @@
 	letter-spacing: normal;
 	max-width: 1140px;
 }
-.nav_ul{
+.nav-ul{
 	height: 60px;
 	padding: 0;
 	max-width: 1140px;
@@ -111,7 +111,7 @@ a{
 		clear : both;
 	}
 
-	.nav_menu {
+	.nav-menu {
 	
 		position: relative;
 		display: inline-flex;
@@ -130,12 +130,12 @@ a{
 		letter-spacing: normal;
 
 	}
-	.nav_ul{
+	.nav-ul{
 		width: auto;
 		padding: 0;
 	}
 
-	.nav_menu .one{
+	.nav-menu .one{
 		display: inline-block;
 		width: 100px;
 		height: auto;
@@ -153,7 +153,7 @@ a{
 
 	}
 
-	.nav_menu .two{
+	.nav-menu .two{
 		display: inline-block;
 		width: 65px;
 		height: auto;
