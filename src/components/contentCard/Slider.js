@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/cssfiles/CssFolder';
 
@@ -14,8 +19,6 @@ const Slider = ({
   onMoveEvent,
   viewButton,
 }) => {
-  const desktop = window.innerWidth > 768 ? 'desktop' : '';
-  // const phone = window.innerWidth <= 768 ? 'phone' : '';
   // 슬라이드 시작 단위
   let start = 0;
   // 슬라이드 전체 동작 시간
@@ -38,10 +41,12 @@ const Slider = ({
   const slideRef = useRef(null);
   const itemRef = useRef(null);
 
-  // 슬아이드 움직이는 이밴트 관리
+  // 슬라이드 움직이는 이밴트 관리
   const [moveEvent, setMoveEvent] = useState(0);
   // 슬라이드 동작 관리
-  const moveSlide = (direction) => {
+  const moveSlide = useCallback((direction) => {
+    // console.log('direction');
+    // console.log(direction);
     let calCurrentSlide = 0;
     if (direction > 0) {
       calCurrentSlide = currentSlide + 1;
@@ -49,11 +54,14 @@ const Slider = ({
       calCurrentSlide = currentSlide - 1;
     }
 
-    if (calCurrentSlide >= totalSlide) calCurrentSlide = 0;
-    else if (calCurrentSlide < 0) calCurrentSlide = 0;
+    if (calCurrentSlide >= totalSlide) {
+      calCurrentSlide = 0;
+    } else if (calCurrentSlide < 0) {
+      calCurrentSlide = 0;
+    }
 
     setCurrentSlide(calCurrentSlide);
-  };
+  }, [currentSlide, totalSlide]);
 
   const slideBtnLeft = () => {
     moveSlide(-1);
@@ -139,11 +147,12 @@ const Slider = ({
       }, INTERVAL_TIME);
       return () => clearInterval(interval);
     }
+    return (autoSlide === true);
   }, [autoSlide, INTERVAL_TIME]);
 
   return (
     <>
-      { desktop && viewButton && (
+      { viewButton && (
         <>
           <button type="button" className="clickBtn-L" onClick={slideBtnLeft}>
             <span className="material-icons">arrow_back_ios</span>
@@ -157,7 +166,7 @@ const Slider = ({
         <div className={containerCss} ref={slideRef}>
           {data.map((item) => (
             <div className={itemCss} ref={itemRef} key={item.index}>
-              <div className={contentCss} aria-hidden="true" onClick={onClickEvent}>
+              <div className={contentCss} onClick={onClickEvent} aria-hidden="true">
                 <img className={imgCss} src={item.img} alt={item.id} />
                 {item.content}
               </div>
@@ -172,8 +181,7 @@ const Slider = ({
 export default Slider;
 
 Slider.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.object, PropTypes.number, PropTypes.string, PropTypes.func, PropTypes.bool])),
+  data: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])),
   containerCss: PropTypes.string,
   itemCss: PropTypes.string,
   contentCss: PropTypes.string,
@@ -182,6 +190,7 @@ Slider.propTypes = {
   viewButton: PropTypes.bool,
   enableTouch: PropTypes.bool,
   autoSlide: PropTypes.bool,
+  onMoveEvent: PropTypes.number,
 };
 
 Slider.defaultProps = {
@@ -194,4 +203,5 @@ Slider.defaultProps = {
   viewButton: false,
   enableTouch: true,
   autoSlide: false,
+  onMoveEvent: 0,
 };

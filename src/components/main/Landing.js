@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React,
+{
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+}
+  from 'react';
 import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import HoverImage from 'react-hover-image';
@@ -11,8 +18,8 @@ import Footer from '../footer/Footer';
 import Slider from '../contentCard/Slider';
 import StarPoint from '../contentCard/StarPoint';
 
-import AyiImage from '../../resource/logo_wm.png';
-import BtnRight from '../../resource/arrow_forward_ios.svg';
+import ayiImage from '../../resource/logo_wm.png';
+import btnRight from '../../resource/arrow_forward_ios.svg';
 import phoneImg from '../../resource/phone_section1.gif';
 import deliveryImg from '../../resource/phone_section2_pc.gif';
 import deliveryImgPhone from '../../resource/phone_section2_mobile.png';
@@ -62,29 +69,27 @@ const Landing = () => {
   const [seconds, setSeconds] = useState(0);
   // 슬라이드 이동(시작점)
   let start = 0;
-
   // Close관리
   const handleClose = () => {
     setShow(false);
   };
   // 보여지는 Show관리
-  const handleShow = () => {
+  const handleShow = useCallback(() => {
     setShow(true);
     setReadMore(false);
     setInptNum('');
     setCheckBxAgree(false);
     setFinalCheck(false);
     setInptCodeNum('');
-  };
-
+  }, []);
   // input내용 변경 관리
-  const inptChange = (e) => {
+  const inptChange = useCallback((e) => {
     setInptNum(e.target.value);
-  };
+  }, []);
   // 수신받은 CodeNumber의 Input 관리
-  const inptCodeChange = (e) => {
+  const inptCodeChange = useCallback((e) => {
     setInptCodeNum(e.target.value);
-  };
+  }, []);
   // 체크박스의 유무 관리
   const handleCheckYn = () => {
     setCheckBxAgree(!checkBxAgree);
@@ -93,7 +98,6 @@ const Landing = () => {
   const handleReadMore = () => {
     setReadMore(!readMore);
   };
-
   // main 스크롤
   const wheel = (e) => {
     if (canScroll) {
@@ -108,7 +112,6 @@ const Landing = () => {
   function scrollContent(count) {
     const vh = mainContent.current.clientHeight;
     const movepix = vh * count;
-
     let styleMoveRate = `-webkit-transform: translateY(-${movepix}px);`;
     styleMoveRate += `-ms-transform: translateY(-${movepix}px);`;
     styleMoveRate += `-o-transform: translateY(-${movepix}px);`;
@@ -122,7 +125,7 @@ const Landing = () => {
   // 슬라이드 이동(시작점)
   const touchStart = (e) => {
     e.stopPropagation();
-    start = e.touches['0'];
+    start = e.touches['0']; // 수정 중..
   };
 
   // 슬라이드 이동(끝난점)
@@ -155,20 +158,17 @@ const Landing = () => {
           setFinalCheck(true);
           setMinutes(3);
         }
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
 
   // 폰에 입력받은 코드를 최종적으로 확인하는 동작과정
   function handleCFcode() {
     if (inptCodeNum.length !== 6) {
-      alert('정확한 인증번호를 입력해주세요.');
+      // alert('정확한 인증번호를 입력해주세요.');
       return;
     }
     if (minutes === 0 && seconds === 0) {
-      alert('입력시간이 초과되었습니다, 다시 입력해주세요.');
+      // alert('입력시간이 초과되었습니다, 다시 입력해주세요.');
       return;
     }
     axios
@@ -176,12 +176,7 @@ const Landing = () => {
       .then((response) => {
         if (response && response.data.code === '1') {
           handleClose();
-        } else {
-          alert(response.data.msg);
         }
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
   // 모달 보기, 접기 버튼
@@ -190,11 +185,12 @@ const Landing = () => {
       - SMS 발송 및 부정이용 방지용으로 핸드폰 번호를 수집하며
       <br />
       목적 달성 1일 후 파기할 예정입니다.
-      <br />- 한개의 휴대폰 번호로 하루 최대 3번까지 전송 가능합니다.
+      <br />
+      - 한개의 휴대폰 번호로 하루 최대 3번까지 전송 가능합니다.
     </p>
   );
 
-  // ReviewItem에 필요한 name, S, description Element자료
+  // ReviewItem에 필요한 name, point, description Element자료
   function makeReviewElement(name, point, description) {
     return (
       <>
@@ -338,7 +334,7 @@ const Landing = () => {
   }
 
   // Review & HotTrack 버튼, 슬라이드 분리용 클릭버튼 동작
-  const sliderExtraBtn = (e) => {
+  const sliderExtraBtn = useCallback((e) => {
     let value = Number(e.target.dataset.title);
     if (btnClickEvent[e.target.name] !== undefined) {
       let veiwValue = value + btnClickEvent[e.target.name];
@@ -352,8 +348,7 @@ const Landing = () => {
       ...btnClick,
       [e.target.name]: value,
     }));
-  };
-
+  }, [btnClickEvent]);
   // Igre링크 관리
   function igreLink(e) {
     e.preventDefault();
@@ -388,25 +383,18 @@ const Landing = () => {
   useEffect(() => {
     axios
       .get(urls.reviewList)
-      .then((res) => {
-        if (res && res.data.code === '1') {
-          const parseJson = JSON.parse(res.data.msg);
-          const jsonItem = parseJson.item;
-          const reviewArr = [];
-          jsonItem.map((item) => reviewArr.push({
-            id: item.id,
-            img: item.product.thumnail,
-            content: makeReviewElement(
-              item.product.name,
-              item.point,
-              item.description,
-            ),
-          }));
-          setReviewItem(reviewArr);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+      .then((response) => {
+        const reviewArr = [];
+        response.data.item.map((item) => reviewArr.push({
+          id: item.id,
+          img: item.product.thumnail,
+          content: makeReviewElement(
+            item.product.name,
+            item.point,
+            item.description,
+          ),
+        }));
+        setReviewItem(reviewArr);
       });
   }, []);
 
@@ -415,20 +403,13 @@ const Landing = () => {
     axios
       .get(urls.hotTrackList)
       .then((response) => {
-        if (response && response.data.code === '1') {
-          const parseJson = JSON.parse(response.data.msg);
-          const jsonProject = parseJson[0].products;
-          const hotTrackArr = [];
-          jsonProject.map((product) => hotTrackArr.push({
-            id: product.prodectId,
-            img: product.thumnail,
-            content: makeHotTrackElement(product.name, product.description),
-          }));
-          setProductItem(hotTrackArr);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
+        const hotTrackArr = [];
+        response.data.items[0].products.map((product) => hotTrackArr.push({
+          id: product.prodectId,
+          img: product.thumnail,
+          content: makeHotTrackElement(product.name, product.description),
+        }));
+        setProductItem(hotTrackArr);
       });
   }, []);
 
@@ -472,7 +453,7 @@ const Landing = () => {
                     <div className="firstPage-thumnail">
                       <img
                         className="ayi-img"
-                        src={AyiImage}
+                        src={ayiImage}
                         alt="아이그레mainLogo"
                       />
                       <p className="font2">
@@ -506,7 +487,7 @@ const Landing = () => {
                   <div className="firstPage-thumnail">
                     <img
                       className="ayi-img"
-                      src={AyiImage}
+                      src={ayiImage}
                       alt="아이그레mainLogo"
                     />
                     <p className="font2">
@@ -586,7 +567,7 @@ const Landing = () => {
                         <div className="fas fa-hashtag" />
                         <img
                           className="ayi-img2"
-                          src={AyiImage}
+                          src={ayiImage}
                           alt="아이그레mainLogo-2"
                         />
                       </div>
@@ -684,7 +665,7 @@ const Landing = () => {
                         <div className="fas fa-hashtag" />
                         <img
                           className="ayi-img2"
-                          src={AyiImage}
+                          src={ayiImage}
                           alt="아이그레mainLogo-2"
                         />
                       </div>
@@ -755,7 +736,7 @@ const Landing = () => {
                       <p className="font3">
                         인기상품
                         <img
-                          src={BtnRight}
+                          src={btnRight}
                           className="moreBtn-mobile"
                           onClick={handleShow}
                           alt="igre-linkToMore"
@@ -796,7 +777,7 @@ const Landing = () => {
                   <div className="thumNailContent-5">
                     <img
                       className="ayi-img3"
-                      src={AyiImage}
+                      src={ayiImage}
                       alt="아이그레mainLogo3"
                     />
                     <p className="secondWords-5">
@@ -822,14 +803,14 @@ const Landing = () => {
                 <div className="inSide-img5-area">
                   {desktop && (
                     <img
-                      className="inSide-Img-5"
+                      className="inSide-img-5"
                       src={footerImg}
                       alt="아이그레PCLogo2"
                     />
                   )}
                   {phone && (
                     <img
-                      className="inSide-Img-5"
+                      className="inSide-img-5"
                       src={footerImgM}
                       alt="아이그레MobileLogo2"
                     />
@@ -873,7 +854,7 @@ const Landing = () => {
               <div className="modal-text">
                 <img
                   className="modal-logo"
-                  src={AyiImage}
+                  src={ayiImage}
                   alt="아이그레Modal-logoImg"
                 />
                 <p className="modal-textP">, 더 간편하게 앱으로 만나보세요!</p>
@@ -883,7 +864,6 @@ const Landing = () => {
                 type="tel"
                 className="modal-input"
                 placeholder="핸드폰 번호입력  ( - 제외 )"
-                // pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
                 onChange={inptChange}
                 value={inptNum}
               />
@@ -911,7 +891,7 @@ const Landing = () => {
                 <p className="modal-first">더 많은 정보가 궁금하시다면</p>
                 <img
                   className="modal-logo"
-                  src={AyiImage}
+                  src={ayiImage}
                   alt="아이그레Modal-logoImg"
                 />
                 ,<p className="modal-second"> 더 간편하게 앱으로 만나보세요!</p>

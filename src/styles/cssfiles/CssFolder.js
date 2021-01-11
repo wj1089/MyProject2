@@ -1,5 +1,6 @@
-import "../../components/main/Landing.css"
-import "../../components/contentCard/ContentCard.css"
-import "../../components/navigation/Navigation.css";
+import '../../components/main/Landing.css';
+import '../../components/contentCard/ContentCard.css';
+import '../../components/navigation/Navigation.css';
 
-import "bootstrap/dist/css/bootstrap.min.css";
+// eslint-disable-next-line eol-last
+import 'bootstrap/dist/css/bootstrap.min.css';
